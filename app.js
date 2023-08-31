@@ -39,7 +39,3 @@ app.get("/productDetail", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/productDetail.html"));
 });
 
-//Ruta de contacto
-app.get("/contact", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./views/contact.html"));
-});
