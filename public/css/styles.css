@@ -86,6 +86,7 @@ footer {
 .registro button:hover {
   background-color: #555;
 }
+
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   header {
@@ -100,6 +101,7 @@ footer {
     font-size: 14px;
   }
 }
+
 /* Estilos para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   header {
