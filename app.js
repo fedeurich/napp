@@ -18,3 +18,28 @@ app.listen(3031, () => {
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/index.html"));
 });
+
+//Ruta del register
+app.get("/register", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/register.html"));
+});
+
+//Ruta del login
+app.get("/login", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/login.html"));
+});
+
+//Ruta del carrito de compra
+app.get("/productCart", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/productCart.html"));
+});
+
+//Ruta del detalle del producto
+app.get("/productDetail", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/productDetail.html"));
+});
+
+//Ruta de contacto
+app.get("/contact", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/contact.html"));
+});
