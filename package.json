@@ -1,0 +1,27 @@
+{
+  "name": "grupo_4_mundo3d",
+  "version": "1.0.0",
+  "description": "\"Mundo3D\" es un ecommerce que se especializa en proporcionar productos personalizados y únicos utilizando la tecnología de impresión 3D. Los clientes pueden explorar, diseñar y adquirir una variedad de objetos, desde elementos decorativos hasta prototipos funcionales, con opciones para elegir diseños, colores y materiales.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grupocuatro4/grupo_4_mundo3d.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grupocuatro4/grupo_4_mundo3d/issues"
+  },
+  "homepage": "https://github.com/grupocuatro4/grupo_4_mundo3d#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

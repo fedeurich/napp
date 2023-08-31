@@ -1,0 +1,132 @@
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos del header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estilos del contenido principal */
+main {
+  padding: 20px;
+}
+
+/* Estilos del pie de página */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+/* Estilos para el contenedor */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0d3d3;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario */
+.registro {
+  display: flex;
+  flex-direction: column;
+}
+
+.registro h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registro label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.registro input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registro button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registro button:hover {
+  background-color: #555;
+}
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  header {
+    font-size: 24px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+}
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  header {
+    font-size: 24px;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+}
+
+/* Estilos para escritorios */
+@media (min-width: 1025px) {
+  header {
+    font-size: 32px;
+  }
+
+  main {
+    padding: 40px;
+    background-color: rgb(226, 173, 173);
+  }
+
+  footer {
+    font-size: 16px;
+  }
+}
