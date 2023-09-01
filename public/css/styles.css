@@ -13,18 +13,24 @@ header {
   text-align: center;
 }
 
-nav ul {
+nav.barra-navegacion {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.barra-navegacion ul {
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav li {
+nav.barra-navegacion li {
   display: inline;
   margin-right: 20px;
 }
 
-nav a {
+nav.barra-navegacion a {
   color: #fff;
   text-decoration: none;
 }
@@ -119,6 +125,19 @@ footer {
 
 /* Estilos para escritorios */
 @media (min-width: 1025px) {
+  .barra-navegacion {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .barra-navegacion li {
+    margin: 0px 10px;
+  }
+
+  .barra-navegacion a {
+    font-size: 20px;
+  }
+
   header {
     font-size: 32px;
   }
