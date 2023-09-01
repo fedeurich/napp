@@ -15,6 +15,8 @@ header {
 nav.barra-navegacion {
   display: flex;
   justify-content: space-between;
+  width: 90vw;
+  margin: auto;
 }
 
 nav.barra-navegacion ul {
@@ -48,7 +50,7 @@ footer {
   text-align: center;
 }
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
-.contenedor {
+main .contenedor {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -99,6 +101,10 @@ footer {
     font-size: 24px;
   }
 
+  header nav.barra-navegacion {
+    display: none;
+  }
+
   main {
     padding: 10px;
   }
@@ -109,9 +115,24 @@ footer {
 }
 
 /* Estilos para tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) {
   header {
     font-size: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header div.logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  header nav.barra-navegacion li {
+    margin: 0px 10px;
+  }
+
+  header nav.barra-navegacion a {
+    font-size: 14px;
   }
 
   main {
@@ -125,22 +146,10 @@ footer {
 
 /* Estilos para escritorios */
 @media (min-width: 1025px) {
-  header {
-    font-size: 32px;
-  }
-
   /* Limito el tamaño de la barra de navegacion para pantallas grandes */
   .barra-navegacion {
     max-width: 1200px;
     margin: auto;
-  }
-
-  .barra-navegacion li {
-    margin: 0px 10px;
-  }
-
-  .barra-navegacion a {
-    font-size: 16px;
   }
 
   main {
