@@ -1,8 +1,6 @@
 /* Estilos globales */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 /* Estilos del header */
@@ -13,6 +11,7 @@ header {
   text-align: center;
 }
 
+/* Estilo de la barra de navegacion */
 nav.barra-navegacion {
   display: flex;
   justify-content: space-between;
@@ -37,7 +36,8 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  padding: 20px;
+  width: 90vw;
+  margin: auto;
 }
 
 /* Estilos del pie de página */
@@ -47,8 +47,8 @@ footer {
   padding: 10px;
   text-align: center;
 }
-/* Estilos para el contenedor */
-.container {
+/* Estilos para el contenedor --> por ahora no hay contenedor*/
+.contenedor {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -125,6 +125,11 @@ footer {
 
 /* Estilos para escritorios */
 @media (min-width: 1025px) {
+  header {
+    font-size: 32px;
+  }
+
+  /* Limito el tamaño de la barra de navegacion para pantallas grandes */
   .barra-navegacion {
     max-width: 1200px;
     margin: auto;
@@ -135,16 +140,12 @@ footer {
   }
 
   .barra-navegacion a {
-    font-size: 20px;
-  }
-
-  header {
-    font-size: 32px;
+    font-size: 16px;
   }
 
   main {
     padding: 40px;
-    background-color: rgb(226, 173, 173);
+    background-color: rgb(248, 199, 199);
   }
 
   footer {
