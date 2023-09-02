@@ -42,6 +42,13 @@ main {
   margin: auto;
 }
 
+h2{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 60px;
+}
+
 /* Estilos del pie de página */
 footer {
   background-color: #333;
