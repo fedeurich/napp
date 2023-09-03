@@ -1,5 +1,11 @@
 /* Estilos globales */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos del body */
 body {
+  background-color: #ebebeb;
   font-family: Arial, sans-serif;
 }
 
@@ -38,11 +44,11 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 90vw;
+  width: 100%;
   margin: auto;
 }
 
-h2{
+h2 {
   display: flex;
   justify-content: center;
   font-size: 30px;
@@ -53,9 +59,11 @@ h2{
 footer {
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding: 3px;
   text-align: center;
+  width: 100%;
 }
+
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
   max-width: 400px;
@@ -105,6 +113,7 @@ main .contenedor {
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   header {
+    width: 100%;
     font-size: 24px;
   }
 
