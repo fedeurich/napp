@@ -55,6 +55,41 @@ h2 {
   margin-bottom: 60px;
 }
 
+.containerParrafos{
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  margin-bottom: 60px;
+}
+/* Estilos de los productosa de muestra de la section */
+
+.containerSectionIndex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.containerProducto {
+  margin: 10px 20px;
+  box-shadow: 0 4px 8px lightskyblue, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
+  background-color: rgb(160, 185, 185);
+  cursor: default;
+}
+
+.containerProductoImg img{
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.containerCardFooter h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Estilos del pie de página */
 footer {
   background-color: #333;
