@@ -38,13 +38,12 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 90vw;
+  width: auto;
   margin: auto;
 }
 
 h2{
-  display: flex;
-  justify-content: center;
+  text-align: center;
   font-size: 30px;
   margin-bottom: 60px;
 }
@@ -56,6 +55,7 @@ footer {
   padding: 10px;
   text-align: center;
 }
+
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
   max-width: 400px;
@@ -139,7 +139,7 @@ main .contenedor {
   }
 
   header nav.barra-navegacion a {
-    font-size: 14px;
+    font-size: 20px;
   }
 
   main {
