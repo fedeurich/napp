@@ -20,7 +20,7 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  text-align: center;
+ 
   height: auto;
 }
 
@@ -202,10 +202,19 @@ main .contenedor {
 }
 .logo {
   left: 0;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(46, 72, 156);
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.buscador{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 2px;
 }
 
