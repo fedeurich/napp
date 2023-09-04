@@ -5,13 +5,16 @@ const app = express();
 
 const path = require("path");
 
+//variable de entorno
+const PORT = process.env.PORT || 3031;
+
 //Defino la ruta de los archivos publicos
 const publicPath = path.resolve(__dirname, "./public");
 app.use(express.static(publicPath));
 
 //Puerto en el que corre el servidor
-app.listen(3031, () => {
-  console.log("El servidor esta corriendo en http://localhost:3031/");
+app.listen(PORT, () => {
+  console.log(`El servidor esta corriendo en http://localhost:${PORT}`);
 });
 
 //Ruta del index(home)
