@@ -49,9 +49,8 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 80%;
+  width: 95%;
   margin: auto;
-  max-height: 90vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
