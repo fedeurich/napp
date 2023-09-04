@@ -1,5 +1,11 @@
 /* Estilos globales */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos del body */
 body {
+  background-color: #ebebeb;
   font-family: Arial, sans-serif;
   background-color: rgb(245, 240, 232);
   display: flex;
@@ -43,7 +49,7 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 90vw;
+  width: 100%;
   margin: auto;
   flex-grow: 1;
   max-height: 90vh;
@@ -51,11 +57,46 @@ main {
   flex-wrap: wrap;
 }
 
-h2{
+h2 {
   display: flex;
   justify-content: center;
   font-size: 30px;
   margin-bottom: 60px;
+}
+
+.containerParrafos{
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  margin-bottom: 60px;
+}
+/* Estilos de los productosa de muestra de la section */
+
+.containerSectionIndex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.containerProducto {
+  margin: 10px 20px;
+  box-shadow: 0 4px 8px lightskyblue, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
+  background-color: rgb(160, 185, 185);
+  cursor: default;
+}
+
+.containerProductoImg img{
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.containerCardFooter h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Estilos del pie de página */
@@ -69,6 +110,7 @@ footer {
   left: 0;
   width: 100%;
 }
+
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
   max-width: 400px;
@@ -118,6 +160,7 @@ main .contenedor {
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   header {
+    width: 100%;
     font-size: 24px;
   }
 
@@ -152,7 +195,7 @@ main .contenedor {
   }
 
   header nav.barra-navegacion a {
-    font-size: 14px;
+    font-size: 20px;
   }
 
   footer {
