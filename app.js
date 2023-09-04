@@ -34,7 +34,12 @@ app.get("/productCart", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/productCart.html"));
 });
 
+//Ruta del menu de porductos
+app.get("/productMenu", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/productMenu.html"));
+});
+
 //Ruta del detalle del producto
 app.get("/productDetail", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./views/productMenu.html"));
+  res.sendFile(path.resolve(__dirname, "./views/productDetail.html"));
 });
