@@ -46,9 +46,6 @@ section.total {
   background-color: #ebebeb;
 }
 
-main section.total p.total {
-}
-
 section.total div.tarjeta {
   display: flex;
   justify-content: space-between;
