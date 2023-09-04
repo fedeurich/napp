@@ -1,52 +1,54 @@
-.mensaje{
-    background-color: rgb(69, 18, 117);
-    color: blanchedalmond;
-    text-align: center;
-    height: 30px;
-    padding: 10px;
+.mensaje {
+  background-color: rgb(69, 18, 117);
+  color: blanchedalmond;
+  text-align: center;
+  height: 30px;
+  padding: 10px;
 }
-.mensaje p{
-    margin: 0;
+.mensaje p {
+  margin: 0;
 }
-.banner{
-    background-size: cover;
-    text-align: center;
+.banner {
+  background-size: cover;
+  text-align: center;
+  width: 100%;
+  margin: auto;
 }
 /* CSS para los elementos del artículo */
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 10px; 
-    width: 400px;
-    height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  width: 400px;
+  height: 500px;
 
-    background-color: white;
-    box-shadow: 0 0 5px rgb(178, 185, 70);
+  background-color: white;
+  box-shadow: 0 0 5px rgb(178, 185, 70);
 }
 
 .product img {
-    height: 90%;
-    max-width: 95%;
-    margin: 5px;
-    border:solid  rgb(8, 8, 8) 1px;
+  height: 90%;
+  max-width: 95%;
+  margin: 5px;
+  border: solid rgb(8, 8, 8) 1px;
 }
 
 .product h2 {
-    margin: 10px 0; 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: medium;
+  margin: 10px 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: medium;
 }
 
 .product .precio {
-    font-weight: bold;
-    font-size: larger;
+  font-weight: bold;
+  font-size: larger;
 }
-header .logo{
-    left: 0;
+header .logo {
+  left: 0;
 }
-.product:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 0 10px rgb(87, 86, 192);
+.product:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgb(87, 86, 192);
 }

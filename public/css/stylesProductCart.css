@@ -79,6 +79,12 @@ main.carrito section.total button.finalizar {
 
 /* Estilos para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
+  main article.producto {
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
 }
 
 /* Estilos para escritorios */

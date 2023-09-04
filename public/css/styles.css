@@ -17,7 +17,7 @@ body {
 header {
   background-color: #333;
   color: #fff;
- 
+
   height: auto;
 }
 
@@ -48,7 +48,7 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 95%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -234,7 +234,7 @@ main .contenedor {
   padding-left: 30px;
   padding-top: 30px;
 }
-.buscador{
+.buscador {
   display: flex;
   align-items: center;
   justify-content: center;
