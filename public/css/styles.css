@@ -18,6 +18,10 @@ header {
   width: 100%;
   background-color: #333;
   color: #fff;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4095c7df92d41465f14626adbe0815ced37fb114
   height: auto;
 }
 
@@ -234,7 +238,7 @@ main .contenedor {
   padding-left: 30px;
   padding-top: 30px;
 }
-.buscador{
+.buscador {
   display: flex;
   align-items: center;
   justify-content: center;
