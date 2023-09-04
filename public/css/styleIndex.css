@@ -8,11 +8,11 @@
 .mensaje p {
   margin: 0;
 }
-.banner {
-  background-size: cover;
-  text-align: center;
-  width: 100%;
-  margin: auto;
+.banner{
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+    margin: auto;
 }
 /* CSS para los elementos del artículo */
 .product {

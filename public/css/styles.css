@@ -15,9 +15,13 @@ body {
 
 /* Estilos del header */
 header {
+  width: 100%;
   background-color: #333;
   color: #fff;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4095c7df92d41465f14626adbe0815ced37fb114
   height: auto;
 }
 
