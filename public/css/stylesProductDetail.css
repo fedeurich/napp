@@ -1,17 +1,22 @@
 /* Estilos globales */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos body */
 body {
-    font-family: Arial, sans-serif;
-  }
+  font-family: Arial, sans-serif;
+}
   
-  /* Estilos del header */
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
+/* Estilos del header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
   
-  /* Estilo de la barra de navegacion */
+/* Estilo de la barra de navegacion */
   nav.barra-navegacion {
     display: flex;
     justify-content: space-between;
