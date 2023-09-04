@@ -1,6 +1,11 @@
 /* Estilos globales */
 body {
   font-family: Arial, sans-serif;
+  background-color: rgb(245, 240, 232);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
 }
 
 /* Estilos del header */
@@ -40,6 +45,10 @@ nav.barra-navegacion a {
 main {
   width: 90vw;
   margin: auto;
+  flex-grow: 1;
+  max-height: 90vh;
+  display: inline-flex;
+  flex-wrap: wrap;
 }
 
 h2{
@@ -51,10 +60,14 @@ h2{
 
 /* Estilos del pie de página */
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #fdfdfd;
+  color: #080707;
   padding: 10px;
   text-align: center;
+  position: absolute;
+  bottom: 1%;
+  left: 0;
+  width: 100%;
 }
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
@@ -142,10 +155,6 @@ main .contenedor {
     font-size: 14px;
   }
 
-  main {
-    padding: 15px;
-  }
-
   footer {
     font-size: 14px;
   }
@@ -159,12 +168,24 @@ main .contenedor {
     margin: auto;
   }
 
-  main {
-    padding: 40px;
-    background-color: rgb(248, 199, 199);
-  }
+
 
   footer {
     font-size: 16px;
   }
+}
+.logo img{
+max-width: 5%;
+height:auto;
+
+}
+.logo{
+  left: 0;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(46, 72, 156);
+
+
 }
