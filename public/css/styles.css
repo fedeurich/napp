@@ -18,8 +18,9 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  padding: 10px;
   text-align: center;
+  height: auto;
+  
 }
 
 /* Estilo de la barra de navegacion */
@@ -49,12 +50,13 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 100%;
+  width: 80%;
   margin: auto;
   flex-grow: 1;
   max-height: 90vh;
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 h2 {
