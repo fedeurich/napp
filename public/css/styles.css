@@ -15,9 +15,9 @@ body {
 
 /* Estilos del header */
 header {
+  width: 100%;
   background-color: #333;
   color: #fff;
- 
   height: auto;
 }
 
@@ -48,7 +48,7 @@ nav.barra-navegacion a {
 
 /* Estilos del contenido principal */
 main {
-  width: 95%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;

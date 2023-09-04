@@ -1,10 +1,13 @@
 /* Estilos globales */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 /* Estilos body */
 body {
+  width: 100%;
   font-family: Arial, sans-serif;
 }
   
@@ -43,7 +46,7 @@ header {
   
   /* Estilos del contenido principal */
   main {
-    width: auto;
+    width: 100%;
     margin: auto;
     background-color: rgb(248, 199, 199);
   }
@@ -62,19 +65,8 @@ header {
     text-align: center;
   }
   
-  /* Estilos para el contenedor --> por ahora no hay contenedor*/
-main .contenedor {
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 0;
-    overflow: hidden;
-    background-color: #f0d3d3;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
 
-  /* SECCION PRODUCTOS*/
+/* SECCION PRODUCTOS*/
 
 .contenido_produc{
     display: flex;
