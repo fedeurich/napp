@@ -156,7 +156,11 @@ main .contenedor {
   }
 
   footer {
-    font-size: 14px;
+    padding: 5px;
+  }
+  footer p {
+    margin: auto;
+    font-size: 10px;
   }
 }
 
@@ -170,7 +174,6 @@ main .contenedor {
 
   main {
     padding: 40px;
-    background-color: rgb(248, 199, 199);
   }
 
   footer {
