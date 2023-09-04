@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
   }
   
   .containerRegistroLogin {
@@ -25,11 +25,6 @@
     border-radius: 5px;
     text-align: center;
     width: 300px;
-  }
-  
-  .containerRegistroLogin h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
   }
   
   .containerRegistroLogin label {
