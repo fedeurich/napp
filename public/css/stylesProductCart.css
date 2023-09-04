@@ -2,9 +2,6 @@ main.carrito div.contenedor-carrito {
   width: 100%;
 }
 
-main.carrito {
-}
-
 main section.tarjeta-de-productos {
   display: flex;
   flex-direction: column;
