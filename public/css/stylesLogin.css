@@ -16,6 +16,12 @@
     justify-content: center;
     align-items: center;
     height: 70vh;
+    background: #bc4e9c;
+    background: -webkit-linear-gradient(to right,hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
+    background: linear-gradient(to right,hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
   }
   
   .containerRegistroLogin {
