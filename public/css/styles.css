@@ -123,10 +123,46 @@ h2 {
 footer {
   background-color: #fdfdfd;
   color: #080707;
-  padding: 0px;
-  text-align: center;
-  width: 100%;
 }
+
+.containerFooter{
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+.containerSections{
+  align-items: left;
+  justify-content: center;
+  display: block;
+}
+.containerSections h4{
+  text-align: center;
+  color: rgb(46, 72, 156);
+}
+.containerSections ul li::marker{
+  color: rgb(46, 72, 156); ;
+}
+
+
+.containerCopyRedes{
+ display: flex;
+ width: 100%;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.containerCopyright{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+}
+.containerCopyRedes p{
+  font-size: 14px;
+}
+.containerRedes{
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
