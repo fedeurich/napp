@@ -2,17 +2,17 @@ main.carrito div.contenedor-carrito {
   width: 100%;
 }
 
-main section.tarjeta-de-productos {
+main.carrito section.tarjeta-de-productos {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-main nav.barra {
+main.carrito nav.barra {
   display: none;
 }
 
-main article.producto {
+main.carrito article.producto {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -22,17 +22,20 @@ main article.producto {
 }
 
 h4.nombre {
-  margin: auto;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  margin-left: auto;
 }
 
-main article div.tarjeta {
+main.carrito article div.tarjeta {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-main .imagen-producto {
-  width: 20vw;
+main.carrito .imagen-producto {
+  width: 25vw;
   border-radius: 10px;
 }
 
@@ -42,8 +45,8 @@ p.subtotal {
 
 section.total {
   border-top: 1px solid gray;
-
   background-color: #ebebeb;
+  margin-bottom: 15px;
 }
 
 section.total div.tarjeta {
@@ -80,15 +83,30 @@ main.carrito section.total button.finalizar {
 
 /* Estilos para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-  main {
+  main.carrito {
     padding-left: 25px;
     padding-right: 25px;
   }
-  main article.producto {
+
+  main.carrito article.producto {
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 10px;
     padding-left: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  main.carrito .imagen-producto {
+    width: 15vw;
+  }
+
+  main.carrito article.producto p {
+    font-size: 18px;
+  }
+
+  main.carrito article.producto p.subtotal {
+    margin-right: 25px;
   }
 }
 
@@ -120,6 +138,7 @@ main.carrito section.total button.finalizar {
   main.carrito article.producto p {
     align-items: center;
     display: flex;
+    font-size: 20px;
   }
 
   main.carrito p.precio {
@@ -142,7 +161,7 @@ main.carrito section.total button.finalizar {
   }
 
   main.carrito article.producto img {
-    width: 24%;
+    width: 18%;
     margin-top: 5px;
     margin-left: 5px;
     margin-bottom: 5px;
