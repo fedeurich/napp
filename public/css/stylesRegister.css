@@ -18,6 +18,13 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    
+      background: #bc4e9c;
+      background: -webkit-linear-gradient(to right,hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
+      background: linear-gradient(to right,hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
+      background-size: cover;
+      background-attachment: fixed;
+    
   }
   
   main {
