@@ -22,8 +22,10 @@
     width: 100%;
     height: 100%;
 }
-.containerMainProductDetail img{
-    height: 100%;
+.containerCardProducto img{
+    display: flex;
+    flex-wrap: wrap;
+    height: 50%;
     width: 100%;
     border-radius: 20px;
     margin: 5px;
@@ -60,6 +62,11 @@
     margin: 5px;
     margin-top: 25px;
     background-color: #ebebeb;
+    cursor: pointer;
+}
+.containerSectionDetalle a{
+    text-decoration: none;
+    text-decoration-line: none
 }
 
 /* Estilos para dispositivos móviles */
