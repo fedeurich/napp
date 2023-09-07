@@ -1,6 +1,5 @@
 *{
-    box-sizing: border-box;
-    padding: 0;
+    box-sizing: border-box; 
     margin: 0;
 }
 
@@ -100,8 +99,12 @@
         width: 100%;
         height: auto;
     }
+    .containerSectionDetalle{
+        align-items: center;
+        justify-content: center;
+    }
     .containerSectionDetalle button{
         width: 100%;
-        height: auto;
+        height: auto;  
     }
 }
