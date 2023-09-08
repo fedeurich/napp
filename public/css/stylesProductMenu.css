@@ -53,14 +53,6 @@ h2 {
   margin-bottom: 60px;
 }
 
-/* Estilos del pie de página */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-}
-
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
   max-width: 1000px;
