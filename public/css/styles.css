@@ -32,15 +32,13 @@ header div.logo {
 }
 
 header div.logo img {
-  max-width: 5%;
+  max-width: 15%;
 }
 
 header div.buscador {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-  border-radius: 2px;
 }
 
 /* Estilo de la barra de navegacion */
@@ -54,8 +52,6 @@ nav.barra-navegacion {
 nav.barra-navegacion ul {
   display: flex;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 nav.barra-navegacion li {
@@ -134,7 +130,6 @@ footer {
   align-items: left;
   justify-content: center;
   display: block;
-  margin
 }
 .containerSections h4{
   text-align: center;

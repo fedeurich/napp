@@ -17,7 +17,7 @@ section.banner img {
   padding: 10px;
 }
 .mensaje p {
-  margin: 0;
+  margin: -5px;
 }
 
 /* CSS para los elementos del artículo */
