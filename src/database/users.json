@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Juan Pérez",
+    "correo": "juan.perez@example.com",
+    "edad": 30,
+    "ciudad": "Buenos Aires"
+  },
+  {
+    "id": 2,
+    "nombre": "María López",
+    "correo": "maria.lopez@example.com",
+    "edad": 28,
+    "ciudad": "Rosario"
+  },
+  {
+    "id": 3,
+    "nombre": "Pedro González",
+    "correo": "pedro.gonzalez@example.com",
+    "edad": 35,
+    "ciudad": "Mendoza"
+  }
+]
