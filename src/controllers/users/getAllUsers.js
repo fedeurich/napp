@@ -1,17 +1,17 @@
-const users = require("../../database/users.json");
+// const users = require("../../database/users.json");
 
-const infoUsers = users.map((user) => {
-  return {
-    id: user.id,
-    firstName: user.name.firstname,
-    firstLast: user.name.lastname,
-    email: user.email,
-    phone: user.phone,
-  };
-});
+// const infoUsers = users.map((user) => {
+//   return {
+//     id: user.id,
+//     firstName: user.name.firstname,
+//     firstLast: user.name.lastname,
+//     email: user.email,
+//     phone: user.phone,
+//   };
+// });
 
-const getAllUsers = (req, res) => {
-  res.send(infoUsers);
-};
+// const getAllUsers = (req, res) => {
+//   res.send(infoUsers);
+// };
 
-module.exports = getAllUsers;
+// module.exports = getAllUsers;

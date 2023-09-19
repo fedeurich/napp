@@ -3,6 +3,8 @@ const path = require("path");
 
 const router = express.Router();
 
+const { getAllUsers, getUserById } = require("../controllers/users");
+
 //Ruta del register
 router.get("/register", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../views/users/register.html"));
