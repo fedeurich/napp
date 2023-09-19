@@ -3,13 +3,14 @@ const path = require("path");
 
 const router = express.Router();
 
-const { getAllProducts} = require('../controllers/products');
+const { getAllProducts } = require("../controllers/products");
 
-router.get('/products', getAllProducts);
+router.get("/products", getAllProducts);
 
 //Ruta del carrito de compra
 router.get("/productCart", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/products/productCart.html"));
+  const ruta = path.join(__dirname, "../views/products/productCart.ejs");
+  res.render(ruta);
 });
 
 //Ruta del menu de porductos
