@@ -8,6 +8,9 @@ const router = express.Router();
   res.sendFile(path.resolve(__dirname, "../views/index.html"));
 });
 */
-router.get('/',(req,res) =>{res.render('index')})
+router.get("/", (req, res) => {
+  const ruta = path.join(__dirname, "../views/index");
+  res.render(ruta);
+});
 
 module.exports = router;
