@@ -7,12 +7,14 @@ const { getAllUsers, getUserById } = require("../controllers/users");
 
 //Ruta del register
 router.get("/register", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/users/register.html"));
+  const ruta = path.resolve(__dirname, "../views/users/register.ejs")
+  res.render(ruta);
 });
 
 //Ruta del login
 router.get("/login", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/users/login.html"));
+  const ruta = path.resolve(__dirname, "../views/users/login.ejs")
+  res.render(ruta);
 });
 
 module.exports = router;

@@ -15,12 +15,14 @@ router.get("/productCart", (req, res) => {
 
 //Ruta del menu de porductos
 router.get("/productMenu", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/products/productMenu.html"));
+  const ruta = path.resolve(__dirname, "../views/products/productMenu.ejs")
+  res.render(ruta);
 });
 
 //Ruta del detalle del producto
 router.get("/productDetail", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/products/productDetail.html"));
+  const ruta = path.resolve(__dirname, "../views/products/productDetail.ejs")
+  res.render(ruta);
 });
 
 module.exports = router;
