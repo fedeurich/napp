@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
 </head>
+
 <body>
-    <h2>All Products</h2>
-    <% for(let i=0; i < allProducts.length; i++){%>
-        <div class="products_container">
-            <h3>Title: <%= allProducts[i].nombre %></h3>
-            <p>Price: <%= allProducts[i].precio %></p>            
-            <p>Stock: <%= allProducts[i].stock %></p>            
-        </div>
-    <%}%>
+  <h2>All Products</h2>
+  <% for(let i=0; i < allProducts.length; i++){%>
+  <div class="products_container">
+    <h3>Title: <%= allProducts[i].nombre %></h3>
+    <p>Price: <%= allProducts[i].precio %></p>
+    <p>Stock: <%= allProducts[i].stock %></p>
+    <form action="/product/delete/<%= allProducts[i].id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+  <%}%>
 </body>
 </html>
