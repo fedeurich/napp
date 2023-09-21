@@ -32,15 +32,13 @@ header div.logo {
 }
 
 header div.logo img {
-  max-width: 5%;
+  max-width: 15%;
 }
 
 header div.buscador {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-  border-radius: 2px;
 }
 
 /* Estilo de la barra de navegacion */
@@ -54,8 +52,6 @@ nav.barra-navegacion {
 nav.barra-navegacion ul {
   display: flex;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 nav.barra-navegacion li {
@@ -125,47 +121,44 @@ footer {
   color: #080707;
 }
 
-.containerFooter{
+footer .containerFooter {
   display: flex;
   justify-content: center;
   font-size: 16px;
 }
-.containerSections{
+footer .containerSections {
   align-items: left;
   justify-content: center;
   display: block;
-  margin
 }
-.containerSections h4{
+.containerSections h4 {
   text-align: center;
   color: rgb(46, 72, 156);
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.containerSections ul li::marker{
-  color: rgb(46, 72, 156); ;
+.containerSections ul li::marker {
+  color: rgb(46, 72, 156);
 }
 
-
-.containerCopyRedes{
- display: flex;
- width: 100%;
- flex-wrap: wrap;
- justify-content: space-between;
+.containerCopyRedes {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.containerCopyright{
+footer .containerCopyright {
   display: flex;
   justify-content: flex-start;
   font-size: 14px;
 }
-.containerCopyRedes p{
+.containerCopyRedes p {
   font-size: 14px;
 }
-.containerRedes{
+footer .containerRedes {
   display: flex;
   justify-content: flex-end;
 }
-
 
 /* Estilos para el contenedor --> por ahora no hay contenedor*/
 main .contenedor {
@@ -285,7 +278,7 @@ main .contenedor {
   footer {
     font-size: 16px;
   }
-  .containerSections{
+  footer .containerSections {
     margin: 50px;
   }
 }

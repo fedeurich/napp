@@ -174,7 +174,7 @@ main.carrito section.total button.finalizar {
     border-radius: 10px;
     padding: 15px;
     margin-top: 0px;
-    margin-right: auto;
+    margin-right: 0px;
     margin-bottom: auto;
     margin-left: auto;
   }
