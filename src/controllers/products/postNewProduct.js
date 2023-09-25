@@ -3,13 +3,12 @@ const path = require("path");
 const fs = require("fs");
 
 const postNewProduct = (req, res) => {
-  //res.send(req.body);
   const { nombre, precio, descripcion, stock } = req.body;
 
   const newId = products[products.length - 1].id + 1;
 
   const newProduct = {
-    id: newId,
+    _id: newId,
     nombre,
     precio,
     descripcion,
@@ -21,7 +20,7 @@ const postNewProduct = (req, res) => {
   const productsPath = path.join(__dirname, "../../database/products.json");
   const data = JSON.stringify(products);
 
-  fs.writeFile(productsPath, data, (error) => {
+  fs.writeFileSync(productsPath, data, (error) => {
     if (error) {
       res.sed(`Error: ${error}`);
     } else {

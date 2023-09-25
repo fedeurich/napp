@@ -1,22 +1,22 @@
 [
   {
-    "id": 1,
-    "nombre": "Producto 1",
+    "_id": 1,
     "descripcion": "Esta es una descripción del Producto 1.",
+    "nombre": "Producto 1",
     "precio": 19.99,
     "stock": 100
   },
   {
-    "id": 2,
-    "nombre": "Producto 2",
+    "_id": 2,
     "descripcion": "Esta es una descripción del Producto 2.",
+    "nombre": "Producto 2",
     "precio": 29.99,
     "stock": 50
   },
   {
-    "id": 3,
-    "nombre": "Producto 3",
+    "_id": 3,
     "descripcion": "Esta es una descripción del Producto 3.",
+    "nombre": "Producto 3",
     "precio": 9.99,
     "stock": 200
   }

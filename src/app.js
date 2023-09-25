@@ -25,4 +25,10 @@ server.use(mainRoutes);
 server.use(userRoutes);
 server.use(productsRoutes);
 
+//Ruta 404
+server.use((req, res, next) => {
+  const ruta = path.join(__dirname, "./views/404NotFound.ejs");
+  res.status(404).render(ruta, { message: "Dirección no encontrada" });
+});
+
 module.exports = server;

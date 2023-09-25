@@ -1,22 +1,23 @@
 [
   {
-    "nombre": "Juan Pérez",
+    "_id": 1,
+    "ciudad": "Buenos Aires",
     "correo": "juan.perez@example.com",
     "edad": 30,
-    "ciudad": "Buenos Aires"
+    "nombre": "Juan Pérez"
   },
   {
-    "id": 2,
-    "nombre": "María López",
+    "_id": 2,
+    "ciudad": "Rosario",
     "correo": "maria.lopez@example.com",
     "edad": 28,
-    "ciudad": "Rosario"
+    "nombre": "María López"
   },
   {
-    "id": 3,
-    "nombre": "Pedro González",
+    "_id": 3,
+    "ciudad": "Mendoza",
     "correo": "pedro.gonzalez@example.com",
     "edad": 35,
-    "ciudad": "Mendoza"
+    "nombre": "Pedro González"
   }
 ]
