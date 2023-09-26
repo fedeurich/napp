@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<title>Nuevo usuario</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+  <main>
+
+    <!-- 
+● Identificador: id
+● Nombre: firstName
+● Apellido: lastName
+● Email: email
+● Contraseña: password
+● Categoría: category
+● Imagen: image
+-->
+
+    <h1>Crea tu usuario</h1>
+    <form action="/users" method="POST">
+      <div>
+        <label for="firstName">Nombre: </label>
+        <input type="text" name="firstName">
+      </div>
+      <div>
+        <label for="lastName">Apellido: </label>
+        <input type="text" name="lastName">
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input type="email" name="email">
+      </div>
+      <div>
+        <label for="password">Contraseña: </label>
+        <input type="password" name="password">
+      </div>
+      <div>
+        <label for="consfirmPassword">Confirmar contraseña: </label>
+        <input type="password" name="confirmPassword">
+      </div>
+      <div>
+        <button type="submit">Crear</button>
+        <button type="reset">Borrar</button>
+    </form>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

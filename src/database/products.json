@@ -1,16 +1,20 @@
 [
   {
     "_id": 1,
-    "descripcion": "Esta es una descripción del Producto 1.",
-    "nombre": "Producto 1",
-    "precio": 19.99,
-    "stock": 100
+    "category": "muñeco",
+    "color": "rojo",
+    "description": "hahaha",
+    "image": "69dbbc73-fa0a-44d9-9e51-0b67c728c653_Mario.jpg",
+    "price": "10",
+    "productName": "Mario"
   },
   {
     "_id": 2,
-    "descripcion": "Esta es una descripción del Producto 2.",
-    "nombre": "Producto 2",
-    "precio": 29.99,
-    "stock": 50
+    "category": "muñeco",
+    "color": "azul",
+    "description": "hahaha",
+    "image": "productoSinImagen.png",
+    "price": "13",
+    "productName": "Sonic"
   }
 ]

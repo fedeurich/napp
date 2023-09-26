@@ -1,34 +1,42 @@
 [
   {
-    "nombre": "Juan Pérez",
-    "apellido": "Pérez",
-    "correo": "juan.perez@example.com",
-    "edad": 30,
-    "ciudad": "Buenos Aires",
-    "password": "contraseña1",
-    "categoria": "Categoria1",
-    "image": "imagen1.jpg"
+    "_id": 1,
+    "age": 30,
+    "category": "Categoria1",
+    "city": "Buenos Aires",
+    "email": "juan.perez@example.com",
+    "firstName": "Juan",
+    "image": "imagen1.jpg",
+    "lastName": "Pérez",
+    "password": "contraseña1"
   },
   {
-    "id": 2,
-    "nombre": "María López",
-    "apellido": "López",
-    "correo": "maria.lopez@example.com",
-    "edad": 28,
-    "ciudad": "Rosario",
-    "password": "contraseña2",
-    "categoria": "Categoria2",
-    "image": "imagen2.jpg"
+    "_id": 2,
+    "age": 28,
+    "category": "Categoria2",
+    "city": "Rosario",
+    "email": "maria.lopez@example.com",
+    "firstName": "María",
+    "image": "imagen2.jpg",
+    "lastName": "López",
+    "password": "contraseña2"
   },
   {
-    "id": 3,
-    "nombre": "Pedro González",
-    "apellido": "González",
-    "correo": "pedro.gonzalez@example.com",
-    "edad": 35,
-    "ciudad": "Mendoza",
-    "password": "contraseña3",
-    "categoria": "Categoria3",
-    "image": "imagen3.jpg"
+    "_id": 3,
+    "age": 35,
+    "category": "Categoria3",
+    "city": "Mendoza",
+    "email": "pedro.gonzalez@example.com",
+    "firstName": "Pedro",
+    "image": "imagen3.jpg",
+    "lastName": "González",
+    "password": "contraseña3"
+  },
+  {
+    "_id": 4,
+    "email": "gino@gmail.com",
+    "firstName": "Gino",
+    "lastName": "Lencina",
+    "password": "1234"
   }
 ]

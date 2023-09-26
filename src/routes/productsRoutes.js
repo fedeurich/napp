@@ -1,7 +1,23 @@
 const express = require("express");
-const path = require("path");
-const router = express.Router();
 const multer = require("multer");
+const path = require("path");
+
+const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, path.join(__dirname, "../../public/img/products"));
+  },
+  filename: (req, file, callback) => {
+    const { v4: uuidv4 } = require("uuid");
+    callback(
+      null,
+      `${uuidv4()}_${req.body.productName}${path.extname(file.originalname)}`
+    );
+  },
+});
+
+const uploadImgProduct = multer({ storage: storage });
 
 const {
   getAllProducts,
@@ -10,6 +26,7 @@ const {
   postNewProduct,
   deleteProduct,
 } = require("../controllers/products");
+const { callbackify } = require("util");
 
 //Ruta del carrito de compra
 router.get("/productCart", (req, res) => {
@@ -34,7 +51,7 @@ router.get("/products", getAllProducts);
 
 //Rutas para crear productos
 router.get("/new-product", formNewProduct);
-router.post("/products", postNewProduct);
+router.post("/products", uploadImgProduct.single("image"), postNewProduct);
 
 //Ruta borrar un archivo
 router.delete("/product/delete/:id", deleteProduct);

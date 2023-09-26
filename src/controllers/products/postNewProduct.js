@@ -3,16 +3,18 @@ const path = require("path");
 const fs = require("fs");
 
 const postNewProduct = (req, res) => {
-  const { nombre, precio, descripcion, stock } = req.body;
+  const { productName, price, description, category, color } = req.body;
 
   const newId = products[products.length - 1]._id + 1;
 
   const newProduct = {
     _id: newId,
-    nombre,
-    precio,
-    descripcion,
-    stock,
+    category,
+    color,
+    description,
+    image: req.file ? req.file.filename : "productoSinImagen.png",
+    price,
+    productName,
   };
 
   products.push(newProduct);

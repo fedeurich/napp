@@ -8,9 +8,12 @@
     <h2>All Products</h2>
     <% for(let i=0; i < allProducts.length; i++){%>
     <div class="products_container">
-      <h3>Title: <%= allProducts[i].nombre %></h3>
-      <p>Price: <%= allProducts[i].precio %></p>
-      <p>Stock: <%= allProducts[i].stock %></p>
+      <h3>Producto: <%= allProducts[i].productName %></h3>
+      <img src="/img/products/<%= allProducts[i].image %>" alt="image" width="300px" height="300px">
+      <p>Precio: <%= allProducts[i].price %></p>
+      <p>Color: <%= allProducts[i].color %></p>
+      <p>Categoria: <%= allProducts[i].category %></p>
+      <p>Descripcion: <%= allProducts[i].description %></p>
       <form action="/product/delete/<%= allProducts[i]._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete</button>
       </form>
