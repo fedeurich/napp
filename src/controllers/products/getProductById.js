@@ -1,9 +1,9 @@
 const products = require("../../database/products.json");
 
 const getPeroductById = (req, res) => {
-  const { id } = req.params;
+  const { _id } = req.params;
 
-  const product = products.find((prod) => prod.id == id);
+  const product = products.find((prod) => prod._id == _id);
 
   if (!product) {
     ruta = path.join(__dirname, "../../views/404notfound");

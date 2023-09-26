@@ -14,7 +14,7 @@
     <h3>Title: <%= allProducts[i].nombre %></h3>
     <p>Price: <%= allProducts[i].precio %></p>
     <p>Stock: <%= allProducts[i].stock %></p>
-    <form action="/product/delete/<%= allProducts[i].id %>?_method=DELETE" method="POST">
+    <form action="/product/delete/<%= allProducts[i]._id %>?_method=DELETE" method="POST">
       <button type="submit">Delete</button>
     </form>
   </div>
