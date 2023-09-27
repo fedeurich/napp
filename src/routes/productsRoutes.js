@@ -55,7 +55,7 @@ router.get("/new-product", formNewProduct);
 router.post("/products", uploadImgProduct.single("image"), postNewProduct);
 
 //Ruta editar un producto
-router.put("/product/:id/", confirmModifyProduct);
+router.put("/product/:id/edit", confirmModifyProduct);
 //Ruta borrar un producto
 router.delete("/product/delete/:id", deleteProduct);
 
