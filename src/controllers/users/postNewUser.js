@@ -7,7 +7,14 @@ const postNewUser = (req, res) => {
 
   const newId = users[users.length - 1]._id + 1;
 
-  const newUser = { _id: newId, firstName, lastName, email, password };
+  const newUser = {
+    _id: newId,
+    firstName,
+    lastName,
+    email,
+    password,
+    image: req.file ? req.file.filename : "usuarioSinImagen.jpg",
+  };
 
   users.push(newUser);
 

@@ -26,7 +26,6 @@ const {
   postNewProduct,
   deleteProduct,
 } = require("../controllers/products");
-const { callbackify } = require("util");
 
 //Ruta del carrito de compra
 router.get("/productCart", (req, res) => {

@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+<title>Nuestros usuarios</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Todos los usuarios registrados</h2>
+    <section class="users_container">
+      <% for(let i=0; i < allUsers.length; i++){%>
+      <article class="user_container">
+        <img src="/img/users/<%= allUsers[i].image %>" alt="image" width="300px" height="300px">
+        <h3>Nombre: <%= allUsers[i].firstName %></h3>
+        <h3>Apellido: <%= allUsers[i].lastName %></h3>
+        <p>Email: <%= allUsers[i].email %></p>
+        <!-- <form action="/product/delete/<%= allUsers[i]._id %>?_method=DELETE" method="POST">
+        <button type="submit">Borrar</button>
+      </form> -->
+      </article>
+      <%}%>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+
+</html>

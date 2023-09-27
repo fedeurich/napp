@@ -1,7 +1,23 @@
 const express = require("express");
-const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+
+const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, path.join(__dirname, "../../public/img/users"));
+  },
+  filename: (req, file, callback) => {
+    const { v4: uuidv4 } = require("uuid");
+    callback(
+      null,
+      `${uuidv4()}_avatar${req.body.lastName}${path.extname(file.originalname)}`
+    );
+  },
+});
+
+const uploadImgUser = multer({ storage });
 
 const {
   getAllUsers,
@@ -27,6 +43,6 @@ router.get("/users", getAllUsers);
 
 //Rutas para crear productos
 router.get("/new-user", formNewUser);
-router.post("/users", postNewUser);
+router.post("/users", uploadImgUser.single("image"), postNewUser);
 
 module.exports = router;

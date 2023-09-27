@@ -34,9 +34,26 @@
   },
   {
     "_id": 4,
-    "email": "gino@gmail.com",
-    "firstName": "Gino",
-    "lastName": "Lencina",
-    "password": "1234"
+    "email": "ejemplo3@gmail.com",
+    "firstName": "Nombre",
+    "image": "usuarioSinImagen.jpg",
+    "lastName": "Apellido",
+    "password": "12345"
+  },
+  {
+    "_id": 5,
+    "email": "ejemplo3@gmail.com",
+    "firstName": "Nombre",
+    "image": "1a73fef1-ff38-4267-81bb-7113ad8a5348_Apellido.jpg",
+    "lastName": "Apellido",
+    "password": "12233"
+  },
+  {
+    "_id": 6,
+    "email": "ejemplo3@gmail.com",
+    "firstName": "Nombre",
+    "image": "580054d6-ae6f-4130-8a0c-ed40e1800be2_Apellido.jpg",
+    "lastName": "Apellido",
+    "password": "12233"
   }
 ]
