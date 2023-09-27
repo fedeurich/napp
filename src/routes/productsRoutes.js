@@ -21,10 +21,11 @@ const uploadImgProduct = multer({ storage: storage });
 
 const {
   getAllProducts,
-  getPeroductById,
+  getProductById,
   formNewProduct,
   postNewProduct,
   deleteProduct,
+  confirmModifyProduct,
 } = require("../controllers/products");
 
 //Ruta del carrito de compra
@@ -47,12 +48,15 @@ router.get("/productDetail", (req, res) => {
 
 //Ruta para ver todos los productos
 router.get("/products", getAllProducts);
+router.get("/product/:id", getProductById);
 
 //Rutas para crear productos
 router.get("/new-product", formNewProduct);
 router.post("/products", uploadImgProduct.single("image"), postNewProduct);
 
-//Ruta borrar un archivo
+//Ruta editar un producto
+router.put("/product/:id/", confirmModifyProduct);
+//Ruta borrar un producto
 router.delete("/product/delete/:id", deleteProduct);
 
 module.exports = router;

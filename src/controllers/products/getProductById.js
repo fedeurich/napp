@@ -1,16 +1,18 @@
 const products = require("../../database/products.json");
+const path = require("path");
 
-const getPeroductById = (req, res) => {
-  const { _id } = req.params;
+const getProductById = (req, res) => {
+  const { id } = req.params;
 
-  const product = products.find((prod) => prod._id == _id);
+  const product = products.find((prod) => prod._id == id);
 
   if (!product) {
     ruta = path.join(__dirname, "../../views/404notfound");
-    return res.render(ruta, { message: "User not found" });
+    return res.render(ruta, { message: "Product not found" });
   }
 
-  res.send(product);
+  const form = path.join(__dirname, "../../views/products/product.ejs");
+  res.render(form, { product: product });
 };
 
-module.exports = getPeroductById;
+module.exports = getProductById;
