@@ -1,51 +1,35 @@
-<%- include('../partials/head') %>
-<link rel="stylesheet" href="/css/newProduct.css">
-<title>Nuevo producto</title>
+<html><head><%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/newProduct.css" />
+<title>New product</title>
 </head>
 
 <body>
   <%- include('../partials/header') %>
   <main>
+    <div class="containerNP">
+      <h1>Crear nuevo producto</h1>
+      <form  action="/products" method="POST" id="newProduct">
+        <div>
+          <label for="">Nombre: </label>
+          <input type="text" name="nombre">
+        </div>
+        <div>
+          <label for="">Precio: </label>
+          <input type="text" name="precio">
+        </div>
+        <div>
+          <label for="">Descripción: </label>
+          <input type="text" name="descripcion">
+        </div>
+        <div>
+          <label for="">Stock: </label>
+          <input type="text" name="stock">
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
 
-    <!-- 
-● Identificador : id
-● Nombre del producto: name
-● Descripción: description
-● Imagen: image
-● Categoría: category
-● Colores (o cualquier otro campo similar como: talle): colors
-● Precio: price 
--->
-
-    <h1>Crea un nuevo producto</h1>
-    <form action="/products" method="POST" enctype="multipart/form-data">
-      <div>
-        <label for="productName">Nombre: </label>
-        <input type="text" id="productName" name="productName">
-      </div>
-      <div>
-        <label for="price">Precio: </label>
-        <input type="text" id="price" name="price">
-      </div>
-      <div>
-        <label for="description">Descripcion: </label>
-        <input type="text" id="description" name="description">
-      </div>
-      <div>
-        <label for="category">Categoria: </label>
-        <input type="text" id="category" name="category">
-      </div>
-      <div>
-        <label for="color">Color: </label>
-        <input type="text" id="color" name="color">
-      </div>
-      <div>
-        <label for="image">Imagen: </label>
-        <input type="file" name="image">
-      </div>
-      <button type="submit">Crear</button>
-      <button type="reset">Borrar</button>
-    </form>
   </main>
   <%- include('../partials/footer') %>
 </body>
