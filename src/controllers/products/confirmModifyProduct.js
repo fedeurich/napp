@@ -19,7 +19,7 @@ const confirmModifyProduct = (req, res) => {
   const productPath = path.join(__dirname, "../../database/products.json");
   const data = JSON.stringify(products);
 
-  fs.writeFile(productPath, data, (error) => {
+  fs.write(productPath, data, (error) => {
     if (error) {
       res.send(`Error: ${error}`);
     } else {

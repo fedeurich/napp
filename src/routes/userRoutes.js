@@ -38,11 +38,13 @@ router.get("/login", (req, res) => {
   res.render(ruta);
 });
 
-//Ruta para ver todos los productos
+//Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
 
-//Rutas para crear productos
+//Rutas para crear usuario
 router.get("/new-user", formNewUser);
 router.post("/users", uploadImgUser.single("image"), postNewUser);
 
+//Ruta para borrar un usuario
+// router.delete
 module.exports = router;
