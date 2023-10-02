@@ -1,4 +1,5 @@
 <%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/newUser.css" />
 <title>Nuevo usuario</title>
 </head>
 
@@ -15,7 +16,7 @@
 ● Categoría: category
 ● Imagen: image
 -->
-
+  <div class="containerNewUser">
     <h1>Crea tu usuario</h1>
     <form action="/users" method="POST" enctype="multipart/form-data">
       <div>
@@ -40,12 +41,13 @@
       </div>
       <div>
         <label for="image">Imagen de perfil: </label>
-        <input type="file" name="image">
+        <input type="file" id="imagenDePerfil" name="image">
       </div>
       <div>
-        <button type="submit">Crear</button>
-        <button type="reset">Borrar</button>
+        <button type="submit" id="crear">Crear</button>
+        <button type="reset"id="borrar">Borrar</button>
     </form>
+  </div>
   </main>
   <%- include('../partials/footer') %>
 </body>
