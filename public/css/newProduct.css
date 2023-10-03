@@ -20,7 +20,13 @@
       min-width: 50%;
     }
   }
-
+  h1 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: #007bffd8;
+  }
   
 
 body {
@@ -54,7 +60,7 @@ body {
     background-color: aliceblue;
     padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-right: 50%;
+    margin: auto;
     
   }
   #newProduct h1 {
