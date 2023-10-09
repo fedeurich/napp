@@ -2,6 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 
+const { body } = require("express-validator");
+
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -17,7 +19,55 @@ const storage = multer.diskStorage({
   },
 });
 
-const uploadImgUser = multer({ storage });
+const uploadImgUser = multer({ storage: storage });
+
+const validationsUsers = [
+  body("firstName")
+    .trim()
+    .notEmpty()
+    .withMessage("Tienes que ingresar un nombre")
+    .bail()
+    .isLength({ min: 2, max: 10 })
+    .withMessage("Tiene que tener entre 2 y 10 caracteres"),
+  body("lastName")
+    .trim()
+    .notEmpty()
+    .withMessage("Tienes que ingresar un apellido")
+    .bail()
+    .isLength({ min: 2, max: 10 })
+    .withMessage("Tiene que tener entre 2 y 10 caracteres"),
+  body("email")
+    .trim()
+    .notEmpty()
+    .withMessage("Tienes que ingresar un mail")
+    .bail()
+    .isEmail()
+    .withMessage("Tienes que ingresar un mail valido"),
+  body("password")
+    .trim()
+    .notEmpty()
+    .withMessage("Tienes que ingresar una contraseña")
+    .bail()
+    .isLength({ min: 6, max: 16 })
+    .withMessage("Tiene que tener entre 6 y 16 caracteres"),
+  body("image").custom((value, { req }) => {
+    let file = req.file;
+    let acceptedExtensions = [".jpg", ".png"];
+    if (!file) {
+      throw new Error("Tienes que subir una imagen");
+    } else {
+      let fileExtension = path.extname(file.originalname);
+      if (!acceptedExtensions.includes(fileExtension)) {
+        throw new Error(
+          `Las extensiones de archivos permitidas son ${acceptedExtensions.join(
+            ", "
+          )}`
+        );
+      }
+    }
+    return true;
+  }),
+];
 
 const {
   getAllUsers,
@@ -43,8 +93,14 @@ router.get("/users", getAllUsers);
 
 //Rutas para crear usuario
 router.get("/new-user", formNewUser);
-router.post("/users", uploadImgUser.single("image"), postNewUser);
+router.post(
+  "/users",
+  uploadImgUser.single("image"),
+  validationsUsers,
+  postNewUser
+);
 
 //Ruta para borrar un usuario
 // router.delete
+
 module.exports = router;
