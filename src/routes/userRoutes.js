@@ -74,13 +74,9 @@ const {
   getUserById,
   formNewUser,
   postNewUser,
+  loginUsers,
+  processLogin,
 } = require("../controllers/users");
-
-//Ruta del register
-router.get("/register", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/users/register.ejs");
-  res.render(ruta);
-});
 
 //Ruta del login
 router.get("/login", (req, res) => {
@@ -91,14 +87,17 @@ router.get("/login", (req, res) => {
 //Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
 
-//Rutas para crear usuario
-router.get("/new-user", formNewUser);
+//Ruta del register
+router.get("/register", formNewUser);
 router.post(
   "/users",
   uploadImgUser.single("image"),
   validationsUsers,
   postNewUser
 );
+
+// router.get("/login", loginUsers);
+// router.post("/login", processLogin);
 
 //Ruta para borrar un usuario
 // router.delete

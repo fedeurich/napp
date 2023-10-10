@@ -24,6 +24,15 @@ server.use(methodOverride("_method"));
 
 server.use(express.static(path.join(__dirname, "../public")));
 
+//configuración de session
+server.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 server.use(mainRoutes);
 server.use(userRoutes);
 server.use(productsRoutes);

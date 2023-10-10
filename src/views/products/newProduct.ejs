@@ -10,7 +10,6 @@
       <h1>Crear nuevo producto</h1>
       <form action="/products" method="POST" enctype="multipart/form-data">
         <label for="productName">Nombre:</label>
-        <% console.log(locals.oldData) %>
         <input type="text" id="productName" name="productName" class="control <%= locals.errors && errors.productName? 'is-invalid' : null %> " value="<%= locals.oldData ? oldData.productName : null %>">
         <% if(locals.errors && errors.productName){ %>
         <div class=" text-danger">
@@ -57,10 +56,9 @@
           <%= errors.image.msg  %>
         </div>
         <% } %>
-        <div>
-          <button type="reset">Borrar</button>
-          <button type="submit">Crear</button>
-        </div>
+
+        <button type="reset">Borrar</button>
+        <button type="submit">Crear</button>
       </form>
 
   </main>
