@@ -17,7 +17,7 @@ const postNewUser = (req, res) => {
       lastName,
       email,
       password,
-      image: req.file ? req.file.filename : "usuarioSinImagen.jpg",
+      image: req.file ? req.file.filename : "",
     };
 
     users.push(newUser);

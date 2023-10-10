@@ -10,13 +10,17 @@
     <section class="users_container">
       <% for(let i=0; i < allUsers.length; i++){%>
       <article class="user_container">
-        <img src="/img/users/<%= allUsers[i].image %>" alt="image" width="300px" height="300px">
+        <% if (allUsers[i].image.length) {%>
+          <img src="/img/users/<%= allUsers[i].image %>" alt="image" width="300px" height="300px">
+          <%}else{%>
+          <img src="/img/users/usuarioSinImagen.jpg" alt="image" width="300px" height="300px">
+      <%} %>
         <h3>Nombre: <%= allUsers[i].firstName %></h3>
         <h3>Apellido: <%= allUsers[i].lastName %></h3>
         <p>Email: <%= allUsers[i].email %></p>
-        <!-- <form action="/product/delete/<%= allUsers[i]._id %>?_method=DELETE" method="POST">
-        <button type="submit">Borrar</button>
-      </form> -->
+        <form action="/users/delete/<%= allUsers[i]._id %>?_method=DELETE" method="POST">
+          <button type="submit">Borrar</button>
+        </form> 
       </article>
       <%}%>
     </section>

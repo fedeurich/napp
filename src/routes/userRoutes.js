@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const isUser = require("../middlewares/adminMiddlewares");
 
 const { body } = require("express-validator");
 
@@ -74,6 +75,7 @@ const {
   getUserById,
   formNewUser,
   postNewUser,
+  deleteUser,
   loginUsers,
   processLogin,
 } = require("../controllers/users");
@@ -100,6 +102,9 @@ router.post(
 // router.post("/login", processLogin);
 
 //Ruta para borrar un usuario
-// router.delete
+router.delete("/users/delete/:id", isUser, deleteUser);
+
+//Ruta para buscar por ID
+router.get("/users/:id", getUserById);
 
 module.exports = router;
