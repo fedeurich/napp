@@ -16,7 +16,7 @@
         <p>Categoria: <%= allProducts[i].category %></p>
         <p>Descripcion: <%= allProducts[i].description %></p>
         <form action="/product/delete/<%= allProducts[i]._id %>?_method=DELETE" method="POST">
-          <button type="submit">Borar</button>
+          <button type="submit">Borrar</button>
         </form>
       </article>
       <%}%>

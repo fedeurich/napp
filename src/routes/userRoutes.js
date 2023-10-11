@@ -105,6 +105,6 @@ router.post(
 router.delete("/users/delete/:id", isUser, deleteUser);
 
 //Ruta para buscar por ID
-router.get("/users/:id", getUserById);
+router.get("/user/:id", getUserById);
 
 module.exports = router;

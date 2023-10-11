@@ -10,16 +10,15 @@
     <section class="users_container">
       <article class="user_container">
         <% if (user.image.length) {%>
-            <img src="/img/users/<%= user.image %>" alt="image" width="300px" height="300px">
+        <img src="/img/users/<%= user.image %>" alt="image" width="300px" height="300px">
         <%}else{%>
-            <img src="/img/users/usuarioSinImagen.jpg" alt="imadsadsads" width="300px" height="300px">
+        <img src="/img/users/usuarioSinImagen.jpg" alt="imadsadsads" width="300px" height="300px">
         <%} %>
-        
         <h3>Nombre: <%= user.firstName %></h3>
         <h3>Apellido: <%= user.lastName %></h3>
         <p>Email: <%= user.email %></p>
         <form action="/users/delete/<%= user._id %>?_method=DELETE" method="POST">
-            <button type="submit">Borrar</button>
+          <button type="submit">Borrar</button>
         </form>
       </article>
     </section>

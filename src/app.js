@@ -9,6 +9,7 @@ const path = require("path");
 const mainRoutes = require("./routes/mainRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const productsRoutes = require("./routes/productsRoutes.js");
+const cookieParser = require("cookie-parser");
 
 const server = express();
 
@@ -22,6 +23,7 @@ server.use(express.json());
 //Reconoce put o delete
 server.use(methodOverride("_method"));
 
+server.use(cookieParser());
 server.use(express.static(path.join(__dirname, "../public")));
 
 //configuración de session
