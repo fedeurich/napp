@@ -81,10 +81,10 @@ const {
 } = require("../controllers/users");
 
 //Ruta del login
-router.get("/login", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/users/login.ejs");
-  res.render(ruta);
-});
+// router.get("/login", (req, res) => {
+//   const ruta = path.resolve(__dirname, "../views/users/login.ejs");
+//   res.render(ruta);
+// });
 
 //Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
@@ -98,8 +98,8 @@ router.post(
   postNewUser
 );
 
-// router.get("/login", loginUsers);
-// router.post("/login", processLogin);
+router.get("/login", loginUsers);
+router.post("/login", processLogin);
 
 //Ruta para borrar un usuario
 router.delete("/users/delete/:id", isUser, deleteUser);

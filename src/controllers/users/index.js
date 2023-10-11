@@ -4,6 +4,7 @@ const formNewUser = require("./formNewUser");
 const postNewUser = require("./postNewUser");
 const deleteUser = require("./deleteUser");
 const loginUsers = require("./loginUsers");
+const processLogin = require("./processLogin");
 
 module.exports = {
   getAllUsers,
@@ -12,4 +13,5 @@ module.exports = {
   getUserById,
   deleteUser,
   loginUsers,
+  processLogin,
 };
