@@ -13,7 +13,7 @@ const processLogin = (req, res) => {
     let userToLogin;
     users.forEach((user) => {
       if (user.email == email) {
-        userToLogin = email;
+        userToLogin = true;
       }
     });
 
@@ -21,25 +21,23 @@ const processLogin = (req, res) => {
       let passwordToLogin;
       users.forEach((user) => {
         if (user.email == email) {
-          if (bcryptjs.hashSync(password, user.password)) {
-            passwordToLogin = true;
+          passwordToLogin = bcryptjs.compareSync(password, user.password);
+          if (passwordToLogin) {
+            res.send("Iniciaste sesion con exito");
+          } else {
+            res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+              errors: {
+                email: {
+                  msg: "El email o la contraseña no coinciden",
+                },
+                password: {
+                  msg: "El email o la contraseña no coinciden",
+                },
+              },
+            });
           }
         }
       });
-      if (passwordToLogin) {
-        res.send("Iniciaste secion con exito");
-      } else {
-        res.render(path.join(__dirname, "../../views/users/login.ejs"), {
-          errors: {
-            email: {
-              msg: "El email o la contraseña no coinciden",
-            },
-            password: {
-              msg: "El email o la contraseña no coinciden",
-            },
-          },
-        });
-      }
     } else {
       res.render(path.join(__dirname, "../../views/users/login.ejs"), {
         errors: {
