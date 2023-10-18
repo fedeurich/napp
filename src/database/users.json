@@ -1,16 +1,5 @@
 [
   {
-    "_id": 3,
-    "age": 35,
-    "category": "Categoria3",
-    "city": "Mendoza",
-    "email": "pedro.gonzalez@example.com",
-    "firstName": "Pedro",
-    "image": "",
-    "lastName": "González",
-    "password": "contraseña3"
-  },
-  {
     "_id": 4,
     "email": "ejemplo3@gmail.com",
     "firstName": "Nombre",

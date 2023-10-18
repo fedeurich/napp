@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+<title>Tu perfil</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Hola <%= user.firstName %> </h2>
+    <img src="/img/users/<%= user.image %>" alt="">
+    <p><%= user.email %></p>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

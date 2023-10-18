@@ -23,7 +23,9 @@ const processLogin = (req, res) => {
         if (user.email == email) {
           passwordToLogin = bcryptjs.compareSync(password, user.password);
           if (passwordToLogin) {
-            res.send("Iniciaste sesion con exito");
+            delete user.password;
+            req.session.userLogged = user;
+            return res.redirect("profile");
           } else {
             res.render(path.join(__dirname, "../../views/users/login.ejs"), {
               errors: {

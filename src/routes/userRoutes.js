@@ -78,6 +78,7 @@ const {
   deleteUser,
   loginUsers,
   processLogin,
+  userProfile,
 } = require("../controllers/users");
 
 //Ruta del login
@@ -106,5 +107,8 @@ router.delete("/users/delete/:id", isUser, deleteUser);
 
 //Ruta para buscar por ID
 router.get("/user/:id", getUserById);
+
+//Ruta del perfil del usuario
+router.get("/profile", userProfile);
 
 module.exports = router;
