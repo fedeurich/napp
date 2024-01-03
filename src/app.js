@@ -13,6 +13,22 @@ const cookieParser = require("cookie-parser");
 
 const server = express();
 
+const { userLoggedMiddleware } = require("./middlewares/adminMiddlewares.js");
+// const { cookie } = require("express-validator");
+
+//configuración de session
+server.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+server.use(cookieParser());
+
+server.use(userLoggedMiddleware);
+
 server.use(morgan("dev"));
 server.set("view engine", "ejs");
 
@@ -23,17 +39,7 @@ server.use(express.json());
 //Reconoce put o delete
 server.use(methodOverride("_method"));
 
-server.use(cookieParser());
 server.use(express.static(path.join(__dirname, "../public")));
-
-//configuración de session
-server.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
 
 server.use(mainRoutes);
 server.use(userRoutes);

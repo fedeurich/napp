@@ -1,7 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
-const isUser = require("../middlewares/adminMiddlewares");
+const { isUser, guestMiddleware } = require("../middlewares/adminMiddlewares");
 
 const { body } = require("express-validator");
 

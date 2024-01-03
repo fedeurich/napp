@@ -8,40 +8,44 @@ const processLogin = (req, res) => {
   const errors = validationResult(req);
 
   if (errors.isEmpty()) {
-    const { email, password } = req.body;
+    const { email, password, remember } = req.body;
 
-    let userToLogin;
-    users.forEach((user) => {
-      if (user.email == email) {
-        userToLogin = true;
-      }
-    });
+    // Buscar el usuario por su email
+    const userToLogin = users.find((user) => user.email === email);
 
     if (userToLogin) {
-      let passwordToLogin;
-      users.forEach((user) => {
-        if (user.email == email) {
-          passwordToLogin = bcryptjs.compareSync(password, user.password);
-          if (passwordToLogin) {
-            delete user.password;
-            req.session.userLogged = user;
-            return res.redirect("profile");
-          } else {
-            res.render(path.join(__dirname, "../../views/users/login.ejs"), {
-              errors: {
-                email: {
-                  msg: "El email o la contraseña no coinciden",
-                },
-                password: {
-                  msg: "El email o la contraseña no coinciden",
-                },
-              },
-            });
-          }
+      // Verificar si la contraseña coincide utilizando bcrypt
+      if (
+        userToLogin.password &&
+        bcryptjs.compareSync(password, userToLogin.password)
+      ) {
+        // Eliminar la contraseña antes de almacenar el usuario en la sesión
+        const userWithoutPassword = { ...userToLogin };
+        delete userWithoutPassword.password;
+        req.session.userLogged = userWithoutPassword;
+
+        console.remember;
+        if (remember) {
+          res.cookie("userEmail", email, { maxAge: 1000 * 60 * 2 });
         }
-      });
+
+        return res.redirect("profile");
+      } else {
+        // Contraseña incorrecta
+        return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+          errors: {
+            email: {
+              msg: "El email o la contraseña no coinciden",
+            },
+            password: {
+              msg: "El email o la contraseña no coinciden",
+            },
+          },
+        });
+      }
     } else {
-      res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+      // Usuario no encontrado o contraseña no definida
+      return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
         errors: {
           email: {
             msg: "El email o la contraseña no coinciden",
@@ -52,9 +56,9 @@ const processLogin = (req, res) => {
         },
       });
     }
-    res.render();
   } else {
-    res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+    // Errores de validación
+    return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
       errors: errors.mapped(),
       oldData: req.body,
     });

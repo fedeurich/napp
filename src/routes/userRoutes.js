@@ -1,7 +1,11 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
-const isUser = require("../middlewares/adminMiddlewares");
+const {
+  isUser,
+  guestMiddleware,
+  authMiddleware,
+} = require("../middlewares/adminMiddlewares");
 
 const { body } = require("express-validator");
 
@@ -79,19 +83,16 @@ const {
   loginUsers,
   processLogin,
   userProfile,
+  logout,
 } = require("../controllers/users");
-
-//Ruta del login
-// router.get("/login", (req, res) => {
-//   const ruta = path.resolve(__dirname, "../views/users/login.ejs");
-//   res.render(ruta);
-// });
 
 //Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
 
 //Ruta del register
-router.get("/register", formNewUser);
+router.get("/register", guestMiddleware, formNewUser);
+
+//Proceso de registro
 router.post(
   "/users",
   uploadImgUser.single("image"),
@@ -99,7 +100,10 @@ router.post(
   postNewUser
 );
 
-router.get("/login", loginUsers);
+//Ruta de login
+router.get("/login", guestMiddleware, loginUsers);
+
+//Proceso de login
 router.post("/login", processLogin);
 
 //Ruta para borrar un usuario
@@ -109,6 +113,9 @@ router.delete("/users/delete/:id", isUser, deleteUser);
 router.get("/user/:id", getUserById);
 
 //Ruta del perfil del usuario
-router.get("/profile", userProfile);
+router.get("/profile/", authMiddleware, userProfile);
+
+//Cerrar sesion
+router.get("/logout", logout);
 
 module.exports = router;

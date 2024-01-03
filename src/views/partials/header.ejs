@@ -14,8 +14,19 @@
       <li><a href="\new-product">Nuevo producto</a></li>
     </ul>
     <ul class="barra-derecha">
+      <% if (locals.isLogged) {%>
+      <li class="nav-item">
+        <img src="/img/users/<%= locals.userLogged.image %>" width="40" style="border-radius: 100%;">
+        <a class=""> Hola <%= locals.userLogged.firstName %> </a>
+        <ul class="menuDesplegable">
+          <a href="/profile">Mi perfil</a>
+          <a href="/logout">Cerrar sesion</a>
+        </ul>
+      </li>
+      <% } else { %>
       <li><a href="\login">Inicia sesion</a></li>
       <li><a href="\register">Registrate</a></li>
+      <% } %>
       <li><a href="\productCart">Carrito</a></li>
     </ul>
   </nav>
