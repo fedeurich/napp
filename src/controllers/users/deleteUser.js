@@ -1,22 +1,25 @@
-const users = require("../../database/users.json");
+// controllers/deleteUser.js
 const path = require("path");
-const fs = require("fs");
 
-const deleteUser = (req, res) => {
+const { User } = require('../../database/models'); // Asegúrate de importar el modelo User adecuadamente
+
+const deleteUser = async (req, res) => {
   const { id } = req.params;
 
-  const newArrayUsers = users.filter((user) => user._id != id);
+  try {
+    const user = await User.findByPk(id);
 
-  const usersPath = path.join(__dirname, "../../database/users.json");
-  const data = JSON.stringify(newArrayUsers);
-
-  fs.writeFile(usersPath, data, (error) => {
-    if (error) {
-      res.sed(`Error: ${error}`);
-    } else {
-      res.redirect("/users");
+    if (!user) {
+      return res.status(404).send('Usuario no encontrado');
     }
-  });
+
+    await user.destroy();
+
+    res.redirect('/users');
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    res.status(500).send(`Error: ${error.message}`);
+  }
 };
 
 module.exports = deleteUser;
