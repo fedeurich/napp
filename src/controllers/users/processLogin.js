@@ -8,6 +8,7 @@ const processLogin = async (req, res) => {
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
+      console.log(req.body);
       const { email, password, remember } = req.body;
 
       // Buscar el usuario por su email en la base de datos
@@ -18,6 +19,7 @@ const processLogin = async (req, res) => {
           "FirstName",
           "LastName",
           "Email",
+          "Image",
           "PasswordUser",
         ],
       });
@@ -31,6 +33,7 @@ const processLogin = async (req, res) => {
             FirstName: userToLogin.FirstName,
             LastName: userToLogin.LastName,
             Email: userToLogin.Email,
+            Image: userToLogin.Image,
           };
 
           req.session.userLogged = userWithoutPassword;
