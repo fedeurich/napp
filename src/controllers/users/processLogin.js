@@ -1,9 +1,7 @@
-
-
 const path = require("path");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
-const { User } = require('../../database/models');
+const { User } = require("../../database/models");
 
 const processLogin = async (req, res) => {
   try {
@@ -15,7 +13,13 @@ const processLogin = async (req, res) => {
       // Buscar el usuario por su email en la base de datos
       const userToLogin = await User.findOne({
         where: { email },
-        attributes: ['IDUser', 'FirstName', 'LastName', 'Email', 'PasswordUser'],
+        attributes: [
+          "IDUser",
+          "FirstName",
+          "LastName",
+          "Email",
+          "PasswordUser",
+        ],
       });
 
       if (userToLogin) {
@@ -54,29 +58,23 @@ const processLogin = async (req, res) => {
         }
       } else {
         // Usuario no encontrado
-        return res.render(
-          path.join(__dirname, "../../views/users/login.ejs"),
-          {
-            errors: {
-              email: {
-                msg: "El email o la contraseña no coinciden",
-              },
-              password: {
-                msg: "El email o la contraseña no coinciden",
-              },
+        return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+          errors: {
+            email: {
+              msg: "El email o la contraseña no coinciden",
             },
-          }
-        );
+            password: {
+              msg: "El email o la contraseña no coinciden",
+            },
+          },
+        });
       }
     } else {
       // Errores de validación
-      return res.render(
-        path.join(__dirname, "../../views/users/login.ejs"),
-        {
-          errors: errors.mapped(),
-          oldData: req.body,
-        }
-      );
+      return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
+        errors: errors.mapped(),
+        oldData: req.body,
+      });
     }
   } catch (error) {
     console.error("Error al procesar el login:", error);
