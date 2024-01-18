@@ -5,23 +5,27 @@
 <body>
   <%- include('../partials/header') %>
   <main>
-    <h2>Todos los productos en catalogo</h2>
+    <h2>Todos los productos en catálogo</h2>
     <section class="products_container">
       <% for(let i=0; i < allProducts.length; i++){%>
       <article class="product_container">
-        <h3>Producto: <%= allProducts[i].productName %></h3>
+        <h3>Producto: <%= allProducts[i].NameProduct %></h3>
         <img src="/img/products/<%= allProducts[i].image %>" alt="image" width="300px" height="300px">
-        <p>Precio: <%= allProducts[i].price %></p>
+        <p>Precio: <%= allProducts[i].Price %></p>
         <p>Color: <%= allProducts[i].color %></p>
-        <p>Categoria: <%= allProducts[i].category %></p>
-        <p>Descripcion: <%= allProducts[i].description %></p>
-        <form action="/product/delete/<%= allProducts[i]._id %>?_method=DELETE" method="POST">
+        <% if (allProducts[i].category) { %>
+          <p>Categoría: <%= allProducts[i].category.NameCategory %></p>
+        <% } else { %>
+          <p>Categoría: Sin categoría</p>
+        <% } %>
+        <p>Descripción: <%= allProducts[i].DescriptionProduct %></p>
+        <form action="/product/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">
           <button type="submit">Borrar</button>
         </form>
       </article>
       <%}%>
     </section>
-</main>
+  </main>
   <%- include('../partials/footer') %>
 </body>
 

@@ -1,5 +1,4 @@
-'use strict';
-
+// models/index.js
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -19,10 +18,14 @@ if (config.use_env_variable) {
 const UserModel = require('./user')(sequelize, Sequelize.DataTypes);
 const ProductModel = require('./product')(sequelize, Sequelize.DataTypes);
 const ShoppingCartModel = require('./shoppingcart')(sequelize, Sequelize.DataTypes);
+const CategoryModel = require('./category')(sequelize, Sequelize.DataTypes);
+const ProductTypeModel = require('./producttype')(sequelize, Sequelize.DataTypes); // Agrega esta línea
 
 db['User'] = UserModel;
 db['Product'] = ProductModel;
 db['ShoppingCart'] = ShoppingCartModel;
+db['Category'] = CategoryModel;
+db['ProductType'] = ProductTypeModel; // Agrega esta línea
 
 UserModel.hasMany(ShoppingCartModel, { foreignKey: 'IDUser' });
 ShoppingCartModel.belongsTo(UserModel, { foreignKey: 'IDUser' });

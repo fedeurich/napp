@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('Product', {
+  const Product = sequelize.define('Product', {
     IDProduct: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -27,5 +27,24 @@ module.exports = (sequelize) => {
     DescriptionProduct: {
       type: DataTypes.TEXT,
     },
+  },
+  {
+    tableName: 'product',
+    timestamps: false,
   });
+
+  // Agrega la asociación con el modelo Category
+  Product.associate = function (models) {
+    Product.belongsTo(models.Category, {
+      as: 'category',
+      foreignKey: 'IDCategory',
+    });
+
+    Product.belongsTo(models.ProductType, {  // Agrega esta línea
+      as: 'productType',
+      foreignKey: 'IDType',
+    });
+  };
+
+  return Product;
 };
