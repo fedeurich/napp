@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('ShoppingCart', {
+  const ShoppingCart = sequelize.define('ShoppingCart', {
     IDCart: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -28,5 +28,22 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+  }, {
+    // Otras opciones del modelo
+    tableName: 'shoppingcart', // Puedes especificar el nombre de la tabla si es diferente al nombre del modelo en plural
+    timestamps: false, // Si no tienes campos createdAt y updatedAt en tu tabla
   });
+
+  // Agregar asociaciones con otros modelos si es necesario
+  ShoppingCart.belongsTo(sequelize.models.User, {
+    foreignKey: 'IDUser',
+    as: 'user',
+  });
+
+  ShoppingCart.belongsTo(sequelize.models.Product, {
+    foreignKey: 'IDProduct',
+    as: 'product',
+  });
+
+  return ShoppingCart;
 };
