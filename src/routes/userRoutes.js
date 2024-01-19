@@ -118,4 +118,29 @@ router.get("/profile/", authMiddleware, userProfile);
 //Cerrar sesion
 router.get("/logout", logout);
 
+
+// ************* API ******************
+//hay que probar si funcionan 
+// Ruta para ver todos los usuarios
+router.get("/api/users", getAllUsers);
+
+// Ruta del register
+router.post("/api/users", uploadImgUser.single("image"), validationsUsers, postNewUser);
+
+
+// Ruta de login
+router.post("/api/login", processLogin);
+
+// Ruta para borrar un usuario
+router.delete("/api/users/:id", deleteUser);
+
+// Ruta para buscar por ID
+router.get("/api/users/:id", getUserById);
+
+// Ruta del perfil del usuario
+router.get("/api/profile", userProfile);
+
+// Cerrar sesion
+router.get("/api/logout", logout);
+
 module.exports = router;
