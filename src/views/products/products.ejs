@@ -20,6 +20,7 @@
         <% } %>
         <p>Descripción: <%= allProducts[i].DescriptionProduct %></p>
         <form action="/product/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
           <button type="submit">Borrar</button>
         </form>
       </article>

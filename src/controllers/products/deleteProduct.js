@@ -1,22 +1,24 @@
-const products = require("../../database/products.json");
-const path = require("path");
-const fs = require("fs");
+const { Product } = require("../../database/models");
 
-const deleteProduct = (req, res) => {
+const deleteProduct = async (req, res) => {
   const { id } = req.params;
 
-  const newArrayProducts = products.filter((product) => product._id != id);
+  try {
+    // Buscar el producto en la base de datos
+    const product = await Product.findByPk(id);
 
-  const productsPath = path.join(__dirname, "../../database/products.json");
-  const data = JSON.stringify(newArrayProducts);
-
-  fs.writeFile(productsPath, data, (error) => {
-    if (error) {
-      res.sed(`Error: ${error}`);
-    } else {
-      res.redirect("/products");
+    if (!product) {
+      return res.status(404).send("Producto no encontrado");
     }
-  });
+
+    // Eliminar el producto
+    await product.destroy();
+
+    res.redirect("/products");
+  } catch (error) {
+    console.error("Error al eliminar el producto:", error);
+    res.status(500).send("Error interno del servidor");
+  }
 };
 
 module.exports = deleteProduct;

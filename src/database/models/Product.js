@@ -45,6 +45,8 @@ module.exports = (sequelize) => {
       foreignKey: 'IDType',
     });
   };
-
+  Product.findById = async function (productId) {
+    return await Product.findByPk(productId);
+  };
   return Product;
 };
