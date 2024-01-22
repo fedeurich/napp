@@ -1,7 +1,7 @@
 const path = require("path");
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
-const { User } = require("../../database/models");  // Asegúrate de importar correctamente el modelo User
+const { User } = require("../../database/models"); // Asegúrate de importar correctamente el modelo User
 
 const postNewUser = async (req, res) => {
   try {
@@ -9,10 +9,13 @@ const postNewUser = async (req, res) => {
 
     if (!errors.isEmpty()) {
       // Si hay errores de validación, renderiza la vista de registro con los errores
-      return res.render(path.join(__dirname, "../../views/users/register.ejs"), {
-        errors: errors.array(),
-        oldData: req.body,
-      });
+      return res.render(
+        path.join(__dirname, "../../views/users/register.ejs"),
+        {
+          errors: errors.array(),
+          oldData: req.body,
+        }
+      );
     }
 
     // Verifica si se subió correctamente la imagen
@@ -27,12 +30,15 @@ const postNewUser = async (req, res) => {
     // Verifica si el correo ya está registrado
     const userInDB = await User.findOne({ where: { email } });
     if (userInDB) {
-      return res.render(path.join(__dirname, "../../views/users/register.ejs"), {
-        errors: {
-          email: { msg: "Este email ya está registrado" },
-        },
-        oldData: req.body,
-      });
+      return res.render(
+        path.join(__dirname, "../../views/users/register.ejs"),
+        {
+          errors: {
+            email: { msg: "Este email ya está registrado" },
+          },
+          oldData: req.body,
+        }
+      );
     }
 
     // Crea el nuevo usuario
@@ -44,13 +50,12 @@ const postNewUser = async (req, res) => {
       Image: image,
     });
 
-    console.log('Usuario creado:', newUser);
-    res.redirect("/users");  // Puedes redirigir a la página que desees después de crear el usuario
+    console.log("Usuario creado:", newUser);
+    res.redirect("/users"); // Puedes redirigir a la página que desees después de crear el usuario
   } catch (error) {
-    console.error('Error en el controlador postNewUser:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    console.error("Error en el controlador postNewUser:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
   }
 };
 
 module.exports = postNewUser;
-

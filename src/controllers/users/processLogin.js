@@ -8,7 +8,6 @@ const processLogin = async (req, res) => {
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
-      console.log(req.body);
       const { email, password, remember } = req.body;
 
       // Buscar el usuario por su email en la base de datos
@@ -56,6 +55,7 @@ const processLogin = async (req, res) => {
                   msg: "El email o la contraseña no coinciden",
                 },
               },
+              oldData: req.body.email,
             }
           );
         }
@@ -70,6 +70,7 @@ const processLogin = async (req, res) => {
               msg: "El email o la contraseña no coinciden",
             },
           },
+          oldData: req.body.email,
         });
       }
     } else {
