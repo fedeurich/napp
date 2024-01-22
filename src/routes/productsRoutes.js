@@ -1,7 +1,11 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
-const { isUser, guestMiddleware } = require("../middlewares/adminMiddlewares");
+const {
+  isUser,
+  guestMiddleware,
+  authMiddleware,
+} = require("../middlewares/adminMiddlewares");
 const { Product } = require("../database/models");
 
 const { body } = require("express-validator");
@@ -103,7 +107,7 @@ router.get("/products", getAllProducts);
 router.get("/product/:id", getProductById);
 
 //Rutas para crear productos
-router.get("/new-product", isUser, formNewProduct);
+router.get("/new-product", authMiddleware, formNewProduct);
 router.post(
   "/products",
   isUser,
@@ -116,7 +120,6 @@ router.post(
 router.put("/product/:id/edit", confirmModifyProduct);
 //Ruta borrar un producto
 router.delete("/product/delete/:id", isUser, deleteProduct);
-
 
 // ********* API ROUTES **************
 
@@ -151,7 +154,14 @@ router.get("/api/products/:id", async (req, res) => {
 
 // Crear un nuevo producto
 router.post("/api/products", async (req, res) => {
-  const { IDProduct, IDCategory, IDType, NameProduct, Price, DescriptionProduct } = req.body;
+  const {
+    IDProduct,
+    IDCategory,
+    IDType,
+    NameProduct,
+    Price,
+    DescriptionProduct,
+  } = req.body;
 
   try {
     const newProduct = await Product.create({
@@ -186,7 +196,8 @@ router.put("/api/products/:id", async (req, res) => {
     product.IDType = req.body.IDType || product.IDType;
     product.NameProduct = req.body.NameProduct || product.NameProduct;
     product.Price = req.body.Price || product.Price;
-    product.DescriptionProduct = req.body.DescriptionProduct || product.DescriptionProduct;
+    product.DescriptionProduct =
+      req.body.DescriptionProduct || product.DescriptionProduct;
 
     await product.save();
 
@@ -218,4 +229,3 @@ router.delete("/api/products/:id", async (req, res) => {
 });
 
 module.exports = router;
-
