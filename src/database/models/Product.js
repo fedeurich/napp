@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
     DescriptionProduct: {
       type: DataTypes.TEXT,
     },
+    Image:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     tableName: 'product',
