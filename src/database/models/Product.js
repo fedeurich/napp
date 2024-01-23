@@ -1,52 +1,56 @@
 // models/Product.js
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Product = sequelize.define('Product', {
-    IDProduct: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+  const Product = sequelize.define(
+    "Product",
+    {
+      IDProduct: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      IDCategory: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      IDType: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      NameProduct: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      Price: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+      },
+      DescriptionProduct: {
+        type: DataTypes.TEXT,
+      },
+      Image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    IDCategory: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    IDType: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    NameProduct: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    Price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    DescriptionProduct: {
-      type: DataTypes.TEXT,
-    },
-    Image:{
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    tableName: 'product',
-    timestamps: false,
-  });
+    {
+      tableName: "Product",
+      timestamps: false,
+    }
+  );
 
   // Agrega la asociación con el modelo Category
   Product.associate = function (models) {
     Product.belongsTo(models.Category, {
-      as: 'category',
-      foreignKey: 'IDCategory',
+      as: "Category",
+      foreignKey: "IDCategory",
     });
 
-    Product.belongsTo(models.ProductType, {  // Agrega esta línea
-      as: 'productType',
-      foreignKey: 'IDType',
+    Product.belongsTo(models.ProductType, {
+      // Agrega esta línea
+      as: "CroductType",
+      foreignKey: "IDType",
     });
   };
   Product.findById = async function (productId) {
