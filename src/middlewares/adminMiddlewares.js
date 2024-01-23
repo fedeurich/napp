@@ -1,3 +1,5 @@
+// const User = require("../database/models/User");
+
 const isUser = (req, res, next) => {
   const isUser = true;
   isUser ? next() : res.send("Debe registrarse para poder acceder");
@@ -21,15 +23,16 @@ const authMiddleware = (req, res, next) => {
 const userLoggedMiddleware = (req, res, next) => {
   res.locals.isLogged = false;
 
-  // Requierela utilizacion de models
+  // Requiere la utilizacion de models
   // const emailInCookie = req.cookies.userEmail;
-  // const userFromCookie = User.findByField("email", emailInCookie);
+  // console.log(emailInCookie);
+  // let userFromCookie = User.findByField("Email", emailInCookie);
 
   // if (userFromCookie) {
   //   req.session.userLogged = userFromCookie;
   // }
 
-  if (req.session && req.session.userLogged) {
+  if (req.session.userLogged) {
     res.locals.isLogged = true;
     res.locals.userLogged = req.session.userLogged;
   }

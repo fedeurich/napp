@@ -1,6 +1,5 @@
-// models/User.js
 module.exports = (sequelize, DataTypes) => {
-  let alias = 'User'; // en singular
+  let alias = "User"; // en singular
   let cols = {
     IDUser: {
       type: DataTypes.INTEGER,
@@ -29,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   let config = {
-    tableName: 'user',
-    timestamps: false,  // Sin marcas de tiempo
+    tableName: "user",
+    timestamps: false, // Sin marcas de tiempo
     // createdAt: false,  // Puedes comentar o eliminar estas líneas
     // updatedAt: false,  // Si no necesitas las marcas de tiempo
     // deletedAt: false,  // Si no necesitas soft deletes
@@ -39,4 +38,4 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(alias, cols, config);
 
   return User;
-}
+};
