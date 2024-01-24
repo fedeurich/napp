@@ -1,12 +1,15 @@
-// const User = require("../database/models/User");
+const { User } = require("../database/models");
+const path = require("path");
 
 const isUser = (req, res, next) => {
-  const isUser = true;
-  isUser ? next() : res.send("Debe registrarse para poder acceder");
+  res.locals.isLogged
+    ? next()
+    : res.render(path.join(__dirname, "../views/404NotFound"), {
+        message: "Debes registrarte para ingresar",
+      });
 };
 
 const guestMiddleware = (req, res, next) => {
-  //console.log(req.session.userLogged);
   if (req.session.userLogged) {
     return res.redirect("/profile");
   }
@@ -20,17 +23,23 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
-const userLoggedMiddleware = (req, res, next) => {
+const userLoggedMiddleware = async (req, res, next) => {
   res.locals.isLogged = false;
 
-  // Requiere la utilizacion de models
-  // const emailInCookie = req.cookies.userEmail;
-  // console.log(emailInCookie);
-  // let userFromCookie = User.findByField("Email", emailInCookie);
+  try {
+    if (req.cookies && req.session.userLogged) {
+      const emailInCookie = req.cookies.userEmail;
+      const userFromCookie = await User.findOne({
+        where: { email: emailInCookie },
+      });
 
-  // if (userFromCookie) {
-  //   req.session.userLogged = userFromCookie;
-  // }
+      if (userFromCookie) {
+        res.locals.userLogged = userFromCookie;
+      }
+    }
+  } catch (error) {
+    console.error("Error al buscar usuario en la base de datos:", error);
+  }
 
   if (req.session.userLogged) {
     res.locals.isLogged = true;

@@ -6,7 +6,7 @@ const {
   guestMiddleware,
   authMiddleware,
 } = require("../middlewares/adminMiddlewares");
-const { sequelize, Category, Product } = require('../database/models');
+const { sequelize, Category, Product } = require("../database/models");
 const { body } = require("express-validator");
 
 const router = express.Router();
@@ -106,7 +106,7 @@ router.get("/products", getAllProducts);
 router.get("/product/:id", getProductById);
 
 //Rutas para crear productos
-router.get("/new-product", authMiddleware, formNewProduct);
+router.get("/new-product", isUser, formNewProduct);
 router.post(
   "/products",
   isUser,
@@ -116,30 +116,33 @@ router.post(
 );
 
 //Ruta editar un producto
-router.put("/product/:id/edit", confirmModifyProduct);
+router.put("/product/:id/edit", isUser, confirmModifyProduct);
+
 //Ruta borrar un producto
 router.delete("/product/delete/:id", isUser, deleteProduct);
 
 // ********* API ROUTES **************
-
 // Obtener todos los productos
-
 router.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: 'category', // Incluye la asociación con la categoría
+      include: "category", // Incluye la asociación con la categoría
     });
 
     const countByCategory = {}; // Cambiado el nombre de la variable
 
-    products.forEach(product => {
-      const categoryName = product.category ? product.category.NameCategory : 'Sin categoría';
+    products.forEach((product) => {
+      const categoryName = product.category
+        ? product.category.NameCategory
+        : "Sin categoría";
 
       // Agregamos "IDCategory" e "IDType" al objeto "category"
-      const categoryInfo = product.category ? {
-        IDCategory: product.category.IDCategory,
-        IDType: product.category.IDType,
-      } : null;
+      const categoryInfo = product.category
+        ? {
+            IDCategory: product.category.IDCategory,
+            IDType: product.category.IDType,
+          }
+        : null;
 
       if (!countByCategory[categoryName]) {
         countByCategory[categoryName] = {
@@ -162,7 +165,6 @@ router.get("/api/products", async (req, res) => {
   }
 });
 
-
 // Obtener un producto por ID
 router.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
@@ -177,76 +179,6 @@ router.get("/api/products/:id", async (req, res) => {
     res.json(product);
   } catch (error) {
     console.error("Error al obtener el producto:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
-
-// Crear un nuevo producto
-router.post("/api/products", async (req, res) => {
-  const { IDProduct, IDCategory, IDType, NameProduct, Price, DescriptionProduct } = req.body;
-
-  try {
-    const newProduct = await Product.create({
-      IDProduct,
-      IDCategory,
-      IDType,
-      NameProduct,
-      Price,
-      Image,
-      DescriptionProduct,
-    });
-
-    res.status(201).json(newProduct);
-  } catch (error) {
-    console.error("Error al crear un nuevo producto:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
-
-// Actualizar un producto por ID
-router.put("/api/products/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const product = await Product.findByPk(id);
-
-    if (!product) {
-      return res.status(404).json({ error: "Producto no encontrado" });
-    }
-
-    // Actualizar propiedades del producto según sea necesario
-    product.IDCategory = req.body.IDCategory || product.IDCategory;
-    product.IDType = req.body.IDType || product.IDType;
-    product.NameProduct = req.body.NameProduct || product.NameProduct;
-    product.Price = req.body.Price || product.Price;
-    product.DescriptionProduct =
-      req.body.DescriptionProduct || product.DescriptionProduct;
-
-    await product.save();
-
-    res.json(product);
-  } catch (error) {
-    console.error("Error al actualizar el producto:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
-
-// Eliminar un producto por ID
-router.delete("/api/products/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const product = await Product.findByPk(id);
-
-    if (!product) {
-      return res.status(404).json({ error: "Producto no encontrado" });
-    }
-
-    await product.destroy();
-
-    res.json({ message: "Producto eliminado exitosamente" });
-  } catch (error) {
-    console.error("Error al eliminar el producto:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });

@@ -22,12 +22,12 @@ if (config.use_env_variable) {
 
 const UserModel = require("./User")(sequelize, Sequelize.DataTypes);
 const ProductModel = require("./Product")(sequelize, Sequelize.DataTypes);
-const ShoppingCartModel = require("./Shoppingcart")(
+const ShoppingCartModel = require("./ShoppingCart")(
   sequelize,
   Sequelize.DataTypes
 );
 const CategoryModel = require("./Category")(sequelize, Sequelize.DataTypes);
-const ProductTypeModel = require("./Producttype")(
+const ProductTypeModel = require("./ProductType")(
   sequelize,
   Sequelize.DataTypes
 ); // Agrega esta línea

@@ -87,7 +87,6 @@ const {
 } = require("../controllers/users");
 const { User } = require("../database/models");
 
-
 //Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
 
@@ -108,27 +107,27 @@ router.get("/login", guestMiddleware, loginUsers);
 //Proceso de login
 router.post("/login", processLogin);
 
+//Ruta del perfil del usuario
+router.get("/profile/", isUser, userProfile);
+
 //Ruta para borrar un usuario
 router.delete("/users/delete/:id", isUser, deleteUser);
 
 //Ruta para buscar por ID
-router.get("/user/:id", getUserById);
-
-//Ruta del perfil del usuario
-router.get("/profile/", authMiddleware, userProfile);
+router.get("/user/:id", isUser, getUserById);
 
 //Cerrar sesion
 router.get("/logout", logout);
 
 // ************* API ******************
 //hay que probar si funcionan
-// Ruta para ver todos los usuarios
 
+// Ruta para ver todos los usuarios
 router.get("/api/users", async (req, res) => {
   try {
     const allUsers = await User.findAll();
 
-    const usersWithoutPassword = allUsers.map(user => {
+    const usersWithoutPassword = allUsers.map((user) => {
       const { PasswordUser, ...userWithoutPassword } = user.toJSON();
       return userWithoutPassword;
     });
@@ -143,20 +142,6 @@ router.get("/api/users", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-
-// Ruta del register
-router.post(
-  "/api/users",
-  uploadImgUser.single("image"),
-  validationsUsers,
-  postNewUser
-);
-
-// Ruta de login
-router.post("/api/login", processLogin);
-
-// Ruta para borrar un usuario
-router.delete("/api/users/:id", deleteUser);
 
 // Ruta para buscar por ID
 router.get("/api/users/:id", async (req, res) => {
@@ -178,12 +163,5 @@ router.get("/api/users/:id", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-
-
-// Ruta del perfil del usuario
-router.get("/api/profile", userProfile);
-
-// Cerrar sesion
-router.get("/api/logout", logout);
 
 module.exports = router;

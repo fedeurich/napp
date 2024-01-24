@@ -9,12 +9,11 @@ const path = require("path");
 const mainRoutes = require("./routes/mainRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const productsRoutes = require("./routes/productsRoutes.js");
-const cookieParser = require("cookie-parser");
+const cookies = require("cookie-parser");
 
 const server = express();
 
 const { userLoggedMiddleware } = require("./middlewares/adminMiddlewares.js");
-// const { cookie } = require("express-validator");
 
 //configuración de session
 server.use(
@@ -25,10 +24,9 @@ server.use(
   })
 );
 
-server.use(cookieParser());
-
 server.use(userLoggedMiddleware);
 
+server.use(cookies());
 server.use(morgan("dev"));
 server.set("view engine", "ejs");
 
