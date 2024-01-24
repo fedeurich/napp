@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   let config = {
-    tableName: "user",
+    tableName: "User",
     timestamps: false, // Sin marcas de tiempo
     // createdAt: false,  // Puedes comentar o eliminar estas líneas
     // updatedAt: false,  // Si no necesitas las marcas de tiempo

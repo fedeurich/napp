@@ -20,9 +20,9 @@ if (config.use_env_variable) {
   );
 }
 
-const UserModel = require("./user")(sequelize, Sequelize.DataTypes);
-const ProductModel = require("./product")(sequelize, Sequelize.DataTypes);
-const ShoppingCartModel = require("./shoppingcart")(
+const UserModel = require("./User")(sequelize, Sequelize.DataTypes);
+const ProductModel = require("./Product")(sequelize, Sequelize.DataTypes);
+const ShoppingCartModel = require("./Shoppingcart")(
   sequelize,
   Sequelize.DataTypes
 );

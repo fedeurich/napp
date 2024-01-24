@@ -85,6 +85,8 @@ const {
   userProfile,
   logout,
 } = require("../controllers/users");
+const { User } = require("../database/models");
+
 
 //Ruta para ver todos los usuarios
 router.get("/users", getAllUsers);
@@ -121,7 +123,26 @@ router.get("/logout", logout);
 // ************* API ******************
 //hay que probar si funcionan
 // Ruta para ver todos los usuarios
-router.get("/api/users", getAllUsers);
+
+router.get("/api/users", async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+
+    const usersWithoutPassword = allUsers.map(user => {
+      const { PasswordUser, ...userWithoutPassword } = user.toJSON();
+      return userWithoutPassword;
+    });
+
+    const count = usersWithoutPassword.length;
+
+    const obj = { count: count, users: usersWithoutPassword };
+
+    res.json(obj);
+  } catch (error) {
+    console.error("Error al obtener usuarios:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
 
 // Ruta del register
 router.post(
@@ -138,7 +159,26 @@ router.post("/api/login", processLogin);
 router.delete("/api/users/:id", deleteUser);
 
 // Ruta para buscar por ID
-router.get("/api/users/:id", getUserById);
+router.get("/api/users/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    // Excluir la contraseña del usuario
+    const { PasswordUser, ...userWithoutPassword } = user.toJSON();
+
+    res.json(userWithoutPassword);
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
 
 // Ruta del perfil del usuario
 router.get("/api/profile", userProfile);

@@ -6,8 +6,7 @@ const {
   guestMiddleware,
   authMiddleware,
 } = require("../middlewares/adminMiddlewares");
-const { Product } = require("../database/models");
-
+const { sequelize, Category, Product } = require('../database/models');
 const { body } = require("express-validator");
 
 const router = express.Router();
@@ -124,15 +123,45 @@ router.delete("/product/delete/:id", isUser, deleteProduct);
 // ********* API ROUTES **************
 
 // Obtener todos los productos
+
 router.get("/api/products", async (req, res) => {
   try {
-    const products = await Product.findAll();
-    res.json(products);
+    const products = await Product.findAll({
+      include: 'category', // Incluye la asociación con la categoría
+    });
+
+    const countByCategory = {}; // Cambiado el nombre de la variable
+
+    products.forEach(product => {
+      const categoryName = product.category ? product.category.NameCategory : 'Sin categoría';
+
+      // Agregamos "IDCategory" e "IDType" al objeto "category"
+      const categoryInfo = product.category ? {
+        IDCategory: product.category.IDCategory,
+        IDType: product.category.IDType,
+      } : null;
+
+      if (!countByCategory[categoryName]) {
+        countByCategory[categoryName] = {
+          count: 1,
+          category: categoryInfo,
+        };
+      } else {
+        countByCategory[categoryName].count++;
+      }
+    });
+
+    const count = products.length;
+
+    const obj = { count, countByCategory, products };
+
+    res.json(obj);
   } catch (error) {
     console.error("Error al obtener productos:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
 
 // Obtener un producto por ID
 router.get("/api/products/:id", async (req, res) => {
@@ -154,14 +183,7 @@ router.get("/api/products/:id", async (req, res) => {
 
 // Crear un nuevo producto
 router.post("/api/products", async (req, res) => {
-  const {
-    IDProduct,
-    IDCategory,
-    IDType,
-    NameProduct,
-    Price,
-    DescriptionProduct,
-  } = req.body;
+  const { IDProduct, IDCategory, IDType, NameProduct, Price, DescriptionProduct } = req.body;
 
   try {
     const newProduct = await Product.create({
@@ -170,6 +192,7 @@ router.post("/api/products", async (req, res) => {
       IDType,
       NameProduct,
       Price,
+      Image,
       DescriptionProduct,
     });
 
