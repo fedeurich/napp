@@ -1,4 +1,3 @@
-// models/Product.js
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
@@ -11,10 +10,6 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       IDCategory: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      IDType: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -46,13 +41,8 @@ module.exports = (sequelize) => {
       as: "Category",
       foreignKey: "IDCategory",
     });
-
-    Product.belongsTo(models.ProductType, {
-      // Agrega esta línea
-      as: "CroductType",
-      foreignKey: "IDType",
-    });
   };
+
   Product.findById = async function (productId) {
     return await Product.findByPk(productId);
   };

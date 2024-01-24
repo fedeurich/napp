@@ -103,24 +103,22 @@ router.post(
 
 //Ruta de login
 router.get("/login", guestMiddleware, loginUsers);
-
 //Proceso de login
 router.post("/login", processLogin);
 
 //Ruta del perfil del usuario
 router.get("/profile/", isUser, userProfile);
 
-//Ruta para borrar un usuario
-router.delete("/users/delete/:id", isUser, deleteUser);
-
 //Ruta para buscar por ID
 router.get("/user/:id", isUser, getUserById);
+
+//Ruta para borrar un usuario
+router.delete("/users/delete/:id", isUser, deleteUser);
 
 //Cerrar sesion
 router.get("/logout", logout);
 
 // ************* API ******************
-//hay que probar si funcionan
 
 // Ruta para ver todos los usuarios
 router.get("/api/users", async (req, res) => {

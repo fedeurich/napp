@@ -126,7 +126,7 @@ router.delete("/product/delete/:id", isUser, deleteProduct);
 router.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: "category", // Incluye la asociación con la categoría
+      include: "Category", // Incluye la asociación con la categoría
     });
 
     const countByCategory = {}; // Cambiado el nombre de la variable

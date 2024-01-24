@@ -27,7 +27,7 @@ const userLoggedMiddleware = async (req, res, next) => {
   res.locals.isLogged = false;
 
   try {
-    if (req.cookies && req.session.userLogged) {
+    if (req.cookies) {
       const emailInCookie = req.cookies.userEmail;
       const userFromCookie = await User.findOne({
         where: { email: emailInCookie },
