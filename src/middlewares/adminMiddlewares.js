@@ -6,7 +6,7 @@ const isUser = (req, res, next) => {
 };
 
 const guestMiddleware = (req, res, next) => {
-  console.log(req.session.userLogged);
+  //console.log(req.session.userLogged);
   if (req.session.userLogged) {
     return res.redirect("/profile");
   }
