@@ -11,7 +11,9 @@
       <li><a href="\">Inicio</a></li>
       <li><a href="\productMenu">Productos</a></li>
       <li><a href="\productDetail">Detalle de producto</a></li>
+      <% if (locals.isLogged) {%>
       <li><a href="\new-product">Nuevo producto</a></li>
+      <% } %>
     </ul>
     <ul class="barra-derecha">
       <% if (locals.isLogged) {%>

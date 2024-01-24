@@ -118,15 +118,18 @@ router.get("/profile/", authMiddleware, userProfile);
 //Cerrar sesion
 router.get("/logout", logout);
 
-
 // ************* API ******************
-//hay que probar si funcionan 
+//hay que probar si funcionan
 // Ruta para ver todos los usuarios
 router.get("/api/users", getAllUsers);
 
 // Ruta del register
-router.post("/api/users", uploadImgUser.single("image"), validationsUsers, postNewUser);
-
+router.post(
+  "/api/users",
+  uploadImgUser.single("image"),
+  validationsUsers,
+  postNewUser
+);
 
 // Ruta de login
 router.post("/api/login", processLogin);
