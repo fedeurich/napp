@@ -6,6 +6,7 @@ const {
   guestMiddleware,
   authMiddleware,
 } = require("../middlewares/adminMiddlewares");
+const { Op } = require("sequelize");
 const { sequelize, Category, Product } = require("../database/models");
 const { body } = require("express-validator");
 
@@ -126,38 +127,54 @@ router.delete("/product/delete/:id", isUser, deleteProduct);
 router.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: "Category", // Incluye la asociación con la categoría
+      include: [
+        {
+          model: Category,
+          as: "Category", // Cambiado a "Category" en lugar de "products"
+          attributes: ["IDCategory", "NameCategory"],
+        },
+      ],
     });
 
-    const countByCategory = {}; // Cambiado el nombre de la variable
+    const mappedProducts = products.map((product) => ({
+      id: product.IDProduct,
+      name: product.NameProduct,
+      description: product.DescriptionProduct,
+      categories: product.Category
+        ? [
+            {
+              id: product.Category.IDCategory,
+              name: product.Category.NameCategory,
+            },
+          ]
+        : [],
+      detail: `/api/products/${product.IDProduct}`,
+    }));
 
-    products.forEach((product) => {
-      const categoryName = product.category
-        ? product.category.NameCategory
-        : "Sin categoría";
+    const categoryCounts = await Category.findAll({
+      attributes: [
+        "NameCategory",
+        [
+          sequelize.fn("COUNT", sequelize.col("products.IDProduct")),
+          "productCount",
+        ],
+      ],
+      include: {
+        model: Product,
+        as: "products",
+        attributes: [],
+      },
+      group: ["NameCategory"],
+    });
 
-      // Agregamos "IDCategory" e "IDType" al objeto "category"
-      const categoryInfo = product.category
-        ? {
-            IDCategory: product.category.IDCategory,
-            IDType: product.category.IDType,
-          }
-        : null;
-
-      if (!countByCategory[categoryName]) {
-        countByCategory[categoryName] = {
-          count: 1,
-          category: categoryInfo,
-        };
-      } else {
-        countByCategory[categoryName].count++;
-      }
+    const countByCategory = {};
+    categoryCounts.forEach((category) => {
+      countByCategory[category.NameCategory] = category.get("productCount");
     });
 
     const count = products.length;
 
-    const obj = { count, countByCategory, products };
-
+    const obj = { count, countByCategory, products: mappedProducts };
     res.json(obj);
   } catch (error) {
     console.error("Error al obtener productos:", error);

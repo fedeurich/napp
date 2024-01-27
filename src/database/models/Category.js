@@ -1,7 +1,9 @@
-// models/Category.js
-module.exports = (sequelize, DataTypes) => {
-    let alias = 'Category';
-    let cols = {
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
+  const Category = sequelize.define(
+    "Category",
+    {
       IDCategory: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -10,21 +12,21 @@ module.exports = (sequelize, DataTypes) => {
       NameCategory: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
-    };
-  
-    let config = {
-      tableName: 'category',
+    },
+    {
+      tableName: "category",
       timestamps: false,
-    };
-  
-    const Category = sequelize.define(alias, cols, config);
-    Category.associate = function (models) {
-      Category.hasMany(models.Product, {
-        as: 'products',
-        foreignKey: 'IDCategory',
-      });
-    };
-    return Category;
+    }
+  );
+
+  Category.associate = function (models) {
+    Category.hasMany(models.Product, {
+      as: "products",
+      foreignKey: "IDCategory",
+    });
   };
-  
+
+  return Category;
+};

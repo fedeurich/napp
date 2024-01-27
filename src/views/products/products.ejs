@@ -14,9 +14,9 @@
         <p>Precio: <%= allProducts[i].Price %></p>
         <p>Color: <%= allProducts[i].color %></p>
         <% if (allProducts[i].category) { %>
-          <p>Categoría: <%= allProducts[i].category.NameCategory %></p>
+        <p>Categoría: <%= allProducts[i].category.NameCategory %></p>
         <% } else { %>
-          <p>Categoría: Sin categoría</p>
+        <p>Categoría: Sin categoría</p>
         <% } %>
         <p>Descripción: <%= allProducts[i].DescriptionProduct %></p>
         <form action="/product/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">

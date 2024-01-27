@@ -38,7 +38,7 @@ const processLogin = async (req, res) => {
           req.session.userLogged = userWithoutPassword;
 
           if (remember) {
-            res.cookie("userEmail", email, { maxAge: 1000 * 60 * 20 });
+            res.cookie("userEmail", email, { maxAge: 1000 * 60 * 30 });
           }
 
           return res.redirect("profile");

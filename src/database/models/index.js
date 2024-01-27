@@ -25,13 +25,14 @@ const ShoppingCartModel = require("./ShoppingCart")(
   sequelize,
   Sequelize.DataTypes
 );
-
 const CategoryModel = require("./Category")(sequelize, Sequelize.DataTypes);
+const FranchiseModel = require("./Franchise")(sequelize, Sequelize.DataTypes);
 
 db["User"] = UserModel;
 db["Product"] = ProductModel;
 db["ShoppingCart"] = ShoppingCartModel;
 db["Category"] = CategoryModel;
+db["Franchise"] = FranchiseModel;
 
 UserModel.hasMany(ShoppingCartModel, { foreignKey: "IDUser" });
 ShoppingCartModel.belongsTo(UserModel, { foreignKey: "IDUser" });
