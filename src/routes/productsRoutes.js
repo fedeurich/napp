@@ -103,7 +103,7 @@ router.get("/productDetail", (req, res) => {
 });
 
 //Ruta para ver todos los productos
-router.get("/products", getAllProducts);
+router.get("/prductMenu", getAllProducts);
 router.get("/product/:id", getProductById);
 
 //Rutas para crear productos
@@ -148,7 +148,7 @@ router.get("/api/products", async (req, res) => {
             },
           ]
         : [],
-      detail: `/api/products/${product.IDProduct}`,
+      detail: `/api/product/${product.IDProduct}`,
     }));
 
     const categoryCounts = await Category.findAll({
@@ -183,7 +183,7 @@ router.get("/api/products", async (req, res) => {
 });
 
 // Obtener un producto por ID
-router.get("/api/products/:id", async (req, res) => {
+router.get("/api/product/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
