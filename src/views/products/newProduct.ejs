@@ -54,7 +54,7 @@
         <% } %>
 
         <label for="description">Descripción: </label>
-        <input type="text" id="description" name="description" class="control <%= locals.errors && errors.description ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.description : '' %>">
+        <textarea type="text" id="description" name="description" class="control <%= locals.errors && errors.description ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.description : '' %>"></textarea>
         <% if(locals.errors && errors.description) { %>
         <div class="text-danger">
           <%= errors.description.msg  %>
