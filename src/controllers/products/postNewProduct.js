@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { Product } = require('../../database/models');  // Asegúrate de importar el modelo Product desde el archivo correcto
+const { Product } = require("../../database/models");
 const path = require("path");
 const fs = require("fs");
 
@@ -8,25 +8,33 @@ const postNewProduct = async (req, res) => {
 
   if (errors.isEmpty()) {
     try {
-      const { productName, price, description, category, color, IDType } = req.body;
+      const { productName, price, description, category, franchise } = req.body;
+      const image = req.file.filename;
 
-      // Resto del código...
+      if (!category || !franchise) {
+        return res
+          .status(400)
+          .json({ error: "Category y Franchise son obligatorios" });
+      }
 
-      // Crea un nuevo producto utilizando Sequelize
+      if (!req.file) {
+        throw new Error("Tienes que subir una imagen");
+      }
+
       const newProduct = await Product.create({
-        IDType,
+        IDCategory: parseInt(category),
+        IDFranchise: parseInt(franchise),
         NameProduct: productName,
-        Price: price,
+        Price: parseFloat(price),
         DescriptionProduct: description,
-        IDCategory: category,
-        // Resto de las propiedades...
+        Image: image,
       });
 
-      // Resto del código...
-
+      console.log("Producto creado:", newProduct);
+      res.redirect("/products");
     } catch (error) {
-      console.error('Error al crear un nuevo producto:', error);
-      res.status(500).send('Error interno del servidor');
+      console.error("Error al crear un nuevo producto:", error);
+      res.status(500).send("Error interno del servidor");
     }
   } else {
     res.render(path.join(__dirname, "../../views/products/newProduct.ejs"), {

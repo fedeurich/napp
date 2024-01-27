@@ -22,7 +22,7 @@ server.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 2,
+      maxAge: 1000 * 60 * 60,
     },
   })
 );

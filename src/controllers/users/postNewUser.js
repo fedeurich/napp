@@ -51,7 +51,7 @@ const postNewUser = async (req, res) => {
     });
 
     console.log("Usuario creado:", newUser);
-    res.redirect("/users"); // Puedes redirigir a la página que desees después de crear el usuario
+    res.redirect("/users");
   } catch (error) {
     console.error("Error en el controlador postNewUser:", error);
     res.status(500).json({ error: "Error interno del servidor" });
