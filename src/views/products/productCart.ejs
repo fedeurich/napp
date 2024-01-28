@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
 <link rel="stylesheet" href="/css/productCart.css" />
+<script src="/js/productCart.js"></script>
 <title>Carrito de compras</title>
 </head>
 
@@ -10,58 +11,25 @@
     <h2>PRODUCTOS EN SU CARRITO</h2>
     <div class="contenedor-carrito">
       <section class="tarjetas-de-productos">
+        <% userShoppingCart.forEach(cartItem => { %>
         <article class="producto">
-          <h4 class="nombre">Nombre del producto</h4>
+          <h4 class="nombre"><%= cartItem.product.NameProduct %></h4>
           <div class="tarjeta">
-            <img src="/img/img6.jpg" alt="" class="imagen-producto" />
-            <p class="precio">$ 000</p>
-            <p class="cantidad">+ 00 -</p>
-            <p class="subtotal">$ 000</p>
+            <img src="/img/<%= cartItem.product.Image %>" alt="" class="imagen-producto" />
+            <p class="precio">$ <%= cartItem.UnitPrice %></p>
+            <p class="cantidad">+ <%= cartItem.Quantity %> -</p>
+            <p class="subtotal">$ <%= cartItem.UnitPrice * cartItem.Quantity %></p>
           </div>
         </article>
-        <article class="producto">
-          <h4 class="nombre">Nombre del producto</h4>
-          <div class="tarjeta">
-            <img src="/img/img5.jpg" alt="" class="imagen-producto" />
-            <p class="precio">$ 000</p>
-            <p class="cantidad">+ 00 -</p>
-            <p class="subtotal">$ 000</p>
-          </div>
-        </article>
-        <article class="producto">
-          <h4 class="nombre">Nombre del producto</h4>
-          <div class="tarjeta">
-            <img src="/img/img1.jpg" alt="" class="imagen-producto" />
-            <p class="precio">$ 000</p>
-            <p class="cantidad">+ 00 -</p>
-            <p class="subtotal">$ 000</p>
-          </div>
-        </article>
-        <article class="producto">
-          <h4 class="nombre">Nombre del producto</h4>
-          <div class="tarjeta">
-            <img src="/img/img4.jpg" alt="" class="imagen-producto" />
-            <p class="precio">$ 000</p>
-            <p class="cantidad">+ 00 -</p>
-            <p class="subtotal">$ 000</p>
-          </div>
-        </article>
-        <article class="producto">
-          <h4 class="nombre">Nombre del producto</h4>
-          <div class="tarjeta">
-            <img src="/img/img3.jpg" alt="" class="imagen-producto" />
-            <p class="precio">$ 000</p>
-            <p class="cantidad">+ 00 -</p>
-            <p class="subtotal">$ 000</p>
-          </div>
-        </article>
+        <% }) %>
       </section>
       <section class="total">
         <div class="tarjeta">
           <h4>Resumen de su compra</h4>
-          <p class="cantProductos">Cantidad de productos: $ 00</p>
+          <p class="cantProductos">Cantidad de productos: <%= userShoppingCart.length %></p>
+          <!-- Logica de calculo de en -->
           <p class="envio">Envio: $ 000</p>
-          <h4>Total del carrito : $ 000</h4>
+          <h4>Total del carrito : $ <%= calcularTotal(userShoppingCart) %></h4>
         </div>
         <button class="seguir" type="submit">Seguir comprando</button>
         <button class="finalizar" type="submit">Finalizar compra</button>

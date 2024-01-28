@@ -2,11 +2,7 @@ const { User } = require("../database/models");
 const path = require("path");
 
 const isUser = (req, res, next) => {
-  res.locals.isLogged
-    ? next()
-    : res.render(path.join(__dirname, "../views/404NotFound"), {
-        message: "Debes registrarte para ingresar",
-      });
+  res.locals.isLogged ? next() : res.redirect("/login");
 };
 
 const guestMiddleware = (req, res, next) => {

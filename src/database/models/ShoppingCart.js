@@ -1,4 +1,3 @@
-// models/ShoppingCart.js
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
@@ -32,13 +31,11 @@ module.exports = (sequelize) => {
       },
     },
     {
-      // Otras opciones del modelo
-      tableName: "ShoppingCart", // Puedes especificar el nombre de la tabla si es diferente al nombre del modelo en plural
-      timestamps: false, // Si no tienes campos createdAt y updatedAt en tu tabla
+      tableName: "ShoppingCart",
+      timestamps: false,
     }
   );
 
-  // Agregar asociaciones con otros modelos si es necesario
   ShoppingCart.belongsTo(sequelize.models.User, {
     foreignKey: "IDUser",
     as: "user",

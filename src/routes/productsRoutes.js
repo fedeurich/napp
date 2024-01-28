@@ -1,14 +1,14 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const { Op } = require("sequelize");
+const { sequelize, Category, Product } = require("../database/models");
+const { body } = require("express-validator");
 const {
   isUser,
   guestMiddleware,
   authMiddleware,
 } = require("../middlewares/adminMiddlewares");
-const { Op } = require("sequelize");
-const { sequelize, Category, Product } = require("../database/models");
-const { body } = require("express-validator");
 
 const router = express.Router();
 
@@ -89,25 +89,11 @@ const {
   postNewProduct,
   deleteProduct,
   confirmModifyProduct,
+  viewShoppingCart,
 } = require("../controllers/products");
 
 //Ruta del carrito de compra
-router.get("/productCart", (req, res) => {
-  const ruta = path.join(__dirname, "../views/products/productCart.ejs");
-  res.render(ruta);
-});
-
-//Ruta del menu de porductos
-// router.get("/productMenu", (req, res) => {
-//   const ruta = path.resolve(__dirname, "../views/products/productMenu.ejs");
-//   res.render(ruta);
-// });
-
-//Ruta del detalle del producto
-// router.get("/productDetail", (req, res) => {
-//   const ruta = path.resolve(__dirname, "../views/products/productDetail.ejs");
-//   res.render(ruta);
-// });
+router.get("/productCart", isUser, viewShoppingCart);
 
 //Ruta para ver todos los productos
 router.get("/products", getAllProducts);
