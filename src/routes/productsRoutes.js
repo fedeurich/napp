@@ -35,27 +35,34 @@ const validationsForm = [
     .withMessage("Debe ingresar un nombre")
     .bail()
     .isString()
-    .withMessage("Tienes que ingresar un nombre valido")
+    .withMessage("Tienes que ingresar un nombre válido")
     .bail()
     .isLength({ min: 5, max: 20 })
     .withMessage("Tiene que tener entre 5 y 20 caracteres"),
+
   body("price")
     .trim()
     .notEmpty()
-    .withMessage("El precio no puede estar vacio")
+    .withMessage("El precio no puede estar vacío")
     .bail()
     .isNumeric()
-    .withMessage("Debe ingresar un numero"),
+    .withMessage("Debe ingresar un número"),
+
   body("description")
     .trim()
     .notEmpty()
-    .withMessage("Debe ingresar una descripcion")
+    .withMessage("Debe ingresar una descripción")
     .bail()
     .isString()
     .withMessage("Tiene que ser un texto")
     .bail()
     .isLength({ max: 40 })
-    .withMessage("No puede ser mayo a 40"),
+    .withMessage("No puede ser mayor a 40 caracteres"),
+
+  body("category").notEmpty().withMessage("Debe seleccionar una categoría"),
+
+  body("franchise").notEmpty().withMessage("Debe seleccionar una franquicia"),
+
   body("image").custom((value, { req }) => {
     let file = req.file;
     let acceptedExtensions = [".jpg", ".png"];
@@ -91,19 +98,19 @@ router.get("/productCart", (req, res) => {
 });
 
 //Ruta del menu de porductos
-router.get("/productMenu", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/products/productMenu.ejs");
-  res.render(ruta);
-});
+// router.get("/productMenu", (req, res) => {
+//   const ruta = path.resolve(__dirname, "../views/products/productMenu.ejs");
+//   res.render(ruta);
+// });
 
 //Ruta del detalle del producto
-router.get("/productDetail", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/products/productDetail.ejs");
-  res.render(ruta);
-});
+// router.get("/productDetail", (req, res) => {
+//   const ruta = path.resolve(__dirname, "../views/products/productDetail.ejs");
+//   res.render(ruta);
+// });
 
 //Ruta para ver todos los productos
-router.get("/prductMenu", getAllProducts);
+router.get("/products", getAllProducts);
 router.get("/product/:id", getProductById);
 
 //Rutas para crear productos

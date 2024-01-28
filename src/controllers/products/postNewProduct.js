@@ -1,13 +1,18 @@
 const { validationResult } = require("express-validator");
-const { Product } = require("../../database/models");
+const { Product, Category, Franchise } = require("../../database/models");
 const path = require("path");
 const fs = require("fs");
 
 const postNewProduct = async (req, res) => {
+  console.log("Datos del formulario:", req.body);
   const errors = validationResult(req);
 
-  if (errors.isEmpty()) {
-    try {
+  try {
+    const categories = await Category.findAll();
+    const franchises = await Franchise.findAll();
+
+    if (errors.isEmpty()) {
+      console.log("entre");
       const { productName, price, description, category, franchise } = req.body;
       const image = req.file.filename;
 
@@ -32,15 +37,18 @@ const postNewProduct = async (req, res) => {
 
       console.log("Producto creado:", newProduct);
       res.redirect("/products");
-    } catch (error) {
-      console.error("Error al crear un nuevo producto:", error);
-      res.status(500).send("Error interno del servidor");
+    } else {
+      const ruta = path.join(__dirname, "../../views/products/newProduct.ejs");
+      res.render(ruta, {
+        categories,
+        franchises,
+        errors: errors.mapped(),
+        oldData: req.body,
+      });
     }
-  } else {
-    res.render(path.join(__dirname, "../../views/products/newProduct.ejs"), {
-      errors: errors.mapped(),
-      oldData: req.body,
-    });
+  } catch (error) {
+    console.error("Error al manejar el formulario:", error);
+    res.status(500).send("Error interno del servidor");
   }
 };
 

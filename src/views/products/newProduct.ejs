@@ -25,12 +25,14 @@
           <% for(let i = 0; i < categories.length; i++) { %>
           <option value="<%= categories[i].IDCategory %>" <%= locals.oldData && locals.oldData.IDCategory == categories[i].IDCategory ? 'selected' : '' %>><%= categories[i].NameCategory %></option>
           <% } %>
+
         </select>
         <% if(locals.errors && errors.IDCategory) { %>
         <div class="text-danger">
           <%= errors.IDCategory.msg  %>
         </div>
         <% } %>
+
 
         <!-- Sección de Franquicia -->
         <label for="franchise">Franquicia:</label>
