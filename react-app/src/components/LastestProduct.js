@@ -43,7 +43,7 @@ const LatestProduct = () => {
               <img
                 src={`http://localhost:3031/img/products/${latestProduct.Image}`}
                 alt={latestProduct.NameProduct}
-                className="img-fluid"
+                className="img-fluid col-md-4"
               />
             )}
             {/* Agrega más detalles según tus necesidades */}

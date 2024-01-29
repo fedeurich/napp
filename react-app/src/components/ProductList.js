@@ -22,7 +22,7 @@ const ProductList = () => {
       ) : (
         <div className="row">
           {products.map((product) => (
-            <div key={product.IDProduct} className="col-lg-4">
+            <div key={product.IDProduct} className="col-lg-6">
               <div className="card shadow mb-4 ">
                 <div className="card-header py-3">
                   <h5 className="m-0 font-weight-bold text-gray-800">
@@ -44,10 +44,11 @@ const ProductList = () => {
                     Descripción: {product.DescriptionProduct}
                   </p>
                   {/* Muestra la imagen (asegúrate de tener la URL correcta) */}
+
                   <img
                     src={`http://localhost:3031/img/products/${product.Image}`}
                     alt={product.NameProduct}
-                    className="img-fluid rounded "
+                    className="img-fluid rounded col-md-4"
                   />
                 </div>
               </div>
