@@ -3,7 +3,9 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 
 const session = require("express-session");
+const cors = require('cors');
 
+// Agregar cors al middleware
 const path = require("path");
 
 const mainRoutes = require("./routes/mainRoutes.js");
@@ -38,6 +40,8 @@ server.use(express.json());
 server.use(methodOverride("_method"));
 
 server.use(express.static(path.join(__dirname, "../public")));
+
+server.use(cors());
 
 server.use(mainRoutes);
 server.use(userRoutes);
