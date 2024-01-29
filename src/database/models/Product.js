@@ -1,4 +1,3 @@
-// models/Product.js
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
@@ -14,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      IDType: {
+      IDFranchise: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -31,30 +30,30 @@ module.exports = (sequelize) => {
       },
       Image: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {
       tableName: "Product",
       timestamps: false,
+      indexes: [{ unique: false, fields: ["IDCategory"] }],
     }
   );
 
-  // Agrega la asociación con el modelo Category
   Product.associate = function (models) {
     Product.belongsTo(models.Category, {
       as: "Category",
       foreignKey: "IDCategory",
     });
 
-    Product.belongsTo(models.ProductType, {
-      // Agrega esta línea
-      as: "CroductType",
-      foreignKey: "IDType",
+    Product.belongsTo(models.Franchise, {
+      as: "Franchise",
+      foreignKey: "IDFranchise",
     });
   };
+
   Product.findById = async function (productId) {
     return await Product.findByPk(productId);
   };
+
   return Product;
 };

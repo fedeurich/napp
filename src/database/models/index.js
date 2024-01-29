@@ -1,4 +1,3 @@
-// models/index.js
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -27,16 +26,13 @@ const ShoppingCartModel = require("./ShoppingCart")(
   Sequelize.DataTypes
 );
 const CategoryModel = require("./Category")(sequelize, Sequelize.DataTypes);
-const ProductTypeModel = require("./ProductType")(
-  sequelize,
-  Sequelize.DataTypes
-); // Agrega esta línea
+const FranchiseModel = require("./Franchise")(sequelize, Sequelize.DataTypes);
 
 db["User"] = UserModel;
 db["Product"] = ProductModel;
 db["ShoppingCart"] = ShoppingCartModel;
 db["Category"] = CategoryModel;
-db["ProductType"] = ProductTypeModel; // Agrega esta línea
+db["Franchise"] = FranchiseModel;
 
 UserModel.hasMany(ShoppingCartModel, { foreignKey: "IDUser" });
 ShoppingCartModel.belongsTo(UserModel, { foreignKey: "IDUser" });

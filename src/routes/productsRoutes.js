@@ -1,15 +1,14 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
-
-
+const { Op } = require("sequelize");
+const { sequelize, Category, Product } = require("../database/models");
+const { body } = require("express-validator");
 const {
   isUser,
   guestMiddleware,
   authMiddleware,
 } = require("../middlewares/adminMiddlewares");
-const { sequelize, Category, Product } = require("../database/models");
-const { body } = require("express-validator");
 
 const router = express.Router();
 
@@ -36,27 +35,34 @@ const validationsForm = [
     .withMessage("Debe ingresar un nombre")
     .bail()
     .isString()
-    .withMessage("Tienes que ingresar un nombre valido")
+    .withMessage("Tienes que ingresar un nombre válido")
     .bail()
     .isLength({ min: 5, max: 20 })
     .withMessage("Tiene que tener entre 5 y 20 caracteres"),
+
   body("price")
     .trim()
     .notEmpty()
-    .withMessage("El precio no puede estar vacio")
+    .withMessage("El precio no puede estar vacío")
     .bail()
     .isNumeric()
-    .withMessage("Debe ingresar un numero"),
+    .withMessage("Debe ingresar un número"),
+
   body("description")
     .trim()
     .notEmpty()
-    .withMessage("Debe ingresar una descripcion")
+    .withMessage("Debe ingresar una descripción")
     .bail()
     .isString()
     .withMessage("Tiene que ser un texto")
     .bail()
     .isLength({ max: 40 })
-    .withMessage("No puede ser mayo a 40"),
+    .withMessage("No puede ser mayor a 40 caracteres"),
+
+  body("category").notEmpty().withMessage("Debe seleccionar una categoría"),
+
+  body("franchise").notEmpty().withMessage("Debe seleccionar una franquicia"),
+
   body("image").custom((value, { req }) => {
     let file = req.file;
     let acceptedExtensions = [".jpg", ".png"];
@@ -83,25 +89,11 @@ const {
   postNewProduct,
   deleteProduct,
   confirmModifyProduct,
+  viewShoppingCart,
 } = require("../controllers/products");
 
 //Ruta del carrito de compra
-router.get("/productCart", (req, res) => {
-  const ruta = path.join(__dirname, "../views/products/productCart.ejs");
-  res.render(ruta);
-});
-
-//Ruta del menu de porductos
-router.get("/productMenu", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/products/productMenu.ejs");
-  res.render(ruta);
-});
-
-//Ruta del detalle del producto
-router.get("/productDetail", (req, res) => {
-  const ruta = path.resolve(__dirname, "../views/products/productDetail.ejs");
-  res.render(ruta);
-});
+router.get("/productCart", isUser, viewShoppingCart);
 
 //Ruta para ver todos los productos
 router.get("/products", getAllProducts);
@@ -128,7 +120,7 @@ router.delete("/product/delete/:id", isUser, deleteProduct);
 router.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: "Category", // Incluye la asociación con la categoría
+      include: "category", // Incluye la asociación con la categoría
     });
 
     const countByCategory = {}; // Cambiado el nombre de la variable
@@ -158,8 +150,7 @@ router.get("/api/products", async (req, res) => {
 
     const count = products.length;
 
-    const obj = { count, countByCategory, products };
-
+    const obj = { count, countByCategory, products: mappedProducts };
     res.json(obj);
   } catch (error) {
     console.error("Error al obtener productos:", error);
@@ -168,7 +159,7 @@ router.get("/api/products", async (req, res) => {
 });
 
 // Obtener un producto por ID
-router.get("/api/products/:id", async (req, res) => {
+router.get("/api/product/:id", async (req, res) => {
   const { id } = req.params;
 
   try {

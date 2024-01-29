@@ -2,11 +2,7 @@ const { User } = require("../database/models");
 const path = require("path");
 
 const isUser = (req, res, next) => {
-  res.locals.isLogged
-    ? next()
-    : res.render(path.join(__dirname, "../views/404NotFound"), {
-        message: "Debes registrarte para ingresar",
-      });
+  res.locals.isLogged ? next() : res.redirect("/login");
 };
 
 const guestMiddleware = (req, res, next) => {
@@ -27,7 +23,7 @@ const userLoggedMiddleware = async (req, res, next) => {
   res.locals.isLogged = false;
 
   try {
-    if (req.cookies && req.session.userLogged) {
+    if (req.cookies) {
       const emailInCookie = req.cookies.userEmail;
       const userFromCookie = await User.findOne({
         where: { email: emailInCookie },

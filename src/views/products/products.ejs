@@ -1,32 +1,32 @@
 <%- include('../partials/head') %>
-<title>Products</title>
+<link rel="stylesheet" href="/css/products.css" />
+<title>Mundo 3D</title>
 </head>
 
 <body>
   <%- include('../partials/header') %>
+
   <main>
-    <h2>Todos los productos en catálogo</h2>
-    <section class="products_container">
-      <% for(let i=0; i < allProducts.length; i++){%>
-      <article class="product_container">
-        <h3>Producto: <%= allProducts[i].NameProduct %></h3>
-        <img src="/img/products/<%= allProducts[i].Image %>" alt="image" width="300px" height="300px">
-        <p>Precio: <%= allProducts[i].Price %></p>
-        <p>Color: <%= allProducts[i].color %></p>
-        <% if (allProducts[i].category) { %>
-          <p>Categoría: <%= allProducts[i].category.NameCategory %></p>
-        <% } else { %>
-          <p>Categoría: Sin categoría</p>
-        <% } %>
-        <p>Descripción: <%= allProducts[i].DescriptionProduct %></p>
-        <form action="/product/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <button type="submit">Borrar</button>
-        </form>
+    <h2><span>NUESTROS PRODUCTOS</span></h2>
+    <section class="contenido_produc">
+      <% for(let i = 0; i < allProducts.length; i++){ %>
+      <article class="contenido">
+        <a href="/product/<%= allProducts[i].IDProduct %>">
+          <div class="imagen">
+            <img src="/img/products/<%= allProducts[i].Image %>" alt="<%= allProducts[i].NameProduct %>">
+          </div>
+          <div class="pie_imagen">
+            <h3 class="info_produc"><%= allProducts[i].NameProduct %></h3>
+            <p class="price">$<%= allProducts[i].Price %></p>
+            <button>Añadir al carrito</button>
+          </div>
+        </a>
       </article>
-      <%}%>
+      <% } %>
     </section>
+    <script src="../carrito.js"></script>
   </main>
+
   <%- include('../partials/footer') %>
 </body>
 

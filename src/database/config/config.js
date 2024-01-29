@@ -10,14 +10,14 @@ module.exports = {
   },
   test: {
     username: "root",
-    password: "password",
+    password: "Jfu36647067",
     database: "database_test",
     host: "127.0.0.1",
     dialect: "mysql",
   },
   production: {
     username: "root",
-    password: "password",
+    password: "Jfu36647067",
     database: "database_production",
     host: "127.0.0.1",
     dialect: "mysql",
