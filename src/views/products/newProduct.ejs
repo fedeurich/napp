@@ -19,7 +19,6 @@
         </div>
         <% } %>
 
-        <!-- Sección de Categoría -->
         <label for="category">Categoría:</label>
         <select id="category" name="category" class="control <%= locals.errors && errors.IDCategory ? 'is-invalid' : '' %>">
           <% for(let i = 0; i < categories.length; i++) { %>
@@ -33,8 +32,6 @@
         </div>
         <% } %>
 
-
-        <!-- Sección de Franquicia -->
         <label for="franchise">Franquicia:</label>
         <select id="franchise" name="franchise" class="control <%= locals.errors && errors.IDFranchise ? 'is-invalid' : '' %>">
           <% for(let i = 0; i < franchises.length; i++) { %>
