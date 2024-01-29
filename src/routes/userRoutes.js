@@ -88,7 +88,7 @@ const {
 const { User } = require("../database/models");
 
 //Ruta para ver todos los usuarios
-router.get("/users", getAllUsers);
+router.get("/users", isUser, getAllUsers);
 
 //Ruta del register
 router.get("/register", guestMiddleware, formNewUser);
