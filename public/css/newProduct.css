@@ -1,30 +1,19 @@
-/* Estilos para dispositivos móviles */
+/* Estilos adicionales para dispositivos móviles */
 @media (max-width: 768px) {
   .containerNP {
-    margin-right: 0;
-    margin-left: 0;
-    padding: 15px; /* Aumenta el espaciado interno para dispositivos móviles */
-    max-width: 100%; /* Establece el ancho máximo al 100% para que se ajuste al ancho de la pantalla */
+    padding: 15px;
+    max-width: 100%;
     min-width: 50%;
   }
 }
 
-/* Estilos para tablets */
+/* Estilos adicionales para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   .containerNP {
-    margin-right: 0;
-    margin-left: 0;
-    padding: 20px; /* Aumenta el espaciado interno para tablets */
-    max-width: 100%; /* Establece el ancho máximo al 100% para que se ajuste al ancho de la pantalla */
+    padding: 20px;
+    max-width: 100%;
     min-width: 50%;
   }
-}
-h1 {
-  font-size: 30px;
-  margin-bottom: 30px;
-  border-radius: 15px;
-  padding: 5px;
-  background-color: #007bffd8;
 }
 
 body {
@@ -49,61 +38,59 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
 main {
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
-  /*align-items: center;/*/
-
-  height: 70vh;
+  align-items: center;
 }
+
 form {
   display: flex;
   flex-direction: column;
 }
 
 .containerNP {
-  border-radius: 4px;
-  background-color: aliceblue;
+  border-radius: 8px;
+  background-color: #ffffff;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, Helvetica, sans-serif;
   margin: auto;
+  text-align: center;
 }
-#newProduct h1 {
+
+.containerNP h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-#newProduct div {
-  margin-bottom: 15px;
-}
-
-#newProduct label {
-  display: inline-block;
-  width: 120px;
-  text-align: left;
-  margin-right: 10px;
+.containerNP label {
+  display: block;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
-#newProduct input[type="text"] {
+.containerNP select,
+.containerNP input,
+.containerNP textarea {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  text-align: left;
+  border-radius: 4px;
 }
 
-#newProduct button {
-  display: inline-block;
-  margin-top: 15px;
-  background-color: #007bff;
+.containerNP button {
+  background-color: #000;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 3px;
+  margin-bottom: 5px;
 }
 
-#newProduct button:hover {
-  background-color: #0056b3;
+.containerNP button:hover {
+  background-color: #333;
 }

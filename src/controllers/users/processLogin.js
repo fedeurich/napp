@@ -74,7 +74,6 @@ const processLogin = async (req, res) => {
         });
       }
     } else {
-      // Errores de validación
       return res.render(path.join(__dirname, "../../views/users/login.ejs"), {
         errors: errors.mapped(),
         oldData: req.body,

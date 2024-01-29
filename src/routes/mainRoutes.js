@@ -11,9 +11,8 @@ router.get("/", (req, res) => {
 
 // Ruta para la página "About Us"
 router.get("/aboutUs", (req, res) => {
-  const ruta = path.join(__dirname, "../views/aboutUs"); // Asegúrate de tener la vista en la ruta correcta
+  const ruta = path.join(__dirname, "../views/aboutUs.ejs");
   res.render(ruta);
 });
-
 
 module.exports = router;
