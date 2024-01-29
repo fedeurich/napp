@@ -40,7 +40,7 @@ const ProductList = () => {
                 {/* Muestra la imagen (asegúrate de tener la URL correcta) */}
                 
                 <img
-  src={`http://localhost:3031/img/products/1d5c6c93-60a6-46e6-9529-6cff406fd179_Figura Thor.jpg`}
+  src={`http://localhost:3031/img/products/${product.Image}`}
   alt={product.NameProduct}
   className="img-fluid rounded col-md-4"
 />
