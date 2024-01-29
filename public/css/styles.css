@@ -9,7 +9,6 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-
   min-height: 100vh;
 }
 
@@ -64,6 +63,46 @@ nav.barra-navegacion a {
   text-decoration: none;
 }
 
+.nav-item {
+  position: relative;
+}
+
+.perfil-dropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  list-style: none;
+  padding: 10px;
+  display: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.perfil-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Agrega esta regla para ocultar el menú desplegable cuando no está en uso */
+.perfil-dropdown:not(:hover) .dropdown-menu {
+  display: none;
+}
+
 /* Estilos del contenido principal */
 main {
   width: 100%;
@@ -86,8 +125,8 @@ h2 {
   font-size: 15px;
   margin-bottom: 60px;
 }
-/* Estilos de los productosa de muestra de la section */
 
+/* Estilos de los productos de muestra de la section */
 .containerSectionIndex {
   display: flex;
   flex-wrap: wrap;
@@ -126,17 +165,20 @@ footer .containerFooter {
   justify-content: center;
   font-size: 16px;
 }
+
 footer .containerSections {
   align-items: left;
   justify-content: center;
   display: block;
 }
+
 .containerSections h4 {
   text-align: center;
   color: rgb(46, 72, 156);
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .containerSections ul li::marker {
   color: rgb(46, 72, 156);
 }
@@ -147,14 +189,17 @@ footer .containerSections {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 footer .containerCopyright {
   display: flex;
   justify-content: flex-start;
   font-size: 14px;
 }
+
 .containerCopyRedes p {
   font-size: 14px;
 }
+
 footer .containerRedes {
   display: flex;
   justify-content: flex-end;
@@ -220,6 +265,7 @@ main .contenedor {
   footer {
     padding: 5px;
   }
+
   footer p {
     margin: auto;
     font-size: 10px;
@@ -242,6 +288,7 @@ main .contenedor {
   footer {
     font-size: 16px;
   }
+
   footer .containerSections {
     margin: 50px;
   }
