@@ -120,21 +120,22 @@ router.delete("/product/delete/:id", isUser, deleteProduct);
 router.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: "category", // Incluye la asociación con la categoría
+      include: {
+        model: Category,
+        as: "Category",
+      },
     });
 
-    const countByCategory = {}; // Cambiado el nombre de la variable
+    const countByCategory = {};
 
-    products.forEach((product) => {
-      const categoryName = product.category
-        ? product.category.NameCategory
-        : "Sin categoría";
+    // Mapear productos para incluir solo la información necesaria de Category
+    const mappedProducts = products.map((product) => {
+      const categoryName = product.Category ? product.Category.NameCategory : "Sin categoría";
 
-      // Agregamos "IDCategory" e "IDType" al objeto "category"
-      const categoryInfo = product.category
+      const categoryInfo = product.Category
         ? {
-            IDCategory: product.category.IDCategory,
-            IDType: product.category.IDType,
+            IDCategory: product.Category.IDCategory,
+            IDType: product.Category.IDType,
           }
         : null;
 
@@ -146,6 +147,16 @@ router.get("/api/products", async (req, res) => {
       } else {
         countByCategory[categoryName].count++;
       }
+
+      // Retornar solo la información necesaria del producto
+      return {
+        IDProduct: product.IDProduct,
+        NameProduct: product.NameProduct,
+        Price: product.Price,
+        DescriptionProduct: product.DescriptionProduct,
+        Image: product.Image,
+        Category: categoryName, // Cambiar de product.NameCategory a categoryName
+      };
     });
 
     const count = products.length;
@@ -175,5 +186,38 @@ router.get("/api/product/:id", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
+// Obtener el último producto agregado
+router.get("/api/products/latest", async (req, res) => {
+  try {
+    const latestProduct = await Product.findOne({
+      include: {
+        model: Category,
+        as: "Category",
+      },
+      order: [['IDProduct', 'DESC']], // Ordena por IDProduct de forma descendente para obtener el último
+    });
+
+    if (!latestProduct) {
+      return res.status(404).json({ error: "No hay productos disponibles." });
+    }
+
+    // Mapear la información necesaria
+    const mappedLatestProduct = {
+      IDProduct: latestProduct.IDProduct,
+      NameProduct: latestProduct.NameProduct,
+      Price: latestProduct.Price,
+      DescriptionProduct: latestProduct.DescriptionProduct,
+      Image: latestProduct.Image,
+      Category: latestProduct.Category ? latestProduct.Category.NameCategory : "Sin categoría",
+    };
+
+    res.json(mappedLatestProduct);
+  } catch (error) {
+    console.error("Error al obtener el último producto:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
 
 module.exports = router;

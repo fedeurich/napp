@@ -22,21 +22,32 @@ const ProductList = () => {
       ) : (
         <div className="row">
           {products.map(product => (
-            <div key={product.IDProduct} className="col-lg-6 mb-4">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3">
-                  <h5 className="m-0 font-weight-bold text-gray-800">{product.NameProduct}</h5>
-                </div>
-                <div className="card-body">
-                  <p className="h5 mb-0 font-weight-bold text-gray-800">ID: {product.IDProduct}</p>
-                  <p className="h5 mb-0 font-weight-bold text-gray-800">Precio: ${product.Price}</p>
-                  <p className="h5 mb-0 font-weight-bold text-gray-800">Categoria: {product.Category.NameCategory}</p>
-
-                  {/* Agrega más detalles según tus necesidades */}
-                </div>
+          <div key={product.IDProduct} className="col-lg-4">
+            <div className="card shadow mb-4 ">
+              <div className="card-header py-3">
+                <h5 className="m-0 font-weight-bold text-gray-800">{product.NameProduct}</h5>
+              </div>
+              <div className="card-body">
+                <p className="h5 mb-0 font-weight-bold text-gray-800">ID: {product.IDProduct}</p>
+                <p className="h5 mb-0 font-weight-bold text-gray-800">Precio: ${product.Price}</p>
+                {/* Accede al nombre de la categoría correctamente */}
+                <p className="h5 mb-0 font-weight-bold text-gray-800">
+                  Categoría: {product.Category|| 'Sin categoría'}
+                </p>
+                <p className="h5 mb-0 font-weight-bold text-gray-800">
+                  Descripción: {product.DescriptionProduct}
+                </p>
+                {/* Muestra la imagen (asegúrate de tener la URL correcta) */}
+                <img
+                  src={`http://localhost:3031/img/api/${product.Image}`}
+                  alt={product.NameProduct}
+                  className="img-fluid rounded"
+                />
               </div>
             </div>
-          ))}
+          </div>
+        ))}
+
         </div>
       )}
     </div>

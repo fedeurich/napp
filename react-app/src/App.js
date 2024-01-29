@@ -12,6 +12,7 @@ import {BrowserRouter, Link, Route } from "react-router-dom"
 
 import ProductList from './components/ProductList';
 import CategoryList from './components/CategoryList';
+import LatestProduct from './components/LastestProduct';
 
 
 
@@ -22,9 +23,6 @@ function App() {
     <div>
       <h2>Mundo-3D Dashboard</h2>
       <ContentWrapper/>
-      <Footer/>
-      <CategoryList/>
-
     </div>
       </header>
     </div>

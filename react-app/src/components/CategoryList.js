@@ -13,7 +13,7 @@ const CategoryList = () => {
         setLoading(false);
 
         // Obtener categorías únicas
-        const categoriesSet = new Set(data.products.map(product => product.Category.NameCategory));
+        const categoriesSet = new Set(data.products.map(product => product.Category));
         setUniqueCategories(Array.from(categoriesSet));
       })
       .catch(error => console.error('Error fetching products:', error));
