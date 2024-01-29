@@ -31,9 +31,9 @@ const LatestProduct = () => {
             <p className="h5 mb-0 font-weight-bold text-gray-800">Categoría: {latestProduct.Category}</p>
             {latestProduct.Image && (
               <img
-                src={`http://localhost:3031/public/img/products/${latestProduct.Image}`}
+                src={`http://localhost:3031/img/products/${latestProduct.Image}`}
                 alt={latestProduct.NameProduct}
-                className="img-fluid"
+                className="img-fluid col-md-4"
               />
             )}
             {/* Agrega más detalles según tus necesidades */}
