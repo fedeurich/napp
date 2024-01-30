@@ -1,29 +1,27 @@
 <%- include('../partials/head') %>
 
 <link rel="stylesheet" href="/css/productDetail.css" />
-<title>Document</title>
+<title>Detalles del Producto</title>
 </head>
 
 <body>
 
   <%- include('../partials/header') %>
 
-  <h2 class="containerTitle">Nombre del Producto</h2>
+  <h2 class="containerTitle">Detalles del Producto</h2>
 
   <main class="containerMainProductDetail">
-
     <div class="containerCardProducto">
-      <img src="/img/img2.jpg" alt="imagen del producto">
+      <img src="/img/products/<%= product.Image %>" alt="<%= product.NameProduct %>">
       <section class="containerSectionDetalle">
-        <h3>Precio Producto</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam mollitia laudantium facere ratione excepturi ipsam nam voluptas, incidunt fuga facilis ipsum, dolore ex harum quae.</p>
-        <a href="\productCart"><button>COMPRAR</button></a>
-        <a href="\productCart"><button>AGREGAR AL CARRITO</button></a>
+        <h3><%= product.NameProduct %></h3>
+        <p>Precio: $<%= product.Price %></p>
+        <p><%= product.DescriptionProduct %></p>
+        <a href="/productCart"><button>COMPRAR</button></a>
+        <a href="/productCart"><button>AGREGAR AL CARRITO</button></a>
       </section>
     </div>
-
   </main>
-
 
   <%- include('../partials/footer') %>
 </body>

@@ -1,6 +1,8 @@
+const { User } = require("../database/models");
+const path = require("path");
+
 const isUser = (req, res, next) => {
-  const isUser = true;
-  isUser ? next() : res.send("Debe registrarse para poder acceder");
+  res.locals.isLogged ? next() : res.redirect("/login");
 };
 
 const guestMiddleware = (req, res, next) => {
@@ -17,18 +19,25 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
-const userLoggedMiddleware = (req, res, next) => {
+const userLoggedMiddleware = async (req, res, next) => {
   res.locals.isLogged = false;
 
-  // Requierela utilizacion de models
-  // const emailInCookie = req.cookies.userEmail;
-  // const userFromCookie = User.findByField("email", emailInCookie);
+  try {
+    if (req.cookies) {
+      const emailInCookie = req.cookies.userEmail;
+      const userFromCookie = await User.findOne({
+        where: { email: emailInCookie },
+      });
 
-  // if (userFromCookie) {
-  //   req.session.userLogged = userFromCookie;
-  // }
+      if (userFromCookie) {
+        res.locals.userLogged = userFromCookie;
+      }
+    }
+  } catch (error) {
+    console.error("Error al buscar usuario en la base de datos:", error);
+  }
 
-  if (req.session && req.session.userLogged) {
+  if (req.session.userLogged) {
     res.locals.isLogged = true;
     res.locals.userLogged = req.session.userLogged;
   }

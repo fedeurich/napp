@@ -1,18 +1,23 @@
-const products = require("../../database/products.json");
+const { Product } = require("../../database/models");
 const path = require("path");
 
-const getProductById = (req, res) => {
-  const { id } = req.params;
+const getProductById = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await Product.findByPk(productId);
 
-  const product = products.find((prod) => prod._id == id);
+    if (!product) {
+      return res.render(path.join(__dirname, "../../views/404NotFound"), {
+        message: "Product not found",
+      });
+    }
 
-  if (!product) {
-    ruta = path.join(__dirname, "../../views/404notfound");
-    return res.render(ruta, { message: "Product not found" });
+    const ruta = path.join(__dirname, "../../views/products/productDetail.ejs");
+    res.render(ruta, { product });
+  } catch (error) {
+    console.error("Error al obtener detalles del producto:", error);
+    res.status(500).send("Error interno del servidor");
   }
-
-  const form = path.join(__dirname, "../../views/products/product.ejs");
-  res.render(form, { product: product });
 };
 
 module.exports = getProductById;

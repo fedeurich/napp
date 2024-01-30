@@ -4,6 +4,7 @@ const formNewProduct = require("./formNewProduct");
 const postNewProduct = require("./postNewProduct");
 const deleteProduct = require("./deleteProduct");
 const confirmModifyProduct = require("./confirmModifyProduct");
+const viewShoppingCart = require("./viewShoppingCart");
 
 module.exports = {
   getAllProducts,
@@ -12,4 +13,5 @@ module.exports = {
   deleteProduct,
   getProductById,
   confirmModifyProduct,
+  viewShoppingCart,
 };

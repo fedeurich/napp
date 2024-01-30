@@ -85,9 +85,10 @@ const {
   userProfile,
   logout,
 } = require("../controllers/users");
+const { User } = require("../database/models");
 
 //Ruta para ver todos los usuarios
-router.get("/users", getAllUsers);
+router.get("/users", isUser, getAllUsers);
 
 //Ruta del register
 router.get("/register", guestMiddleware, formNewUser);
@@ -102,20 +103,63 @@ router.post(
 
 //Ruta de login
 router.get("/login", guestMiddleware, loginUsers);
-
 //Proceso de login
 router.post("/login", processLogin);
+
+//Ruta del perfil del usuario
+router.get("/profile/", isUser, userProfile);
+
+//Ruta para buscar por ID
+router.get("/user/:id", isUser, getUserById);
 
 //Ruta para borrar un usuario
 router.delete("/users/delete/:id", isUser, deleteUser);
 
-//Ruta para buscar por ID
-router.get("/user/:id", getUserById);
-
-//Ruta del perfil del usuario
-router.get("/profile/", authMiddleware, userProfile);
-
 //Cerrar sesion
 router.get("/logout", logout);
+
+// ************* API ******************
+
+// Ruta para ver todos los usuarios
+router.get("/api/users", async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+
+    const usersWithoutPassword = allUsers.map((user) => {
+      const { PasswordUser, ...userWithoutPassword } = user.toJSON();
+      return userWithoutPassword;
+    });
+
+    const count = usersWithoutPassword.length;
+
+    const obj = { count: count, users: usersWithoutPassword };
+
+    res.json(obj);
+  } catch (error) {
+    console.error("Error al obtener usuarios:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+// Ruta para buscar por ID
+router.get("/api/users/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    // Excluir la contraseña del usuario
+    const { PasswordUser, ...userWithoutPassword } = user.toJSON();
+
+    res.json(userWithoutPassword);
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
 
 module.exports = router;

@@ -1,31 +1,31 @@
-const products = require("../../database/products.json");
-const fs = require("fs");
+const { Product } = require("../../database/models");
 const path = require("path");
 
-const confirmModifyProduct = (req, res) => {
+const confirmModifyProduct = async (req, res) => {
   const { id } = req.params;
 
-  const { productName, price, description } = req.body;
+  try {
+    const product = await Product.findByPk(id);
 
-  products.forEach((product) => {
-    if (product._id == id) {
-      product._id = id;
-      product.productName = productName;
-      product.price = price;
-      product.description = description;
+    if (!product) {
+      // Si no se encuentra el producto, renderiza una página de error
+      const errorPagePath = path.join(__dirname, "../../views/404notfound");
+      return res.render(errorPagePath, { message: "Product not found" });
     }
-  });
 
-  const productPath = path.join(__dirname, "../../database/products.json");
-  const data = JSON.stringify(products);
+    product.NameProduct = req.body.productName;
+    product.Price = req.body.price;
+    product.DescriptionProduct = req.body.description;
 
-  fs.write(productPath, data, (error) => {
-    if (error) {
-      res.send(`Error: ${error}`);
-    } else {
-      res.redirect("/products");
-    }
-  });
+    // Guarda los cambios en la base de datos
+    await product.save();
+
+    // Redirecciona a la página de productos después de la modificación
+    res.redirect("/products");
+  } catch (error) {
+    console.error("Error al modificar el producto:", error);
+    res.status(500).send("Error interno del servidor");
+  }
 };
 
 module.exports = confirmModifyProduct;

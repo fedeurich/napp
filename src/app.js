@@ -3,18 +3,19 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 
 const session = require("express-session");
+const cors = require('cors');
 
+// Agregar cors al middleware
 const path = require("path");
 
 const mainRoutes = require("./routes/mainRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const productsRoutes = require("./routes/productsRoutes.js");
-const cookieParser = require("cookie-parser");
+const cookies = require("cookie-parser");
 
 const server = express();
 
 const { userLoggedMiddleware } = require("./middlewares/adminMiddlewares.js");
-// const { cookie } = require("express-validator");
 
 //configuración de session
 server.use(
@@ -22,13 +23,15 @@ server.use(
     secret: "secret",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+    },
   })
 );
 
-server.use(cookieParser());
-
 server.use(userLoggedMiddleware);
 
+server.use(cookies());
 server.use(morgan("dev"));
 server.set("view engine", "ejs");
 
@@ -40,6 +43,8 @@ server.use(express.json());
 server.use(methodOverride("_method"));
 
 server.use(express.static(path.join(__dirname, "../public")));
+
+server.use(cors());
 
 server.use(mainRoutes);
 server.use(userRoutes);
