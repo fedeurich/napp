@@ -7,13 +7,11 @@ const getProductById = async (req, res) => {
     const product = await Product.findByPk(productId);
 
     if (!product) {
-      // Si el producto no existe, puedes redirigir a una página de error
       return res.render(path.join(__dirname, "../../views/404NotFound"), {
         message: "Product not found",
       });
     }
 
-    // Renderiza la vista de detalles del producto con la información del producto
     const ruta = path.join(__dirname, "../../views/products/productDetail.ejs");
     res.render(ruta, { product });
   } catch (error) {
