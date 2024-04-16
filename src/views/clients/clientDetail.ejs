@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/productDetail.css" />
+<title>Detalles del Cliente</title>
+</head>
+
+<body>
+
+  <%- include('../partials/header') %>
+
+  <h2 class="containerTitle">Detalles del Cliente</h2>
+
+  <main class="containerMainProductDetail">
+    <div class="containerCardProducto">
+      <img src="/img/products/<%= client.Image %>" alt="<%= client.firstName %>">
+      <section class="containerSectionDetalle">
+        <h3><%= client.firstName %></h3>
+        <h3><%= client.lastName %></h3>
+        <p>Email: $<%= client.email %></p>
+        <p><%= client.tel %></p>
+        <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
+      </section>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

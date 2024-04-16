@@ -1,3 +1,4 @@
+//postNewUser.js
 const path = require("path");
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");

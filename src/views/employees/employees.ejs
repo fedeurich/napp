@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/users.css" />
+<title>Empleados</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Lista de empleados</h2>
+    <section class="users_container">
+      <% for(let i = 0; i < allEmployees.length; i++){ %>
+        <article class="user_container">
+        <% if (allEmployees[i].Image && allEmployees[i].Image.length) { %>
+          <img src="/img/employees/<%= allEmployees[i].Image %>" alt="image" width="300px" height="300px">
+          <% } else { %>     
+            <img src="/img/employees/<%= allEmployees[i].Image %>" alt="<%= allEmployees[i].FirstName %> ">
+            <% } %>
+            <h3 class="info_produc">Empleado:</h3>
+            <h3 class="info_produc"><%= allEmployees[i].FirstName %></h3>
+            <h3 class="info_produc"><%= allEmployees[i].LastName %></h3>
+            <h3 class="info_produc">ID: <%= allEmployees[i].IDEmployee %></h3>   
+            <p class="price"><%= allEmployees[i].Email %></p>
+            <p class="price"><%= allEmployees[i].PaidLeave %></p>
+            <form action="/employees/delete/<%= allEmployees[i].IDEmployee %>?_method=DELETE" method="POST">
+              <button type="submit">Borrar</button>
+            </form>
+      </article>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

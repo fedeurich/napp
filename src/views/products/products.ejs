@@ -1,27 +1,31 @@
 <%- include('../partials/head') %>
-<link rel="stylesheet" href="/css/products.css" />
-<title>Mundo 3D</title>
+<link rel="stylesheet" href="/css/users.css" />
+<title>Inventario</title>
 </head>
 
 <body>
   <%- include('../partials/header') %>
 
   <main>
-    <h2><span>NUESTROS PRODUCTOS</span></h2>
-    <section class="contenido_produc">
+    <h2>Inventario</h2>
+      <section class="users_container">
       <% for(let i = 0; i < allProducts.length; i++){ %>
-      <article class="contenido">
-        <a href="/product/<%= allProducts[i].IDProduct %>">
-          <div class="imagen">
-            <img src="/img/products/<%= allProducts[i].Image %>" alt="<%= allProducts[i].NameProduct %>">
-          </div>
-          <div class="pie_imagen">
-            <h3 class="info_produc"><%= allProducts[i].NameProduct %></h3>
-            <p class="price">$<%= allProducts[i].Price %></p>
-            <!-- <button>Añadir al carrito</button> -->
-          </div>
-        </a>
+      <article class="user_container">
+        <% if (allProducts[i].Image && allProducts[i].Image.length) { %>
+          <img src="/img/products/<%= allProducts[i].Image %>" alt="image" width="300px" height="300px">
+          <% } else { %>     
+          <img src="/img/products/usuarioSinImagen.jpg" alt="image" width="300px" height="300px">
+            <% } %>
+            <h3 ><%= allProducts[i].NameProduct %></h3>
+            <h3>ID: <%= allProducts[i].IDProduct %></h3>
+            <h3>Stock: <%= allProducts[i].Stock %></h3>
+            <h3>Precio: $<%= allProducts[i].Price %></h3>
+            <form action="/products/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">
+              <button type="submit">Borrar</button>
+            </form>
       </article>
+ 
+
       <% } %>
     </section>
   </main>

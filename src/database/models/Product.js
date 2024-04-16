@@ -13,10 +13,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      IDFranchise: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       NameProduct: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -25,8 +21,8 @@ module.exports = (sequelize) => {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
       },
-      DescriptionProduct: {
-        type: DataTypes.TEXT,
+      Stock: {
+        type: DataTypes.INTEGER,
       },
       Image: {
         type: DataTypes.STRING,
@@ -45,15 +41,25 @@ module.exports = (sequelize) => {
       foreignKey: "IDCategory",
     });
 
-    Product.belongsTo(models.Franchise, {
-      as: "Franchise",
-      foreignKey: "IDFranchise",
-    });
+    
   };
 
   Product.findById = async function (productId) {
     return await Product.findByPk(productId);
   };
+Product.deleteById = async function(productId) {
+  try {
+    const product = await Product.findByPk(productId);
+    if (!product) {
+      throw new Error("Producto no encontrado");
+    }
+    await product.destroy();
+    return true; // Indica que se eliminó exitosamente
+  } catch (error) {
+    console.error("Error al eliminar el producto:", error);
+    throw error; // Lanza el error para que sea manejado en otro lugar si es necesario
+  }
+};
 
   return Product;
 };

@@ -15,7 +15,7 @@ const confirmModifyProduct = async (req, res) => {
 
     product.NameProduct = req.body.productName;
     product.Price = req.body.price;
-    product.DescriptionProduct = req.body.description;
+    product.Stock = req.body.stock;
 
     // Guarda los cambios en la base de datos
     await product.save();

@@ -21,24 +21,24 @@ if (config.use_env_variable) {
 
 const UserModel = require("./User")(sequelize, Sequelize.DataTypes);
 const ProductModel = require("./Product")(sequelize, Sequelize.DataTypes);
-const ShoppingCartModel = require("./ShoppingCart")(
-  sequelize,
-  Sequelize.DataTypes
-);
 const CategoryModel = require("./Category")(sequelize, Sequelize.DataTypes);
-const FranchiseModel = require("./Franchise")(sequelize, Sequelize.DataTypes);
+const RoleModel = require("./Role")(sequelize, Sequelize.DataTypes);
+const EmployeeModel = require("./Employee")(sequelize, Sequelize.DataTypes);
+const ClientModel = require("./Client")(sequelize, Sequelize.DataTypes);
+
+
 
 db["User"] = UserModel;
 db["Product"] = ProductModel;
-db["ShoppingCart"] = ShoppingCartModel;
 db["Category"] = CategoryModel;
-db["Franchise"] = FranchiseModel;
+db["Role"] = RoleModel;
+db["Employee"] = EmployeeModel;
+db["Client"]= ClientModel;
 
-UserModel.hasMany(ShoppingCartModel, { foreignKey: "IDUser" });
-ShoppingCartModel.belongsTo(UserModel, { foreignKey: "IDUser" });
 
-ProductModel.hasMany(ShoppingCartModel, { foreignKey: "IDProduct" });
-ShoppingCartModel.belongsTo(ProductModel, { foreignKey: "IDProduct" });
+
+
+
 
 fs.readdirSync(__dirname)
   .filter((file) => {

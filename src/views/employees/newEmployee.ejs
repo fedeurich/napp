@@ -1,0 +1,77 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/newProduct.css" />
+<title>New employee</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+  <main>
+    <div class="containerNP">
+      <h1>Crear nuevo empleado</h1>
+      <form action="/employees" method="POST" enctype="multipart/form-data">
+
+        <label for="firstName"> Primer Nombre:</label>
+        <input type="text" id="firstName" name="firstName" class="control <%= locals.errors && errors.firstName ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.firstName : '' %>">
+        <% if(locals.errors && errors.firstName) { %>
+        <div class="text-danger">
+          <%= errors.firstName.msg  %>
+        </div>
+        <% } %>
+
+        <label for="lastName">Apellido:</label>
+        <input type="text" id="lastName" name="lastName" class="control <%= locals.errors && errors.lastName ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.lastName : '' %>">
+        <% if(locals.errors && errors.lastName) { %>
+        <div class="text-danger">
+          <%= errors.lastName.msg  %>
+        </div>
+        <% } %>
+
+        <label for="role">Rol:</label>
+        <select id="role" name="role" class="control <%= locals.errors && errors.IDRole ? 'is-invalid' : '' %>">
+          <% for(let i = 0; i < roles.length; i++) { %>
+          <option value="<%= roles[i].IDRole %>" <%= locals.oldData && locals.oldData.IDRole == roles[i].IDRole ? 'selected' : '' %>><%= roles[i].NameRole %></option>
+          <% } %>
+
+        </select>
+        <% if(locals.errors && errors.IDRole) { %>
+        <div class="text-danger">
+          <%= errors.IDRole.msg  %>
+        </div>
+        <% } %>
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" class="control <%= locals.errors && errors.email? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.email : null %>">
+        <% if(locals.errors && errors.email){ %>
+        <div class="text-danger">
+          <%= errors.email.msg  %>
+        </div>
+        <% } %>
+
+        <label for="paidLeave">Franco:</label>
+        <input type="text" id="paidLeave" name="paidLeave" class="control <%= locals.errors && errors.paidLeave ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.paidLeave : '' %>">
+        <% if(locals.errors && errors.paidLeave) { %>
+        <div class="text-danger">
+          <%= errors.paidLeave.msg  %>
+        </div>
+        <% } %>
+
+        <label for="image">Imagen del producto: </label>
+        <input type="file" id="image" name="image">
+        <% if(locals.errors && errors.image) { %>
+        <div class="text-danger">
+          <%= errors.image.msg  %>
+        </div>
+        <% } %>
+
+        <button type="submit">Crear</button>
+        <button type="reset">Borrar</button>
+
+      </form>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

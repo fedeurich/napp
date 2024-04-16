@@ -30,7 +30,7 @@ section.banner img {
 main.index {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -250px; /* Ajusta el valor según sea necesario para lograr el superposicionamiento */
+  margin-top: -400px; /* Ajusta el valor según sea necesario para lograr el superposicionamiento */
   z-index: 3;
 }
 

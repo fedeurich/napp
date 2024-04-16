@@ -10,11 +10,7 @@ const getAllProducts = async (req, res) => {
           as: "Category",
           attributes: ["IDCategory", "NameCategory"],
         },
-        {
-          model: Franchise,
-          as: "Franchise",
-          attributes: ["IDFranchise", "NameFranchise"],
-        },
+        
       ],
     });
 

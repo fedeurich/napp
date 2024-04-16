@@ -48,10 +48,10 @@ const validationsForm = [
     .isNumeric()
     .withMessage("Debe ingresar un número"),
 
-  body("description")
+  body("stock")
     .trim()
     .notEmpty()
-    .withMessage("Debe ingresar una descripción")
+    .withMessage("Debe ingresar un stock")
     .bail()
     .isString()
     .withMessage("Tiene que ser un texto")
@@ -60,8 +60,6 @@ const validationsForm = [
     .withMessage("No puede ser mayor a 40 caracteres"),
 
   body("category").notEmpty().withMessage("Debe seleccionar una categoría"),
-
-  body("franchise").notEmpty().withMessage("Debe seleccionar una franquicia"),
 
   body("image").custom((value, { req }) => {
     let file = req.file;
@@ -89,11 +87,10 @@ const {
   postNewProduct,
   deleteProduct,
   confirmModifyProduct,
-  viewShoppingCart,
+
 } = require("../controllers/products");
 
-//Ruta del carrito de compra
-router.get("/productCart", isUser, viewShoppingCart);
+
 
 //Ruta para ver todos los productos
 router.get("/products", getAllProducts);
@@ -113,7 +110,7 @@ router.post(
 router.put("/product/:id/edit", isUser, confirmModifyProduct);
 
 //Ruta borrar un producto
-router.delete("/product/delete/:id", isUser, deleteProduct);
+router.delete("/products/delete/:id", isUser, deleteProduct);
 
 // ********* API ROUTES **************
 // Obtener todos los productos
@@ -153,7 +150,7 @@ router.get("/api/products", async (req, res) => {
         IDProduct: product.IDProduct,
         NameProduct: product.NameProduct,
         Price: product.Price,
-        DescriptionProduct: product.DescriptionProduct,
+        Stock: product.Stock,
         Image: product.Image,
         Category: categoryName, // Cambiar de product.NameCategory a categoryName
       };
@@ -207,7 +204,7 @@ router.get("/api/products/latest", async (req, res) => {
       IDProduct: latestProduct.IDProduct,
       NameProduct: latestProduct.NameProduct,
       Price: latestProduct.Price,
-      DescriptionProduct: latestProduct.DescriptionProduct,
+      Stock: latestProduct.Stock,
       Image: latestProduct.Image,
       Category: latestProduct.Category ? latestProduct.Category.NameCategory : "Sin categoría",
     };

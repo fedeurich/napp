@@ -71,3 +71,16 @@ FOREIGN KEY (IDUser) REFERENCES User(IDUser),
 FOREIGN KEY (IDProduct) REFERENCES Product(IDProduct),
 UNIQUE KEY idx_user_product (IDUser, IDProduct)
 );
+
+
+
+
+-- Tabla de Client 
+CREATE TABLE IF NOT EXISTS Client (
+IDClient INT PRIMARY KEY AUTO_INCREMENT,
+FirstName VARCHAR(255) NOT NULL,
+LastName VARCHAR(255),
+Email VARCHAR(255) NOT NULL,
+Tel INT NOT NULL
+Image VARCHAR(255),
+);

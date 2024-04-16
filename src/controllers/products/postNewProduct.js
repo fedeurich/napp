@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { Product, Category, Franchise } = require("../../database/models");
+const { Product, Category } = require("../../database/models");
 const path = require("path");
 const fs = require("fs");
 
@@ -9,17 +9,17 @@ const postNewProduct = async (req, res) => {
 
   try {
     const categories = await Category.findAll();
-    const franchises = await Franchise.findAll();
+    
 
     if (errors.isEmpty()) {
       console.log("entre");
-      const { productName, price, description, category, franchise } = req.body;
+      const { productName, price, stock, category } = req.body;
       const image = req.file.filename;
 
-      if (!category || !franchise) {
+      if (!category) {
         return res
           .status(400)
-          .json({ error: "Category y Franchise son obligatorios" });
+          .json({ error: "Category " });
       }
 
       if (!req.file) {
@@ -28,10 +28,9 @@ const postNewProduct = async (req, res) => {
 
       const newProduct = await Product.create({
         IDCategory: parseInt(category),
-        IDFranchise: parseInt(franchise),
         NameProduct: productName,
         Price: parseFloat(price),
-        DescriptionProduct: description,
+        Stock: stock,
         Image: image,
       });
 

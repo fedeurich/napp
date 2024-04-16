@@ -1,0 +1,37 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/products.css" />
+<title>Clientes</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2><span>LISTA DE CLIENTES</span></h2>
+    <section class="contenido_produc">
+      <% for(let i = 0; i < allClients.length; i++){ %>
+      <article class="contenido">
+        <a href="/client/<%= allClients[i].IDClient %>">
+          <div class="imagen">
+            <img src="/img/clients/<%= allClients[i].Image %>" alt="<%= allClients[i].FirstName %> ">
+          </div>
+          <div class="pie_imagen">
+            <h3 class="info_produc">Cliente:</h3>
+            <h3 class="info_produc"><%= allClients[i].FirstName %></h3>
+            <h3 class="info_produc"><%= allClients[i].LastName %></h3>
+            <h3 class="info_produc">ID: <%= allClients[i].IDClient %></h3>   
+            <p class="price"><%= allClients[i].Email %></p>
+            <p class="price"><%= allClients[i].Tel %></p>
+            
+            <!-- <button>Añadir al carrito</button> -->
+          </div>
+        </a>
+      </article>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

@@ -4,6 +4,8 @@ const methodOverride = require("method-override");
 
 const session = require("express-session");
 const cors = require('cors');
+const passport = require('passport');
+const passportConfig = require('./passport-config');
 
 // Agregar cors al middleware
 const path = require("path");
@@ -11,6 +13,8 @@ const path = require("path");
 const mainRoutes = require("./routes/mainRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const productsRoutes = require("./routes/productsRoutes.js");
+const employeesRoutes = require("./routes/employeesRoutes.js");
+const clientsRoutes = require("./routes/clientsRoutes.js");
 const cookies = require("cookie-parser");
 
 const server = express();
@@ -28,7 +32,8 @@ server.use(
     },
   })
 );
-
+server.use(passport.initialize());
+server.use(passport.session());
 server.use(userLoggedMiddleware);
 
 server.use(cookies());
@@ -49,6 +54,8 @@ server.use(cors());
 server.use(mainRoutes);
 server.use(userRoutes);
 server.use(productsRoutes);
+server.use(employeesRoutes);
+server.use(clientsRoutes);
 
 //Ruta 404
 server.use((req, res, next) => {
