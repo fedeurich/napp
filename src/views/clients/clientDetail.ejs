@@ -1,4 +1,14 @@
-<%- include('../partials/head') %>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="shortcut icon" href="/img/m3d.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
 
 <link rel="stylesheet" href="/css/productDetail.css" />
 <title>Detalles del Cliente</title>
@@ -6,7 +16,53 @@
 
 <body>
 
-  <%- include('../partials/header') %>
+  <header>
+    <div class="logo">
+  
+      
+      <a href="/"><img src="/img/OIP (1).jpg" alt="Logo" /></a>
+      </div>
+    <!--<div class="buscador">
+      <input type="text" placeholder="Buscar productos..." />
+      <button type="submit">Buscar</button>
+    </div>-->
+  
+    <nav class="barra-navegacion">
+      <ul class="barra-izquierda">
+        <li><a href="/employees">Empleados</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-employee">Nuevo empleado</a></li>
+        <% } %>
+        <li><a href="/products">Inventario</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-product">Nuevo producto</a></li>
+        <% } %>    
+        <li><a href="/clients">Clientes</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-client">Nuevo cliente</a></li>
+        <% } %> 
+      </ul>
+  
+      <ul class="barra-derecha">
+        <% if (locals.isLogged) { %>
+        <li class="nav-item">
+          <div class="perfil-dropdown">
+            <img src="/img/users/<%= locals.userLogged.Image %>" width="40" style="border-radius: 50%;">
+            <a class="">Hola <%= locals.userLogged.FirstName %> </a>
+            <ul class="dropdown-menu">
+              <li><a href="/profile">Mi perfil</a></li>
+              <li><a href="/logout">Cerrar sesión</a></li>
+            </ul>
+          </div>
+        </li>
+        <% } else { %>
+        <li><a href="/login">Iniciar sesión</a></li>
+        <li><a href="/register">Registrarse</a></li>
+        <% } %>
+  
+      </ul>
+    </nav>
+  </header>
 
   <h2 class="containerTitle">Detalles del Cliente</h2>
 
@@ -14,16 +70,23 @@
     <div class="containerCardProducto">
       <img src="/img/clients/<%= client.Image %>" alt="<%= client.firstName %>">
       <section class="containerSectionDetalle">
-        <h3><%= client.firstName %></h3>
-        <h3><%= client.lastName %></h3>
-        <p>Email: $<%= client.email %></p>
-        <p><%= client.tel %></p>
+        <h3>Nombre: <%= client.FirstName %></h3>
+        <h3>Apellido: <%= client.LastName %></h3>
+        <p>Email: <%= client.Email %></p>
+        <p>Telefono <%= client.Tel %></p>
         <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
       </section>
     </div>
   </main>
 
-  <%- include('../partials/footer') %>
+  <footer>
+    <section class="containerFooter">
+      <article class="containerSections">
+        FOOTER
+      </article>
+        
+    </section>
+  </footer>
 </body>
 
 </html>
