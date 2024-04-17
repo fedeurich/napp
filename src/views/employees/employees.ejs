@@ -22,6 +22,9 @@
             <h3 class="info_produc">ID: <%= allEmployees[i].IDEmployee %></h3>   
             <p class="price"><%= allEmployees[i].Email %></p>
             <p class="price"><%= allEmployees[i].PaidLeave %></p>
+            <form action="/employee/<%= allEmployees[i].IDEmployee %>" method="GET">
+              <button type="submit">Ver</button>
+            </form>
             <form action="/employees/delete/<%= allEmployees[i].IDEmployee %>?_method=DELETE" method="POST">
               <button type="submit">Borrar</button>
             </form>

@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const { Op } = require("sequelize");
-const { sequelize, Client } = require("../database/models");
+//const { sequelize, Client } = require("../database/models");
 const { body } = require("express-validator");
 const {
   isUser,
@@ -110,6 +110,6 @@ router.post(
 router.put("/client/:id/edit", isUser, confirmModifyClient);
 
 // Ruta borrar un cliente
-router.delete("/client/delete/:id", isUser, deleteClient);
+router.delete("/clients/delete/:id", isUser, deleteClient);
 
 module.exports= router;

@@ -40,7 +40,6 @@ const postNewProduct = async (req, res) => {
       const ruta = path.join(__dirname, "../../views/products/newProduct.ejs");
       res.render(ruta, {
         categories,
-        franchises,
         errors: errors.mapped(),
         oldData: req.body,
       });

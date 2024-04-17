@@ -28,14 +28,10 @@ module.exports = (sequelize) => {
       Image: {
         type: DataTypes.STRING,
       },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
+
     },
     {
-      tableName: "User",
+      tableName: "Client",
       timestamps: false,
     }
   );

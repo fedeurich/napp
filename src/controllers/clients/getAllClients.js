@@ -3,7 +3,7 @@ const path = require("path");
 
 const getAllClients = async (req, res) => {
   try {
-    const allClient = await Client.findAll();
+    const allClients = await Client.findAll();
 
     const ruta = path.join(__dirname, "../../views/clients/clients.ejs");
 

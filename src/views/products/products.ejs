@@ -20,6 +20,9 @@
             <h3>ID: <%= allProducts[i].IDProduct %></h3>
             <h3>Stock: <%= allProducts[i].Stock %></h3>
             <h3>Precio: $<%= allProducts[i].Price %></h3>
+            <form action="/product/<%= allProducts[i].IDProduct %>" method="GET">
+              <button type="submit">Ver</button>
+            </form>
             <form action="/products/delete/<%= allProducts[i].IDProduct %>?_method=DELETE" method="POST">
               <button type="submit">Borrar</button>
             </form>

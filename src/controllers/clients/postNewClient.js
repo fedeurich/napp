@@ -33,6 +33,13 @@ const postNewClient = async (req, res) => {
       res.redirect("/clients");
     } else {
       const ruta = path.join(__dirname, "../../views/clients/newClient.ejs");
+      
+      
+      res.render(ruta, {
+        errors: errors.mapped(),
+        oldData: req.body,
+      });
+
 
     }
   } catch (error) {

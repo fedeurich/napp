@@ -1,7 +1,7 @@
 <%- include('../partials/head') %>
 
 <link rel="stylesheet" href="/css/newProduct.css" />
-<title>New client</title>
+<title>New Client</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
       <h1>Crear nuevo cliente</h1>
       <form action="/clients" method="POST" enctype="multipart/form-data">
 
-        <label for="firstName"> Primer Nombre:</label>
+        <label for="firstName">Nombre:</label>
         <input type="text" id="firstName" name="firstName" class="control <%= locals.errors && errors.firstName ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.firstName : '' %>">
         <% if(locals.errors && errors.firstName) { %>
         <div class="text-danger">
@@ -28,23 +28,24 @@
         <% } %>
 
 
+
         <label for="email">Email: </label>
-        <input type="email" id="email" name="email" class="control <%= locals.errors && errors.email? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.email : null %>">
-        <% if(locals.errors && errors.email){ %>
+        <input type="email" id="email" name="email" class="control <%= locals.errors && errors.email ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.email : '' %>">
+        <% if(locals.errors && errors.email) { %>
         <div class="text-danger">
           <%= errors.email.msg  %>
         </div>
         <% } %>
 
-        <label for="tel">Telefono:</label>
-        <input type="number" id="tel" name="tel" class="control <%= locals.errors && errors.tel ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.tel : '' %>">
+        <label for="tel">telefono: </label>
+        <input type="number" id="tel" name="tel" class="control <%= locals.errors && errors.tel ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.tel : '' %>"></input>
         <% if(locals.errors && errors.tel) { %>
         <div class="text-danger">
           <%= errors.tel.msg  %>
         </div>
         <% } %>
 
-        <label for="image"></label>
+        <label for="image">Cliente: </label>
         <input type="file" id="image" name="image">
         <% if(locals.errors && errors.image) { %>
         <div class="text-danger">

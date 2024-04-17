@@ -12,12 +12,16 @@
 
   <main class="containerMainProductDetail">
     <div class="containerCardProducto">
-      <img src="/img/products/<%= employee.Image %>" alt="<%= employee.firstName %>">
+      <img src="/img/employees/<%= employee.Image %>" alt="<%= employee.firstName %>">
       <section class="containerSectionDetalle">
         <h3><%= employee.firstName %></h3>
         <p>Email: $<%= employee.email %></p>
         <p><%= employee.paidLeave %></p>
         <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
+        <form action="/employees/delete/<%= employee.IDEmployee %>?_method=DELETE" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Eliminar</button>
+        </form>
       </section>
     </div>
   </main>
