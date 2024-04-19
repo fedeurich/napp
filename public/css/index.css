@@ -14,6 +14,7 @@ section.banner img {
   height: 30vh;
 }
 
+
 .message {
   background-color: rgb(69, 18, 117);
   color: blanchedalmond;
@@ -30,7 +31,7 @@ section.banner img {
 main.index {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -400px; /* Ajusta el valor según sea necesario para lograr el superposicionamiento */
+
   z-index: 3;
 }
 

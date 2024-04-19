@@ -25,7 +25,8 @@ const CategoryModel = require("./Category")(sequelize, Sequelize.DataTypes);
 const RoleModel = require("./Role")(sequelize, Sequelize.DataTypes);
 const EmployeeModel = require("./Employee")(sequelize, Sequelize.DataTypes);
 const ClientModel = require("./Client")(sequelize, Sequelize.DataTypes);
-
+const CateringTypeModel = require("./CateringType")(sequelize, Sequelize.DataTypes);
+const EventModel = require("./Event")(sequelize, Sequelize.DataTypes);
 
 
 db["User"] = UserModel;
@@ -34,6 +35,8 @@ db["Category"] = CategoryModel;
 db["Role"] = RoleModel;
 db["Employee"] = EmployeeModel;
 db["Client"]= ClientModel;
+db["CateringType"]= CateringTypeModel;
+db["Event"]= EventModel;
 
 
 

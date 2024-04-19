@@ -4,53 +4,7 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-  
-      
-      <a href="/"><img src="/img/OIP (1).jpg" alt="Logo" /></a>
-      </div>
-    <!--<div class="buscador">
-      <input type="text" placeholder="Buscar productos..." />
-      <button type="submit">Buscar</button>
-    </div>-->
-  
-    <nav class="barra-navegacion">
-      <ul class="barra-izquierda">
-        <li><a href="/employees">Empleados</a></li>
-        <% if (locals.isLogged) { %>
-        <li><a href="/new-employee">Nuevo empleado</a></li>
-        <% } %>
-        <li><a href="/products">Inventario</a></li>
-        <% if (locals.isLogged) { %>
-        <li><a href="/new-product">Nuevo producto</a></li>
-        <% } %>    
-        <li><a href="/clients">Clientes</a></li>
-        <% if (locals.isLogged) { %>
-        <li><a href="/new-client">Nuevo cliente</a></li>
-        <% } %> 
-      </ul>
-  
-      <ul class="barra-derecha">
-        <% if (locals.isLogged) { %>
-        <li class="nav-item">
-          <div class="perfil-dropdown">
-            <img src="/img/users/<%= locals.userLogged.Image %>" width="40" style="border-radius: 50%;">
-            <a class="">Hola <%= locals.userLogged.FirstName %> </a>
-            <ul class="dropdown-menu">
-              <li><a href="/profile">Mi perfil</a></li>
-              <li><a href="/logout">Cerrar sesión</a></li>
-            </ul>
-          </div>
-        </li>
-        <% } else { %>
-        <li><a href="/login">Iniciar sesión</a></li>
-        <li><a href="/register">Registrarse</a></li>
-        <% } %>
-  
-      </ul>
-    </nav>
-  </header>
+  <%- include('../partials/header') %>
 
   <main>
     <h2>Lista de Clientes</h2>

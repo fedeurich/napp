@@ -15,6 +15,8 @@ const userRoutes = require("./routes/userRoutes.js");
 const productsRoutes = require("./routes/productsRoutes.js");
 const employeesRoutes = require("./routes/employeesRoutes.js");
 const clientsRoutes = require("./routes/clientsRoutes.js");
+const cateringTypesRoutes = require("./routes/cateringTypesRoutes.js");
+const eventsRoutes = require("./routes/eventsRoutes.js");
 const cookies = require("cookie-parser");
 
 const server = express();
@@ -56,6 +58,9 @@ server.use(userRoutes);
 server.use(productsRoutes);
 server.use(employeesRoutes);
 server.use(clientsRoutes);
+server.use(cateringTypesRoutes);
+server.use(eventsRoutes);
+
 
 //Ruta 404
 server.use((req, res, next) => {

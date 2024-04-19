@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/users.css" /> 
+<title>Lista de Eventos</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Lista de Eventos</h2>
+    <section class="users_container">
+      <% for(let i = 0; i < allEvents.length; i++){ %>
+      <article class="user_container">
+        <h3>ID del evento: <%= allEvents[i].IDEvent %></h3>
+        <h3>Dirección del evento: <%= allEvents[i].AddressEvent %></h3>
+        <h3>Fecha del evento: <%= allEvents[i].DateEvent %></h3>           
+        <h3>Tipo de catering: <%= allEvents[i].CateringType.NameCateringType %></h3>
+        <h3>Cliente: <%= allEvents[i].Client.FirstName %>   <%= allEvents[i].Client.LastName %></h3>
+
+
+        <form action="/events/<%= allEvents[i].IDEvent %>" method="GET">
+          <button type="submit">Ver</button>
+        </form>
+        <form action="/events/delete/<%= allEvents[i].IDEvent %>?_method=DELETE" method="POST">
+          <button type="submit">Borrar</button>
+        </form>
+      </article>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

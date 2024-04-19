@@ -1,0 +1,33 @@
+cateringType<!DOCTYPE html>
+<html><head><%- include('../partials/head') %>
+  <link rel="stylesheet" href="/css/product.css" />
+  <title>New catering Type</title>
+  </head>
+  
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="containerNP">
+        <h1>Editar tipo de catering</h1>
+        <form action="/cateringType/<%= cateringType._id%>/edit?_method=PUT" method="POST">
+          <div>
+            <label for="">Titulo: </label>
+            <input type="text" name="nameCateringType" id="" value="<%= cateringType.nameCateringType %>">          
+          </div>
+          <div>
+            <label for="">Empleados Requeridos: </label>
+            <input type="number" name="employeesRequired" id="" value="<%= cateringType.employeesRequired %>">
+          </div>
+          <div>
+            <label for="">Productos Requeridos: </label>
+            <input type="number" name="productsRequired" id="" value="<%= cateringType.productsRequired %>">
+          </div>
+          <button type="submit">Confirmar</button>
+        </form>
+      </div>
+  
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+  
+  </html>  

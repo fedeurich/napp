@@ -6,8 +6,6 @@ const { sequelize, Client } = require("../database/models");
 const { body } = require("express-validator");
 const {
   isUser,
-  guestMiddleware,
-  authMiddleware,
 } = require("../middlewares/adminMiddlewares");
 
 const router = express.Router();

@@ -1,0 +1,32 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/users.css" />
+<title>CateringTypes</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Lista de Tipos de Categoria</h2>
+    <section class="users_container">
+      <% for(let i = 0; i < allCateringTypes.length; i++){ %>
+        <article class="user_container">
+            <h3 class="info_produc">Tipo de Catering:</h3>
+            <h3 class="info_produc"><%= allCateringTypes[i].NameCateringType %></h3>
+            <h3 class="info_produc"><%= allCateringTypes[i].EmployeesRequired %></h3>
+            <h3 class="info_produc">ID: <%= allCateringTypes[i].ProductsRequired %></h3>   
+            <form action="/cateringType/<%= allCateringTypes[i].IDCateringType %>" method="GET">
+              <button type="submit">Ver</button>
+            </form>
+            <form action="/cateringTypes/delete/<%= allCateringTypes[i].IDCateringType%>?_method=DELETE" method="POST">
+              <button type="submit">Borrar</button>
+            </form>
+      </article>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

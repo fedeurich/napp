@@ -1,3 +1,4 @@
+//models/Product.js
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
@@ -40,26 +41,19 @@ module.exports = (sequelize) => {
       as: "Category",
       foreignKey: "IDCategory",
     });
+    Product.hasMany(models.Event, {
+      as: "Event",
+      foreignKey: 'IDProduct',
+    });
+  };
 
     
-  };
+  
 
   Product.findById = async function (productId) {
     return await Product.findByPk(productId);
   };
-Product.deleteById = async function(productId) {
-  try {
-    const product = await Product.findByPk(productId);
-    if (!product) {
-      throw new Error("Producto no encontrado");
-    }
-    await product.destroy();
-    return true; // Indica que se eliminó exitosamente
-  } catch (error) {
-    console.error("Error al eliminar el producto:", error);
-    throw error; // Lanza el error para que sea manejado en otro lugar si es necesario
-  }
-};
+
 
   return Product;
 };

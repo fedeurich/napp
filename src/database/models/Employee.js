@@ -1,3 +1,5 @@
+// employee.js
+
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
@@ -45,8 +47,13 @@ module.exports = (sequelize) => {
       as: "Role",
       foreignKey: "IDRole",
     });
+    Employee.associate = function (models) {
+      Employee.hasMany(models.Event, {
+        foreignKey: 'IDEmployee'
+      });
+    };
 
-    
+
   };
 
   Employee.findById = async function (employeeId) {

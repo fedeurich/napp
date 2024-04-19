@@ -17,6 +17,7 @@ header {
   width: 100%;
   background-color: black;
   color: #fff;
+  margin-bottom: 20px;
 }
 
 header div.logo {
@@ -84,7 +85,7 @@ nav.barra-navegacion a {
   display: none;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 5;
 }
 
 .dropdown-menu a {
@@ -92,10 +93,12 @@ nav.barra-navegacion a {
   text-decoration: none;
   display: block;
   padding: 5px 10px;
+
 }
 
 .perfil-dropdown:hover .dropdown-menu {
   display: block;
+
 }
 
 /* Agrega esta regla para ocultar el menú desplegable cuando no está en uso */

@@ -1,25 +1,23 @@
 <%- include('../partials/head') %>
 
 <link rel="stylesheet" href="/css/productDetail.css" />
-<title>Detalles del Empleado</title>
+<title>Catering Type Detail</title>
 </head>
 
 <body>
 
   <%- include('../partials/header') %>
 
-  <h2 class="containerTitle">Detalles del Empleado</h2>
+  <h2 class="containerTitle">Detalles del Tipo de Catering</h2>
 
   <main class="containerMainProductDetail">
     <div class="containerCardProducto">
-      <img src="/img/employees/<%= employee.Image %>" alt="<%= employee.firstName %>">
       <section class="containerSectionDetalle">
-        <h3><p>Empleado:</p></h3> 
-        <h3><p><%= employee.FirstName %>  <%= employee.LastName %></p></h3>
-        <p>Email: <%= employee.Email %></p>
-        <p>Franco: <%= employee.PaidLeave %></p>
+        <h3><%= cateringType.NameCateringType %></h3>
+        <p>Empleados Necesarios: <%= cateringType.EmployeesRequired %></p>
+        <p>Materiales Necesarios: <%= cateringType.ProductsRequired %></p>
         <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
-        <form action="/employees/delete/<%= employee.IDEmployee %>?_method=DELETE" method="POST">
+        <form action="/cateringTypes/delete/<%= cateringType.IDcateringType %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit">Eliminar</button>
         </form>

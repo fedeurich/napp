@@ -35,7 +35,12 @@ module.exports = (sequelize) => {
       timestamps: false,
     }
   );
-
+  Client.associate = function (models) {
+    Client.hasMany(models.Event, {
+      foreignKey: 'IDClient'
+    });
+    
+  };
   Client.findById = async function (clientId) {
     return await Client.findByPk(clientId);
   };

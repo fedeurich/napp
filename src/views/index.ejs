@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="/css/index.css" />
 <link rel="stylesheet" href="/css/carousel.css" />
+
 <title>Home</title>
 </head>
 
@@ -12,33 +13,16 @@
 
   <%- include('./partials/header') %>
 
-
-  <section class="carousel">
-    <div class="carousel-container">
-      <div class="carousel-slide">
-        <a href="/clients">
-          <img src="/img/carousel/Capturaa.jpg" alt="Slide 1" class="carousel-img">
-        </a>
-      </div>
-      <div class="carousel-slide">
-        <a href="\products">
-          <img src="/img/carousel/Capturab.jpg" alt="Slide 2" class="carousel-img">
-        </a>
-
-      </div>
-      <div class="carousel-slide">
-        <a href="\employees">
-          <img src="/img/carousel/Capturac.png" alt="Slide 3" class="carousel-img">
-
-        </a>
-
-      </div>
-    </div>
-    <button class="carousel-prev">&#10094;</button>
-    <button class="carousel-next">&#10095;</button>
-  </section>
-
   <main class="index">
+
+    <% if (locals.isLogged) { %>
+      <form action="/new-event" >
+        <button type="submit" style="background-color: red; color: white;">Crear Evento</button>
+      </form>
+      
+      <% } %>
+   
+
     <h2 class="titulo">Eventos</h2>
     <article class="product">
       <!--<img src="/img/img14.jpg" alt="Producto 1" /-->
