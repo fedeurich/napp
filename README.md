@@ -3,7 +3,7 @@
 # npm i
 
 ## 2. CARGAR LOS TIPOS DE CATERING
-# npm run cargar-caterin
+# npm run cargar-catering
 
 ## INICIAR PROYECTO
 # npm start

@@ -37,8 +37,8 @@ const validationsForm = [
     .isString()
     .withMessage("Tienes que ingresar un nombre válido")
     .bail()
-    .isLength({ min: 5, max: 20 })
-    .withMessage("Tiene que tener entre 5 y 20 caracteres"),
+    .isLength({ min: 4, max: 20 })
+    .withMessage("Tiene que tener entre 4 y 20 caracteres"),
 
   body("price")
     .trim()

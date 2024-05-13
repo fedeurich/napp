@@ -1,6 +1,6 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS m3;
-USE m3;
+CREATE DATABASE IF NOT EXISTS m4;
+USE m4;
 
 
 -- Tabla de Usuarios con restricción de clave única en Email
@@ -14,13 +14,15 @@ PasswordUser VARCHAR(64) NOT NULL,
 UNIQUE KEY uk_email (Email)
 );
 
-
-CREATE TABLE Role (
+-- Tabla de Rol
+CREATE TABLE IF NOT EXISTS Role (
     IDRole INT AUTO_INCREMENT PRIMARY KEY,
     NameRole VARCHAR(255) NOT NULL UNIQUE
 );
+
+
 -- Tabla de Empleados
-CREATE TABLE Employee (
+CREATE TABLE IF NOT EXISTS Employee (
     IDEmployee INT AUTO_INCREMENT PRIMARY KEY,
     IDRole INT NOT NULL,
     FirstName VARCHAR(255) NOT NULL,
@@ -38,12 +40,10 @@ NameCategory VARCHAR(255) NOT NULL,
 UNIQUE KEY uk_namecategory (NameCategory)
 );
 
--- Agregar nuevas categorías
-INSERT INTO Category (NameCategory) VALUES ('Cocina');
-INSERT INTO Category (NameCategory) VALUES ('Mozo');
+
 
 -- Tabla de Productos con índice en IDCategory y FranchiseID
-CREATE TABLE Product (
+CREATE TABLE IF NOT EXISTS Product (
     IDProduct INT AUTO_INCREMENT PRIMARY KEY,
     IDCategory INT NOT NULL,
     NameProduct VARCHAR(255) NOT NULL,
@@ -60,19 +60,19 @@ IDClient INT PRIMARY KEY AUTO_INCREMENT,
 FirstName VARCHAR(255) NOT NULL,
 LastName VARCHAR(255),
 Email VARCHAR(255) NOT NULL,
-Tel INT NOT NULL
-Image VARCHAR(255),
+Tel INT NOT NULL,
+Image VARCHAR(255)
 );
 
 -- Tabla de CateringType 
-CREATE TABLE CateringType (
+CREATE TABLE IF NOT EXISTS CateringType (
     IdCateringType INT PRIMARY KEY AUTO_INCREMENT,
     NameCateringType VARCHAR(100) NOT NULL,
     EmployeesRequired INT NOT NULL,
     ProductsRequired INT NOT NULL
 );
 -- Tabla de Event 
-CREATE TABLE Event (
+CREATE TABLE IF NOT EXISTS Event (
     IDEvent INT PRIMARY KEY AUTO_INCREMENT,
     AddressEvent VARCHAR(255) NOT NULL,
     DateEvent DATE NOT NULL,
@@ -81,7 +81,17 @@ CREATE TABLE Event (
     IDProduct INT NOT NULL,
     IDEmployee INT NOT NULL,
     FOREIGN KEY (IDClient) REFERENCES Client(IDClient),
-    FOREIGN KEY (IDCateringType) REFERENCES CateringType(IDCateringType)
+    FOREIGN KEY (IDCateringType) REFERENCES CateringType(IDCateringType),
 	FOREIGN KEY (IDProduct) REFERENCES Product(IDProduct),
     FOREIGN KEY (IDEmployee) REFERENCES Employee(IDEmployee)
 );
+
+
+-- Agregar roles
+INSERT INTO Role (NameRole) VALUES ('Cocina');
+INSERT INTO Role (NameRole) VALUES ('Mozo');
+
+-- Agregar categorias
+INSERT INTO Category (NameCategory) VALUES ('Utensillos');
+INSERT INTO Category (NameCategory) VALUES ('Materia');
+INSERT INTO Category (NameCategory) VALUES ('Entretenimiento');
