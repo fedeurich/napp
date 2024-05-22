@@ -1,7 +1,6 @@
 const { validationResult } = require("express-validator");
 const { Client } = require("../../database/models");
 const path = require("path");
-const fs = require("fs");
 
 const postNewClient = async (req, res) => {
   console.log("Datos del formulario:", req.body);

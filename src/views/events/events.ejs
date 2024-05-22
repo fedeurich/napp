@@ -11,10 +11,10 @@
     <section class="users_container">
       <% for(let i = 0; i < allEvents.length; i++){ %>
       <article class="user_container">
-        <h3>ID del evento: <%= allEvents[i].IDEvent %></h3>
-        <h3>Dirección del evento: <%= allEvents[i].AddressEvent %></h3>
-        <h3>Fecha del evento: <%= allEvents[i].DateEvent %></h3>           
-        <h3>Tipo de catering: <%= allEvents[i].CateringType.NameCateringType %></h3>
+        <h3>ID del Evento: <%= allEvents[i].IDEvent %></h3>
+        <h3>Dirección: <%= allEvents[i].AddressEvent %></h3>
+        <h3>Fecha: (<%= allEvents[i].DateEvent %>)</h3>           
+        <h3>Tipo: <%= allEvents[i].CateringType.NameCateringType %></h3>
         <h3>Cliente: <%= allEvents[i].Client.FirstName %>   <%= allEvents[i].Client.LastName %></h3>
 
 

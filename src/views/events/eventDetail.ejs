@@ -8,22 +8,25 @@
 
   <%- include('../partials/header') %>
 
-  <h2 class="containerTitle">Detalles del Evento</h2>
+  <h2 class="containerTitle"> Detalles del Evento</h2>
 
   <main class="containerMainProductDetail">
     <div class="containerCardProducto">
       <section class="containerSectionDetalle">
-        <h3>ID del evento: <%= event.IDEvent %></h3>
-        <p>Dirección del evento: <%= event.AddressEvent %></p>
-        <p>Fecha del evento: <%= event.DateEvent %></p>  
-        <p>Tipo de catering: <%= event.CateringType.NameCateringType %></p>
-        <p>Materiales Necesarios: <%= event.Product.NameProduct %></p>
-        <p>Empleados: <%= event.Employee.FirstName %></p>
-        <p>Cliente: <%= event.Client.FirstName %>   <%= event.Client.LastName %></p>
+        
+        <h3>ID del Evento: <%= event.IDEvent %></h3>
+        <h3>Dirección: <%= event.AddressEvent %></h3>
+        <h3>Fecha: <%= event.DateEvent %></h3>  
+        <h3>Tipo: <%= event.CateringType.NameCateringType %></h3>
+        <h3>Inventario: <%= event.Product.NameProduct %></h3>
+        <h3>Empleados: <%= event.Employee.FirstName %></h3>
+        <h3>Cliente: <%= event.Client.FirstName %>   <%= event.Client.LastName %></h3>
+        
         <form action="/events/<%= event.IDEvent %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit">Eliminar</button>
         </form>
+
       </section>
 
       

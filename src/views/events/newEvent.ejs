@@ -8,7 +8,7 @@
   <%- include('../partials/header') %>
   <main>
     <div class="containerNP">
-      <h1>Crear nuevo evento</h1>
+      <h1>Crear Nuevo Evento</h1>
       <form action="/events" method="POST" enctype="multipart/form-data">
 
         <label for="addressEvent">Dirección:</label>
@@ -18,9 +18,10 @@
           <%= errors.addressEvent.msg  %>
         </div>
         <% } %>
-
+        
+      
         <label for="dateEvent">Fecha:</label>
-        <input type="date" id="dateEvent" name="dateEvent" class="control <%= locals.errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.dateEvent : '' %>">
+        <input type="date" id="dateEvent" name="dateEvent" class="control <%= locals.errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.dateEvent : (new Date()) %>">
         <% if(locals.errors && errors.dateEvent) { %>
         <div class="text-danger">
           <%= errors.dateEvent.msg  %>
@@ -68,8 +69,7 @@
 
 
 
-        <button type="submit">Crear</button>
-        <button type="reset">Borrar</button>
+        <button type="submit"> Crear </button>
 
       </form>
     </div>

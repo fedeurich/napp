@@ -44,8 +44,8 @@ p {
 
 /* Estilos para el botón de borrar */
 form button {
-  background-color: #dc3545;
-  color: #fff;
+  background-color: #f1bc0e;
+  color: black;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -54,5 +54,5 @@ form button {
 }
 
 form button:hover {
-  background-color: #c82333;
+  background-color: gray;
 }

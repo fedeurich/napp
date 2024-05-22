@@ -1,10 +1,13 @@
+// Se requiere el modelo user de la database
 const { User } = require("../database/models");
 const path = require("path");
 
+// Si el usuario está loggeado, pasa a la siguiente, sino va a /login
 const isUser = (req, res, next) => {
   res.locals.isLogged ? next() : res.redirect("/login");
 };
 
+// Si está loggeado muestra profile
 const guestMiddleware = (req, res, next) => {
   if (req.session.userLogged) {
     return res.redirect("/profile");
@@ -12,6 +15,7 @@ const guestMiddleware = (req, res, next) => {
   next();
 };
 
+// Restringe ciertas rutas si no iniciaste sesión
 const authMiddleware = (req, res, next) => {
   if (!req.session.userLogged) {
     return res.redirect("/login");
@@ -19,6 +23,7 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
+// Verifica que un usuario esté loggeado si encuentra la cookie donde se almacena el email, y la compara con la bdd
 const userLoggedMiddleware = async (req, res, next) => {
   res.locals.isLogged = false;
 
@@ -45,6 +50,7 @@ const userLoggedMiddleware = async (req, res, next) => {
   next();
 };
 
+// Exporta las const
 module.exports = {
   isUser,
   guestMiddleware,

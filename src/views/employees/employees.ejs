@@ -16,12 +16,14 @@
           <% } else { %>     
             <img src="/img/employees/<%= allEmployees[i].Image %>" alt="<%= allEmployees[i].FirstName %> ">
             <% } %>
+            
             <h3 class="info_produc">Empleado:</h3>
             <h3 class="info_produc"><%= allEmployees[i].FirstName %></h3>
             <h3 class="info_produc"><%= allEmployees[i].LastName %></h3>
             <h3 class="info_produc">ID: <%= allEmployees[i].IDEmployee %></h3>   
-            <p class="price"><%= allEmployees[i].Email %></p>
-            <p class="price"><%= allEmployees[i].PaidLeave %></p>
+            <h3 class="info_produc"><%= allEmployees[i].Email %></h3>
+            <h3 class="info_produc"><%= allEmployees[i].PaidLeave %></h3>
+
             <form action="/employee/<%= allEmployees[i].IDEmployee %>" method="GET">
               <button type="submit">Ver</button>
             </form>

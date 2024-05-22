@@ -15,9 +15,9 @@
       <img src="/img/employees/<%= employee.Image %>" alt="<%= employee.firstName %>">
       <section class="containerSectionDetalle">
         <h3><p>Empleado:</p></h3> 
-        <h3><p><%= employee.FirstName %>  <%= employee.LastName %></p></h3>
-        <p>Email: <%= employee.Email %></p>
-        <p>Franco: <%= employee.PaidLeave %></p>
+        <h3><p><%= employee.FirstName %> <%= employee.LastName %></p></h3>
+        <h3>Email: <%= employee.Email %></h3>
+        <h3>Franco: <%= employee.PaidLeave %></h3>
         <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
         <form action="/employees/delete/<%= employee.IDEmployee %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">

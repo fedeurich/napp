@@ -4,10 +4,23 @@ main {
     border-radius: 10px;
   }
 
-  body{
-    background: #bc4e9c;
-    background: -webkit-linear-gradient(to right, hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
-    background: linear-gradient(to right, hsla(347, 92%, 72%, 0.671), hsla(263, 47%, 43%, 0.89)), url(../img/fondo.jpg);
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  
+    background: #f1bc0e;
+    background: -webkit-linear-gradient(
+        to right,
+        hsla(64, 85%, 47%, 0.671),
+        hsla(0, 2%, 9%, 0.89)
+      );
+    background: linear-gradient(
+        to right,
+        hsla(61, 83%, 49%, 0.671),
+        hsla(240, 1%, 13%, 0.89)
+      );
     background-size: cover;
     background-attachment: fixed;
   }

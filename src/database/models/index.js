@@ -39,10 +39,6 @@ db["CateringType"]= CateringTypeModel;
 db["Event"]= EventModel;
 
 
-
-
-
-
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (

@@ -6,26 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/normalize.css" />
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="shortcut icon" href="/img/m3d.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/LOGO.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
 
 
 <link rel="stylesheet" href="/css/productDetail.css" />
-<title>Detalles del Cliente</title>
 </head>
 
 <body>
+  
 
   <header>
     <div class="logo">
   
-      
-      <a href="/"><img src="/img/OIP (1).jpg" alt="Logo" /></a>
+  
+      <a href="/"><img src="/img/LOGO.png" alt="Logo" /></a>
       </div>
-    <!--<div class="buscador">
-      <input type="text" placeholder="Buscar productos..." />
-      <button type="submit">Buscar</button>
-    </div>-->
   
     <nav class="barra-navegacion">
       <ul class="barra-izquierda">
@@ -33,14 +29,19 @@
         <% if (locals.isLogged) { %>
         <li><a href="/new-employee">Nuevo empleado</a></li>
         <% } %>
+        <li><a>| </a></li>
         <li><a href="/products">Inventario</a></li>
         <% if (locals.isLogged) { %>
         <li><a href="/new-product">Nuevo producto</a></li>
         <% } %>    
+        <li><a>| </a></li>
         <li><a href="/clients">Clientes</a></li>
         <% if (locals.isLogged) { %>
         <li><a href="/new-client">Nuevo cliente</a></li>
-        <% } %> 
+        <% } %>
+        <li><a>|</a></li>
+        <li><a href="/events">Eventos</a></li>
+
       </ul>
   
       <ul class="barra-derecha">
@@ -72,8 +73,8 @@
       <section class="containerSectionDetalle">
         <h3>Nombre: <%= client.FirstName %></h3>
         <h3>Apellido: <%= client.LastName %></h3>
-        <p>Email: <%= client.Email %></p>
-        <p>Telefono <%= client.Tel %></p>
+        <h3>Email: <%= client.Email %></h3>
+        <h3>Telefono <%= client.Tel %></h3>
         <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
       </section>
     </div>
@@ -82,7 +83,7 @@
   <footer>
     <section class="containerFooter">
       <article class="containerSections">
-        FOOTER
+        UNPAZ 2024 - Trabajo De Campo 
       </article>
         
     </section>
