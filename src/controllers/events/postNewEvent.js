@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { Event, CateringType, Client, Product, Employee } = require("../../database/models");
+const { Event, CateringType, Client } = require("../../database/models");
 const path = require("path");
 
 const postNewEvent = async (req, res) => {
@@ -9,30 +9,26 @@ const postNewEvent = async (req, res) => {
   try {
     const cateringTypes = await CateringType.findAll();
     const clients = await Client.findAll();
-    //const products = await Product.findAll();
-    //const employees = await Employee.findAll();
     
-    console.log(errors)
-    if (errors.isEmpty()) {
-      console.log({addressEvent, dateEvent, cateringType, client, product, employee})
-      if (!cateringType || !client || !product || !employee)  {
-        return res
-          .status(400)
-          .json({error: "CateringType" });
-      }
-    }
+    console.log(errors);
 
-      console.log(req.body)
-      const { addressEvent, dateEvent, cateringType, client, products, employees } = req.body
+    if (errors.isEmpty()) {
+      const { addressEvent, dateEvent, cateringType, client, products, employees } = req.body;
+      console.log({ addressEvent, dateEvent, cateringType, client, products, employees });
+
+      if (!cateringType || !client || !products || !employees) {
+        return res.status(400).json({ error: "CateringType, Client, Products, or Employees missing" });
+      }
+
       const event = {
         AddressEvent: addressEvent,
         DateEvent: new Date(dateEvent),
         IDCateringType: parseInt(cateringType),
-        IDClient: parseFloat(client),
+        IDClient: parseInt(client),
         IDProduct: parseInt(products),
         IDEmployee: parseInt(employees),
-      }
-      
+      };
+
       console.log(event);
 
       const newEvent = await Event.create(event);
@@ -40,19 +36,15 @@ const postNewEvent = async (req, res) => {
       console.log("Evento creado:", newEvent);
       res.redirect("/events");
 
-    /* } else {
-
+    } else {
       const ruta = path.join(__dirname, "../../views/events/newEvent.ejs");
       res.render(ruta, {
         cateringTypes,
         clients,
-        products,
-        employees,
         errors: errors.mapped(),
         oldData: req.body,
       });
-
-    }*/
+    }
 
   } catch (error) {
     console.error("Error al manejar el formulario:", error);
