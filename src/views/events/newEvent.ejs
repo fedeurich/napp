@@ -12,64 +12,65 @@
       <form action="/events" method="POST" enctype="multipart/form-data">
 
         <label for="addressEvent">Dirección:</label>
-        <input type="text" id="addressEvent" name="addressEvent" class="control <%= errors && errors.addressEvent ? 'is-invalid' : '' %>" value="<%= oldData ? oldData.addressEvent : '' %>">
-        <% if(errors && errors.addressEvent) { %>
+        <input type="text" id="addressEvent" name="addressEvent" class="control <%= locals.errors && errors.addressEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.addressEvent : '' %>">
+        <% if(locals.errors && errors.addressEvent) { %>
         <div class="text-danger">
-          <%= errors.addressEvent.msg %>
+          <%= errors.addressEvent.msg  %>
         </div>
         <% } %>
         
+      
         <label for="dateEvent">Fecha:</label>
-        <input type="date" id="dateEvent" name="dateEvent" class="control <%= errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= oldData ? oldData.dateEvent : (new Date()).toISOString().split('T')[0] %>">
-        <% if(errors && errors.dateEvent) { %>
+        <input type="date" id="dateEvent" name="dateEvent" class="control <%= locals.errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.dateEvent : (new Date()) %>">
+        <% if(locals.errors && errors.dateEvent) { %>
         <div class="text-danger">
-          <%= errors.dateEvent.msg %>
+          <%= errors.dateEvent.msg  %>
         </div>
         <% } %>
 
         <label for="cateringType">Tipo de catering:</label>
-        <select id="cateringType" name="cateringType" class="control <%= errors && errors.cateringType ? 'is-invalid' : '' %>">
+        <select id="cateringType" name="cateringType" class="control <%= locals.errors && errors.cateringType ? 'is-invalid' : '' %>">
           <% for(let i = 0; i < cateringTypes.length; i++) { %>
-          <option value="<%= cateringTypes[i].IDCateringType %>" <%= oldData && oldData.cateringType == cateringTypes[i].IDCateringType ? 'selected' : '' %>><%= cateringTypes[i].NameCateringType %></option>
+          <option value="<%= cateringTypes[i].IDCateringType %>" <%= locals.oldData && locals.oldData.cateringType == cateringTypes[i].IDCateringType ? 'selected' : '' %>><%= cateringTypes[i].NameCateringType %></option>
           <% } %>
         </select>
-        <% if(errors && errors.cateringType) { %>
+        <% if(locals.errors && errors.cateringType) { %>
         <div class="text-danger">
-          <%= errors.cateringType.msg %>
+          <%= errors.cateringType.msg  %>
         </div>
         <% } %>
       
         <label for="client">Cliente:</label>
-        <select id="client" name="client" class="control <%= errors && errors.client ? 'is-invalid' : '' %>">
+        <select id="client" name="client" class="control <%= locals.errors && errors.client ? 'is-invalid' : '' %>">
           <% for(let i = 0; i < clients.length; i++) { %>
-          <option value="<%= clients[i].IDClient %>" <%= oldData && oldData.client == clients[i].IDClient ? 'selected' : '' %>><%= clients[i].FirstName %> <%= clients[i].LastName %></option>
+          <option value="<%= clients[i].IDClient %>" <%= locals.oldData && locals.oldData.client == clients[i].IDClient ? 'selected' : '' %>><%= clients[i].FirstName %>  <%= clients[i].LastName %></option>
           <% } %>
         </select>
-        <% if(errors && errors.client) { %>
+        <% if(locals.errors && errors.client) { %>
         <div class="text-danger">
-          <%= errors.client.msg %>
+          <%= errors.client.msg  %>
         </div>
         <% } %>
 
         <label for="products">Productos:</label>
         <select id="products" name="products" class="control" multiple>
+          <% console.log("Productos:", products); %>
           <% for(let i = 0; i < products.length; i++) { %>
-          <option value="<%= products[i].IDProduct %>" <%= oldData && oldData.products.includes(products[i].IDProduct) ? 'selected' : '' %>><%= products[i].NameProduct %></option>
+          <option value="<%= products[i].IDProduct %>"><%= products[i].NameProduct %></option>
           <% } %>
         </select>
 
         <label for="employees">Empleados:</label>
         <select id="employees" name="employees" class="control" multiple>
           <% for(let i = 0; i < employees.length; i++) { %>
-          <option value="<%= employees[i].IDEmployee %>" <%= oldData && oldData.employees.includes(employees[i].IDEmployee) ? 'selected' : '' %>><%= employees[i].FirstName %> <%= employees[i].LastName %></option>
+          <option value="<%= employees[i].IDEmployee %>"><%= employees[i].FirstName %> <%= employees[i].LastName %></option>
           <% } %>
         </select>
+
+
 
         <button type="submit"> Crear </button>
 
       </form>
     </div>
   </main>
-  <%- include('../partials/footer') %>
-</body>
-</html>
