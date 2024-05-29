@@ -40,10 +40,11 @@ module.exports = (sequelize) => {
       as: "Category",
       foreignKey: "IDCategory",
     });
-    Product.hasMany(models.Event, {
+    /*Product.belongsToMany(models.Event, {
       as: "Event",
       foreignKey: 'IDProduct',
-    });
+    });*/
+    Product.belongsToMany(models.Event, { through: "EventProduct", as: "Event" });
   };
 
     

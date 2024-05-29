@@ -65,4 +65,8 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// El método sync solo se usa en ambientes de desarrollo. No utilizar en produccion
+    // porque borra todas las tablas y las vueve a crear
+   // db.sequelize.sync({force:true});
+
 module.exports = db;

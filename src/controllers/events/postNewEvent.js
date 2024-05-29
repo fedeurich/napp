@@ -7,10 +7,7 @@ const postNewEvent = async (req, res) => {
   const errors = validationResult(req);
 
   try {
-    const cateringTypes = await CateringType.findAll();
-    const clients = await Client.findAll();
-    //const products = await Product.findAll();
-    //const employees = await Employee.findAll();
+
     
     console.log(errors)
     if (errors.isEmpty()) {
@@ -40,19 +37,6 @@ const postNewEvent = async (req, res) => {
       console.log("Evento creado:", newEvent);
       res.redirect("/events");
 
-    /* } else {
-
-      const ruta = path.join(__dirname, "../../views/events/newEvent.ejs");
-      res.render(ruta, {
-        cateringTypes,
-        clients,
-        products,
-        employees,
-        errors: errors.mapped(),
-        oldData: req.body,
-      });
-
-    }*/
 
   } catch (error) {
     console.error("Error al manejar el formulario:", error);

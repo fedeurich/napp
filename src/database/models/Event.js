@@ -45,10 +45,11 @@ module.exports = (sequelize) => {
       as: "Client",
       foreignKey: "IDClient",
     });
-    Event.belongsTo(models.Product, {
+    /*Event.belongsToMany(models.Product, {
       as: "Product",
       foreignKey: "IDProduct",
-    });
+    }); */
+    Event.belongsToMany(models.Product, { through: "EventProduct", as: "Product" });
     Event.belongsTo(models.Employee, {
       as: "Employee",
       foreignKey: "IDEmployee",
