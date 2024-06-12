@@ -21,13 +21,16 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      IDProduct: {
-        type: DataTypes.INTEGER,
+      ProductsArray: {
+        type: DataTypes.JSON, // Cambia a JSON
         allowNull: false
       },
       IDEmployee: {
         type: DataTypes.INTEGER,
         allowNull: false
+      },
+      IDCateringType: {
+        type: DataTypes.INTEGER
       }
     },
     {
@@ -45,18 +48,16 @@ module.exports = (sequelize) => {
       as: "Client",
       foreignKey: "IDClient",
     });
-    /*Event.belongsToMany(models.Product, {
-      as: "Product",
-      foreignKey: "IDProduct",
-    }); */
-    Event.belongsToMany(models.Product, { through: "EventProduct", as: "Product" });
+    Event.belongsToMany(models.Product, {
+      through: "EventProduct",
+      as: "Product"
+    });
     Event.belongsTo(models.Employee, {
       as: "Employee",
       foreignKey: "IDEmployee",
     });
-  
-
   };
 
+  
   return Event;
 };

@@ -52,13 +52,51 @@
         </div>
         <% } %>
 
-        <label for="products">Productos:</label>
+        <!--<label for="products">Productos:</label>
         <select id="products" name="products" class="control" multiple>
           <% console.log("Productos:", products); %>
           <% for(let i = 0; i < products.length; i++) { %>
           <option value="<%= products[i].IDProduct %>"><%= products[i].NameProduct %></option>
           <% } %>
+        </select>-->
+
+
+
+        <label for="products">Producto:</label>
+        <select id="products" name="products" class="control">
+          <% for(let i = 0; i < products.length; i++) { %>
+            <option value="<%= products[i].IDProduct %>"><%= products[i].NameProduct %></option>
+          <% } %>
         </select>
+        <button type="button" onclick="addProduct()">Agregar producto</button>
+        
+        <label for="productsArray">Productos Agregados:</label>
+        <select id="productsArray" name="productsArray[]" class="control" multiple>
+          <!-- Aquí se mostrarán los productos agregados dinámicamente -->
+        </select>
+          <!-- Campo de formulario oculto para enviar el arreglo JSON -->
+          <input type="hidden" id="productsArrayJSON" name="productsArrayJSON">
+        <script>
+          function addProduct() {
+            const select = document.getElementById("products");
+            const selectedProduct = select.options[select.selectedIndex];
+          
+            const productsArray = document.getElementById("productsArray");
+            const option = document.createElement("option");
+            option.text = selectedProduct.text;
+            option.value = selectedProduct.value;
+            productsArray.add(option);
+            
+            // Convertir productsArray a un arreglo JSON y asignarlo al campo de formulario hidden
+            const productsArrayJSON = Array.from(productsArray.options).map(option => option.value);
+            document.getElementById("productsArrayJSON").value = JSON.stringify(productsArrayJSON);
+            
+            // También es necesario actualizar el atributo "selected" del producto seleccionado
+            selectedProduct.selected = false; // Desmarcar el producto seleccionado después de agregarlo
+            console.log("Producto agregado:", selectedProduct.value);
+          }
+        </script>
+
 
         <label for="employees">Empleados:</label>
         <select id="employees" name="employees" class="control" multiple>

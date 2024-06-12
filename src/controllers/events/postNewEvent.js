@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const { Event, CateringType, Client, Product, Employee } = require("../../database/models");
 const path = require("path");
+const { stringify } = require("querystring");
 
 const postNewEvent = async (req, res) => {
   console.log("Datos del formulario 1:", req.body);
@@ -11,7 +12,7 @@ const postNewEvent = async (req, res) => {
     
     console.log(errors)
     if (errors.isEmpty()) {
-      console.log({addressEvent, dateEvent, cateringType, client, product, employee})
+      console.log({addressEvent, dateEvent, cateringType, client, product, employee, productsArray,})
       if (!cateringType || !client || !product || !employee)  {
         return res
           .status(400)
@@ -19,14 +20,19 @@ const postNewEvent = async (req, res) => {
       }
     }
 
-      console.log(req.body)
-      const { addressEvent, dateEvent, cateringType, client, products, employees } = req.body
+     
+      const { addressEvent, dateEvent, cateringType, client, products, productsArray, employees } = req.body
+       console.log(req.body)
+
+      // Convertir el array productsArray a una cadena JSON
+      const productsArrayJSON = JSON.stringify(productsArray);
+      
       const event = {
         AddressEvent: addressEvent,
         DateEvent: new Date(dateEvent),
         IDCateringType: parseInt(cateringType),
         IDClient: parseFloat(client),
-        IDProduct: parseInt(products),
+        ProductsArray: JSON.stringify(productsArray), // Convertir array a cadena JSON
         IDEmployee: parseInt(employees),
       }
       
@@ -35,6 +41,9 @@ const postNewEvent = async (req, res) => {
       const newEvent = await Event.create(event);
 
       console.log("Evento creado:", newEvent);
+      
+      console.log(productsArray);
+
       res.redirect("/events");
 
 

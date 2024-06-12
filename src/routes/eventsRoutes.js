@@ -71,6 +71,11 @@ const validationsForm = [
     .isLength({ min: 1, max: 20 })
     .withMessage("Tiene que tener entre 1 y 20 caracteres"),
     body("products").isArray({ min: 1 }).withMessage("Debe seleccionar al menos un producto"),
+    body("productsArray")
+    .isArray({ min: 1 })
+    .withMessage("Debe seleccionar al menos un producto")
+    .custom((value) => value.every(Number.isInteger)) // Asegurar que todos los elementos sean números enteros
+    .withMessage("Todos los IDs de productos deben ser números"),
     body("employees").isArray({ min: 1 }).withMessage("Debe seleccionar al menos un empleado"),
 
 ];
@@ -91,7 +96,7 @@ router.get("/events", getAllEvents);
 router.get("/", getAllEvents);
 router.get("/events/:id", getEventById);
 
-//Rutas para crear empleados
+//Rutas para crear eventos
 router.get("/new-event", isUser, formNewEvent);
 
 router.post(

@@ -1,14 +1,14 @@
 <%- include('../partials/head') %>
 
 <link rel="stylesheet" href="/css/productDetail.css" />
-<title>Detalles del Producto</title>
+<title>Detalles del Evento</title>
 </head>
 
 <body>
 
   <%- include('../partials/header') %>
 
-  <h2 class="containerTitle"> Detalles del Evento</h2>
+  <h2 class="containerTitle">Detalles del Evento</h2>
 
   <main class="containerMainProductDetail">
     <div class="containerCardProducto">
@@ -16,11 +16,28 @@
         
         <h3>ID del Evento: <%= event.IDEvent %></h3>
         <h3>Dirección: <%= event.AddressEvent %></h3>
-        <h3>Fecha: <%= event.DateEvent %></h3>  
+        <h3>Fecha: <%= event.DateEvent.toLocaleDateString() %></h3> 
         <h3>Tipo: <%= event.CateringType.NameCateringType %></h3>
-        <h3>Inventario: <%= event.Product.NameProduct %></h3>
+
+        <!-- Mostrar productos -->
+        <% if (products && products.length > 0) { %>
+          <h3>Productos:</h3>
+          <ul>
+            <% products.forEach(product => { %>
+              <li>
+                <%= product.NameProduct %>
+                <!-- Enlace al detalle del producto -->
+                <button onclick="window.location.href='/product/<%= product.IDProduct %>'">Ver Detalle</button>
+
+              </li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>No hay productos disponibles para este evento.</p>
+        <% } %>
+        
         <h3>Empleados: <%= event.Employee.FirstName %></h3>
-        <h3>Cliente: <%= event.Client.FirstName %>   <%= event.Client.LastName %></h3>
+        <h3>Cliente: <%= event.Client.FirstName %> <%= event.Client.LastName %></h3>
         
         <form action="/events/<%= event.IDEvent %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
@@ -28,9 +45,6 @@
         </form>
 
       </section>
-
-      
-      
     </div>
   </main>
 
