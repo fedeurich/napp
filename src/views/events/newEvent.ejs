@@ -1,9 +1,10 @@
-<%- include('../partials/head') %>
-
-<link rel="stylesheet" href="/css/newProduct.css" />
-<title>Nuevo evento</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('../partials/head') %>
+  <link rel="stylesheet" href="/css/newProduct.css" />
+  <title>Nuevo evento</title>
 </head>
-
 <body>
   <%- include('../partials/header') %>
   <main>
@@ -15,16 +16,15 @@
         <input type="text" id="addressEvent" name="addressEvent" class="control <%= locals.errors && errors.addressEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.addressEvent : '' %>">
         <% if(locals.errors && errors.addressEvent) { %>
         <div class="text-danger">
-          <%= errors.addressEvent.msg  %>
+          <%= errors.addressEvent.msg %>
         </div>
         <% } %>
-        
-      
+
         <label for="dateEvent">Fecha:</label>
-        <input type="date" id="dateEvent" name="dateEvent" class="control <%= locals.errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.dateEvent : (new Date()) %>">
+        <input type="date" id="dateEvent" name="dateEvent" class="control <%= locals.errors && errors.dateEvent ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.dateEvent : (new Date().toISOString().split('T')[0]) %>">
         <% if(locals.errors && errors.dateEvent) { %>
         <div class="text-danger">
-          <%= errors.dateEvent.msg  %>
+          <%= errors.dateEvent.msg %>
         </div>
         <% } %>
 
@@ -36,30 +36,54 @@
         </select>
         <% if(locals.errors && errors.cateringType) { %>
         <div class="text-danger">
-          <%= errors.cateringType.msg  %>
+          <%= errors.cateringType.msg %>
         </div>
         <% } %>
-      
+
         <label for="client">Cliente:</label>
         <select id="client" name="client" class="control <%= locals.errors && errors.client ? 'is-invalid' : '' %>">
           <% for(let i = 0; i < clients.length; i++) { %>
-          <option value="<%= clients[i].IDClient %>" <%= locals.oldData && locals.oldData.client == clients[i].IDClient ? 'selected' : '' %>><%= clients[i].FirstName %>  <%= clients[i].LastName %></option>
+          <option value="<%= clients[i].IDClient %>" <%= locals.oldData && locals.oldData.client == clients[i].IDClient ? 'selected' : '' %>><%= clients[i].FirstName %> <%= clients[i].LastName %></option>
           <% } %>
         </select>
         <% if(locals.errors && errors.client) { %>
         <div class="text-danger">
-          <%= errors.client.msg  %>
+          <%= errors.client.msg %>
         </div>
         <% } %>
 
-        <label for="products">Productos:</label>
-        <select id="products" name="products" class="control" multiple>
-          <% console.log("Productos:", products); %>
+        <label for="products">Producto:</label>
+        <select id="products" name="products" class="control">
           <% for(let i = 0; i < products.length; i++) { %>
-          <option value="<%= products[i].IDProduct %>"><%= products[i].NameProduct %></option>
+            <option value="<%= products[i].IDProduct %>"><%= products[i].NameProduct %></option>
           <% } %>
         </select>
+        <button type="button" onclick="addProduct()">Agregar producto</button>
+        
+        <label for="productsArray">Productos Agregados:</label>
+        <select id="productsArray" name="productsArray[]" class="control" multiple>
+          <!-- Aquí se mostrarán los productos agregados dinámicamente -->
+        </select>
+        <input type="hidden" id="productsArrayJSON" name="productsArrayJSON">
 
+        <script>
+          function addProduct() {
+            const select = document.getElementById("products");
+            const selectedProduct = select.options[select.selectedIndex];
+            const productsArray = document.getElementById("productsArray");
+            const option = document.createElement("option");
+            option.text = selectedProduct.text;
+            option.value = selectedProduct.value;
+            productsArray.add(option);
+
+            const productsArrayJSON = Array.from(productsArray.options).map(option => option.value);
+            document.getElementById("productsArrayJSON").value = JSON.stringify(productsArrayJSON);
+
+            selectedProduct.selected = false;
+            console.log("Producto agregado:", selectedProduct.value);
+          }
+        </script>
+        
         <label for="employees">Empleados:</label>
         <select id="employees" name="employees" class="control" multiple>
           <% for(let i = 0; i < employees.length; i++) { %>
@@ -67,10 +91,8 @@
           <% } %>
         </select>
 
-
-
-        <button type="submit"> Crear </button>
-
+        <button type="submit">Crear</button>
       </form>
     </div>
   </main>
+

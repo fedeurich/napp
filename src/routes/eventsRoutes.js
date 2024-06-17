@@ -34,45 +34,13 @@ const uploadImgEvent = multer({ storage: storage });
 
 // Validaciones
 const validationsForm = [
-  body("addressEvent")
-    .trim()
-    .notEmpty()
-    .withMessage("La dirección del evento es requerida")
-    .bail()
-    .isString()
-    .withMessage("Tienes que ingresar un nombre válido")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("Tiene que tener entre 5 y 50 caracteres"),
-
-    body("dateEvent")
-    .trim()
-    .notEmpty()
-    .withMessage("La fecha del evento es requerida")
-    .bail()
-    .isDate(),
-
-    body("cateringType")
-    .trim()
-    .notEmpty()
-    .withMessage("Tienes que ingresar una catering")
-    .bail()
-    .isNumeric()
-    .withMessage("El tipo de catering es requerido"),
-
-    body("client")
-    .trim()
-    .notEmpty()
-    .withMessage("Debe ingresar un cliente")
-    .bail()
-    .isString()
-    .withMessage("Tienes que ingresar cliente valido")
-    .bail()
-    .isLength({ min: 1, max: 20 })
-    .withMessage("Tiene que tener entre 1 y 20 caracteres"),
-    body("products").isArray({ min: 1 }).withMessage("Debe seleccionar al menos un producto"),
-    body("employees").isArray({ min: 1 }).withMessage("Debe seleccionar al menos un empleado"),
-
+  body("addressEvent"),
+  body('addressEvent').notEmpty().withMessage('La dirección es obligatoria'),
+  body('dateEvent').isISO8601().withMessage('Fecha inválida'),
+  body('cateringType').isInt().withMessage('Debe seleccionar un tipo de catering válido'),
+  body('client').isInt().withMessage('Debe seleccionar un cliente válido'),
+  body('productsArrayJSON').notEmpty().withMessage('Debe seleccionar al menos un producto'),
+  body('employees').isInt().withMessage('Debe seleccionar al menos un empleado')
 ];
 
 const {
@@ -91,7 +59,7 @@ router.get("/events", getAllEvents);
 router.get("/", getAllEvents);
 router.get("/events/:id", getEventById);
 
-//Rutas para crear empleados
+//Rutas para crear eventos
 router.get("/new-event", isUser, formNewEvent);
 
 router.post(
