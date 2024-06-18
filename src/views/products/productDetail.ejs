@@ -19,7 +19,7 @@
         <h3>Stock:  <%= product.Stock %></h3>
         <h3>Precio: $<%= product.Price %></h3>
         <h3>Categoria: <%= product.IDCategory %></h3>
-        <a href="/productCart"><button> AGREGAR AL EVENTO </button></a>
+
 
         <form action="/products/<%= product.IDProduct %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">

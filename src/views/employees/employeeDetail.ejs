@@ -18,7 +18,9 @@
         <h3><p><%= employee.FirstName %> <%= employee.LastName %></p></h3>
         <h3>Email: <%= employee.Email %></h3>
         <h3>Franco: <%= employee.PaidLeave %></h3>
-        <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
+        <h3>Rol: <%= employee.IDRole %></h3>
+
+
         <form action="/employees/delete/<%= employee.IDEmployee %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit">Eliminar</button>
