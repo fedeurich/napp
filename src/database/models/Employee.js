@@ -45,11 +45,7 @@ module.exports = (sequelize) => {
       as: "Role",
       foreignKey: "IDRole",
     });
-    Employee.associate = function (models) {
-      Employee.hasMany(models.Event, {
-        foreignKey: 'IDEmployee'
-      });
-    };
+    Employee.belongsToMany(models.Event, { through: "EventEmployee", as: "Event" });
 
 
   };

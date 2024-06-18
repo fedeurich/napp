@@ -25,8 +25,8 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON, // Cambia a JSON
         allowNull: false
       },
-      IDEmployee: {
-        type: DataTypes.INTEGER,
+      EmployeesArray: {
+        type: DataTypes.JSON, // Cambia a JSON
         allowNull: false
       },
       IDCateringType: {
@@ -52,9 +52,9 @@ module.exports = (sequelize) => {
       through: "EventProduct",
       as: "Product"
     });
-    Event.belongsTo(models.Employee, {
-      as: "Employee",
-      foreignKey: "IDEmployee",
+    Event.belongsToMany(models.Employee, {
+      through: "EventEmployee",
+      as: "Employee"
     });
   };
 

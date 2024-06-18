@@ -5,7 +5,7 @@ const getEventById = async (req, res) => {
   try {
     const eventId = req.params.id;
     const event = await Event.findByPk(eventId, {
-      attributes: ['IDEvent', 'AddressEvent', 'DateEvent', 'ProductsArray'], // Incluir ProductsArray en los atributos
+      attributes: ['IDEvent', 'AddressEvent', 'DateEvent', 'ProductsArray', 'EmployeesArray'], // Incluir ProductsArray en los atributos
       include: [
         {
           model: CateringType,
@@ -44,9 +44,18 @@ const getEventById = async (req, res) => {
       where: { IDProduct: productsArray },
       attributes: ['IDProduct', 'NameProduct'], // Solo necesitamos los IDs y nombres de los productos
     });
+    
+    // Convertir la cadena JSON a un array si EmployeesArray está definido
+    const employeesArray = event.EmployeesArray ? JSON.parse(event.EmployeesArray) : [];
+    
+    // Consultar los nombres de los empleados correspondientes a los IDs en employeesArray
+    const employees = await Employee.findAll({
+      where: { IDEmployee: employeesArray },
+      attributes: ['IDEmployee', 'FirstName', 'LastName'], // Solo necesitamos los IDs y nombres de los empleados
+    });
 
     const ruta = path.join(__dirname, "../../views/events/eventDetail.ejs");
-    res.render(ruta, { event, products });
+    res.render(ruta, { event, products, employees });
   } catch (error) {
     console.error("Error al obtener detalles del evento:", error);
     res.status(500).send("Error interno del servidor");

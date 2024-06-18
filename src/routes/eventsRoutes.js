@@ -40,7 +40,8 @@ const validationsForm = [
   body('cateringType').isInt().withMessage('Debe seleccionar un tipo de catering válido'),
   body('client').isInt().withMessage('Debe seleccionar un cliente válido'),
   body('productsArrayJSON').notEmpty().withMessage('Debe seleccionar al menos un producto'),
-  body('employees').isInt().withMessage('Debe seleccionar al menos un empleado')
+  body('employeesArrayJSON').notEmpty().withMessage('Debe seleccionar al menos un empleado'),
+
 ];
 
 const {

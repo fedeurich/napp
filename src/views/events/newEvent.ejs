@@ -83,13 +83,41 @@
             console.log("Producto agregado:", selectedProduct.value);
           }
         </script>
+
         
-        <label for="employees">Empleados:</label>
-        <select id="employees" name="employees" class="control" multiple>
+        
+<!-- Empleados -->
+        <label for="employees">Empleado:</label>
+        <select id="employees" name="employees" class="control">
           <% for(let i = 0; i < employees.length; i++) { %>
-          <option value="<%= employees[i].IDEmployee %>"><%= employees[i].FirstName %> <%= employees[i].LastName %></option>
+            <option value="<%= employees[i].IDEmployee %>"><%= employees[i].FirstName %> <%= employees[i].LastName %></option>
           <% } %>
         </select>
+        <button type="button" onclick="addEmployee()">Agregar empleado</button>
+
+        <label for="employeesArray">Empleados Agregados:</label>
+        <select id="employeesArray" name="employeesArray[]" class="control" multiple>
+          <!-- Aquí se mostrarán los empleados agregados dinámicamente -->
+        </select>
+        <input type="hidden" id="employeesArrayJSON" name="employeesArrayJSON">
+
+        <script>
+          function addEmployee() {
+            const select = document.getElementById("employees");
+            const selectedEmployee = select.options[select.selectedIndex];
+            const employeesArray = document.getElementById("employeesArray");
+            const option = document.createElement("option");
+            option.text = selectedEmployee.text;
+            option.value = selectedEmployee.value;
+            employeesArray.add(option);
+
+            const employeesArrayJSON = Array.from(employeesArray.options).map(option => option.value);
+            document.getElementById("employeesArrayJSON").value = JSON.stringify(employeesArrayJSON);
+
+            selectedEmployee.selected = false;
+            console.log("Empleado agregado:", selectedEmployee.value);
+          }
+        </script>
 
         <button type="submit">Crear</button>
       </form>

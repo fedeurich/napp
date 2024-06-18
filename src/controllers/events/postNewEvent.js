@@ -11,15 +11,16 @@ const postNewEvent = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { addressEvent, dateEvent, cateringType, client, products, productsArrayJSON, employees } = req.body;
+    const { addressEvent, dateEvent, cateringType, client, products, productsArrayJSON, employees, employeesArrayJSON } = req.body;
     console.log("entro", req.body);
 
-    if (!cateringType || !client || !productsArrayJSON || !employees) {
+    if (!cateringType || !client || !productsArrayJSON || !employeesArrayJSON) {
       return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
 
     // Convertir el array productsArrayJSON a un array JavaScript
     const productsArray = JSON.parse(productsArrayJSON);
+    const employeesArray = JSON.parse(employeesArrayJSON);
 
     const event = {
       AddressEvent: addressEvent,
@@ -27,7 +28,7 @@ const postNewEvent = async (req, res) => {
       IDCateringType: parseInt(cateringType),
       IDClient: parseInt(client),
       ProductsArray: JSON.stringify(productsArray), // Convertir array a cadena JSON
-      IDEmployee: parseInt(employees),
+      EmployeesArray:  JSON.stringify(employeesArray),
     };
 
     console.log("hola", event);

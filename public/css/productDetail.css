@@ -1,118 +1,150 @@
-*{
-    box-sizing: border-box; 
-}
-
-.containerTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .containerTitle {
     text-align: center;
     margin-top: 50px;
-}
-.containerMainProductDetail{
+  }
+  
+  .containerMainProductDetail {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-}
-.containerCardProducto img{
-    display: flex;
-    flex-wrap: wrap;
-    height: 50%;
-    width: 100%;
-    border-radius: 20px;
-    margin: 5px;
-}
-
-.containerCardProducto{
-    display: block;
-    width: 100%;
-    height: auto;
-}
-.containerSectionDetalle {
-    width: 100%;
-    height: auto;
-    display: block;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    background-color: white;
-    padding: 25px;
-    margin: 5px;
-    border-radius: 20px;
-    flex-wrap: wrap;
-}
-.containerSectionDetalle button{
-    display: block;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 10px;
-    height: auto;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .containerCardProducto {
+    background-color: #fff;
     border-radius: 20px;
-    margin: 5px;
-    margin-top: 25px;
-    background-color: #ebebeb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .containerSectionDetalle {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .containerSectionDetalle h3 {
+    margin-bottom: 10px;
+  }
+  
+  .containerSectionDetalle p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .containerSectionDetalle ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .containerSectionDetalle ul li {
+    margin-bottom: 10px;
+  }
+  
+  .containerSectionDetalle button.detail-button,
+  .containerSectionDetalle button.delete-button {
+    background-color: #eeeb27;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-}
-.containerSectionDetalle a{
-    text-decoration: none;
-    text-decoration-line: none
-}
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px auto; /* Centra los botones horizontalmente */
+  }
+  
+  .containerSectionDetalle button.detail-button:hover,
+  .containerSectionDetalle button.delete-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Estilos para los recuadros de productos y empleados */
+  .products-section,
+  .employees-section {
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 768px) {
-    .containerSectionDetalle{
-        font-size: 24px;
-        padding: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    box-shadow: inset 0 0 10px rgba(161, 150, 150, 0.7); /* Sombreado en el borde */
+  }
+  
+  .products-section h3,
+  .employees-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #010b13; /* Cambio de color para destacar */
+  }
+  
+  .products-section ul,
+  .employees-section ul {
+    padding-left: 20px;
+  }
+  
+  /* Estilos para los nombres de productos y empleados */
+  .product-name,
+  .employee-name {
+    font-weight: bold; /* Texto en negrita */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #333; /* Color de texto */
+    display: block; /* Asegura que el nombre esté en una línea separada */
+    margin-bottom: 5px; /* Espacio entre el nombre y el botón */
+  }
+  
+  .delete-button {
+    background-color: #e74c3c !important; /* Rojo para eliminar */
+  }
+  
+  @media (max-width: 768px) {
+    .containerCardProducto {
+      padding: 10px;
     }
-}
-
-/* Estilos para tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .containerCardProducto{
-        display: flex;
+  
+    .containerSectionDetalle button.detail-button,
+    .containerSectionDetalle button.delete-button {
+      font-size: 14px;
+      padding: 8px 16px;
     }
-    .containerMainProductDetail img{
-        width: 100%;
-        height: auto;
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .containerCardProducto {
+      padding: 15px;
     }
-    .containerCardProducto{
-        display: flex;
-        flex-wrap: wrap;
+  }
+  
+  @media (min-width: 1025px) {
+    .containerCardProducto {
+      padding: 20px;
     }
-}
-
-/* Estilos para escritorios */
-@media (min-width: 1025px) {
-    .containerCardProducto{
-        display: flex;
+  
+    .containerSectionDetalle h3 {
+      padding-bottom: 20px;
     }
-    .containerMainProductDetail img{
-        width: 100%;
-        height: auto;
+  
+    .containerSectionDetalle p {
+      padding-bottom: 30px;
+      font-size: 18px;
     }
-    .containerSectionDetalle{
-        align-items: center;
-        justify-content: center;
-        padding-top: 50px;
+  
+    .containerSectionDetalle button.detail-button,
+    .containerSectionDetalle button.delete-button {
+      margin-top: 30px;
     }
-    .containerSectionDetalle h3{
-        padding-bottom: 100px;
-    }
-    .containerSectionDetalle p{
-        padding-bottom: 150px;
-        font-size: 24px;
-    }
-    .containerSectionDetalle button{
-        width: 100%;
-        height: auto;  
-        margin-top: 50px;
-    }
-}
+  }
+  
