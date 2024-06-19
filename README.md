@@ -19,3 +19,9 @@
 
 ## 6. INICIAR PROYECTO EN DESARROLLO
 # npm run dev
+
+
+## INTEGRANTES
+# Ariel McFarlin
+# Maria Rodriguez
+# Federico Urich
